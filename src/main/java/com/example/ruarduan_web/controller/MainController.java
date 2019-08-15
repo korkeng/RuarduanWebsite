@@ -19,4 +19,19 @@ public class MainController {
     
         return "index";
     }
+    @GetMapping("/template")
+    public String Template(){
+    
+        return "indexWithTemplate";
+    }
+    @GetMapping("/login")
+    public String Login(){
+    
+        return "login";
+    }
+    @GetMapping("/registration")
+    public String Regis(){
+    
+        return "registration";
+    }
 }
