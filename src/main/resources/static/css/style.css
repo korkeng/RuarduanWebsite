@@ -2358,6 +2358,16 @@ ul.inbox-pagination li {
 }
 /*--//header--*/
 /*--login--*/
+select.ggg{
+    width: 100%;
+    padding: 15px 0px 15px 15px;
+    border: 1px solid #fff;
+    outline: none;
+    font-size: 14px;
+    color: #fff;
+    margin: 14px 0px;
+    background:rgba(180, 192, 194);
+}
 input.ggg{
     width: 100%;
     padding: 15px 0px 15px 15px;
@@ -3130,5 +3140,4 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
 }
 .chart_agile_bottom {
     padding: 0;
-}
 }
