@@ -2348,16 +2348,20 @@ ul.inbox-pagination li {
     letter-spacing: 2px;
     text-transform: uppercase;
     padding-bottom: 15px;
-	    text-align: center;
+    text-align: center;
 }
 .w3layouts-main {
     width: 30%;
     margin:5em auto;
-    background:rgba(171, 119, 157, 0.27);
+    background:rgba(171, 119, 157, 0.45);
     padding: 42px 35px;
 }
 /*--//header--*/
 /*--login--*/
+span.ggg{
+    color: #333333;
+    font-size: 26px;
+}
 select.ggg{
     width: 100%;
     padding: 15px 0px 15px 15px;
@@ -2380,7 +2384,6 @@ input.ggg{
 }
 .w3layouts-main span {
     font-size: 16px;
-    color: #fff;
     float: left;
     width: 32%;
 	margin-top: 8px;
