@@ -34,4 +34,10 @@ public class MainController {
     
         return "registration";
     }
+    @GetMapping("/staffs")
+    public String Staff(){
+    
+        return "staffs";
+    }
 }
+
