@@ -23,11 +23,15 @@
 		<div class="log-w3">
 		<div class="w3layouts-main">
 			<h2>Sign In Now</h2>
-				<form action="#" method="post">
+				<form action="#" method="post" class="validate-form">
 					<span class="ggg">Username</span>
-					<input type="text" class="ggg" name="Username" placeholder="USERNAME" required="">
+					<div class="validate-input" data-validate="Please filled Username">
+						<input type="text" class="ggg input-100" id="username" name="username" placeholder="USERNAME">
+					</div>
 					<span>Password</span>
-					<input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
+					<div class="valiadate-input" data-validate="Please filled Password">
+						<input type="password" class="ggg input-100" id="password" name="password" placeholder="PASSWORD">
+					</div>
 						<div class="clearfix"></div>
 						<input type="submit" value="Sign In" name="login">
 				</form>
@@ -41,5 +45,6 @@
 		<script src="js/jquery.nicescroll.js"></script>
 		<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 		<script src="js/jquery.scrollTo.js"></script>
+		<script src="js/login.js"></script>
 	</body>
 </html>
