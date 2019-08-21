@@ -31,7 +31,15 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.icon{
+    padding-bottom: 3%;
+    width: 25%;
+}
 .bg{
 	background: url(../images/bg2.jpg) no-repeat;
     background-size:cover;
