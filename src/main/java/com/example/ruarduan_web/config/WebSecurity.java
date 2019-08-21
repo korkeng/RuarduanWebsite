@@ -51,13 +51,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder authMBuilder) throws Exception {
         AccountModel[] accObject = accountService.getAllUser();
-        System.out.println("Hello World");
         if(accObject != null){
             for(AccountModel adm : accObject){
                 authMBuilder
                     .inMemoryAuthentication()
-                    .withUser(""+adm.getUserName()).password("{noop}"+adm.getPassword()).roles("ADMIN");
-                 System.out.print(""+adm.getPassword());   
+                    .withUser(""+adm.getUserName()).password("{noop}"+adm.getPassword()).roles("ADMIN");  
             }
             System.out.print("Finish Load");
         }
