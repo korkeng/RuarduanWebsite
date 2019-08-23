@@ -139,7 +139,11 @@
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <img alt="" src="images/2.png">
                     <script>
+                    $(document).ready(function() {
                         document.getElementById("show-name").innerHTML = window.localStorage.getItem("dataUsername");
+                        console.log(window.localStorage.getItem("dataUsername"));
+                    });
+
                     </script>
                     <span class="username" id="show-name"></span>
                     <b class="caret"></b>
