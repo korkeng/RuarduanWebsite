@@ -4,22 +4,11 @@
 		<title>Ruarduan Admin | Registration</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="apple-touch-icon" sizes="57x57" href="icon/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="icon/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="icon/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="icon/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="icon/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="icon/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="icon/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="icon/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="icon/android-icon-192x192.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
 		<link rel="manifest" href="icon/manifest.json">
 		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="icon/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 		<!-- bootstrap-css -->
 		<link rel="stylesheet" href="css/bootstrap.min.css" >
@@ -37,32 +26,27 @@
 	<body class="bg">
 		<div class="reg-w3">
 		<div class="w3layouts-main">
+			<img class="center icon" alt="" src="icon/favicon-96x96.png">
 			<h2>Register Now</h2>
 				<form action="#" method="post" class="ggg">
 					<span class="ggg">Employee Code</span>
-					<input type="text" class="ggg" name="Emp_code" placeholder="EMPLOYEE CODE" required="">
-					<span class="ggg">Role</span>
-					<select class="ggg" name="roles" required="">
-						<option value="" disabled selected>SELECT YOUR ROLE</option>
-					    <option value="Admin">Administrator</option>
-					    <option value="Staff">Staff</option>Admin
-					 </select>
+					<input type="text" class="ggg" id="Emp_code" placeholder="EMPLOYEE CODE" required="">
 					<span class="ggg">Firstname</span>
-					<input type="text" class="ggg" name="FirstName" placeholder="FIRSTNAME" required="">
+					<input type="text" class="ggg" id="FirstName" placeholder="FIRSTNAME" required="">
 					<span class="ggg">Lastname</span>
-					<input type="text" class="ggg" name="LastName" placeholder="LASTNAME" required="">
+					<input type="text" class="ggg" id="LastName" placeholder="LASTNAME" required="">
 					<span class="ggg">E-mail</span>
-					<input type="email" class="ggg" name="Email" placeholder="E-MAIL" required="">
+					<input type="email" class="ggg" id="Email" placeholder="E-MAIL" required="">
 					<span class="ggg">Phone</span>
-					<input type="text" class="ggg" name="Phone" placeholder="PHONE" required="">
+					<input type="text" class="ggg" id="Phone" placeholder="PHONE" required="">
 					<span class="ggg">Username</span>
-					<input type="text" class="ggg" name="Username" placeholder="USERNAME" required="">
+					<input type="text" class="ggg" id="Username" placeholder="USERNAME" required="">
 					<span class="ggg">Password</span>
-					<input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
+					<input type="password" class="ggg" id="Password" placeholder="PASSWORD" required="">
 
 					
 					<div class="clearfix"></div>
-					<input type="submit" value="submit" name="register">
+					<input type="button" value="submit" name="register" onclick="addAccount()">
 				</form>
 				<p>Already Registered.<a href="/login">Login</a></p>
 		</div>
@@ -74,5 +58,6 @@
 		<script src="js/jquery.nicescroll.js"></script>
 		<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 		<script src="js/jquery.scrollTo.js"></script>
+		<script src="js/add-registerToDB.js"></script>
 	</body>
 </html>
