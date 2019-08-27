@@ -678,17 +678,13 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 .market-update-block h3 {
     color: #fff;
-    font-size: 2em;
+    font-size: 2.5em;
+    font-weight: 600;
 }
 .market-update-block h4 {
-	font-size: 1.2em;
+	font-size: 1.5em;
     color: #fff;
     margin: 0.3em 0em;
-}
-.market-update-block p {
-    color: #fff;
-    font-size: 0.8em;
-    line-height: 1.8em;
 }
 .market-update-block.clr-block-1 {
     background: #53d769;
@@ -706,14 +702,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
   -moz-transition: 0.5s all;
   -o-transition: 0.5s all;
 }
-.market-update-block.clr-block-3 {
-    background:#147efb;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -o-transition: 0.5s all;
-}
+
 .market-update-block.clr-block-4 {
     background:#2a2727;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -736,13 +725,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
   -moz-transition: 0.5s all;
   -o-transition: 0.5s all;
 }
-.market-update-block.clr-block-3:hover {
-    background:#30b1bf;
-    transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -o-transition: 0.5s all;
-}
+
 .market-update-block.clr-block-4:hover {
     background:#30b1bf;
     transition: 0.5s all;
@@ -752,11 +735,6 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 .market-update-right i.fa.fa-users {
     font-size: 3em;
-    color:#fff;
-   text-align: left;
-}
-.market-update-right i.fa.fa-eye {
-     font-size: 3em;
     color:#fff;
    text-align: left;
 }
@@ -2759,9 +2737,6 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
 }
 .captn h4 {
     margin: 6em 0 0 0;
-}
-.w3ls-graph {
-    padding: 0;
 }
 div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#graph9,div#graph10,div#graph11 {
     width: 620px !important;
