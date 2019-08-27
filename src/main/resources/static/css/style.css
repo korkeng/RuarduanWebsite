@@ -2428,6 +2428,24 @@ input.ggg{
     -moz-transition: 0.5s all;
     -ms-transition: 0.5s all;
 }
+.w3layouts-main input[type="button"] {
+    padding: 12px 38px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #30b1bf;
+    color: white;
+    border: none;
+    outline: none;
+    display: table;
+    cursor: pointer;
+    margin: 45px auto 31px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
 .w3layouts-main input[type="submit"]:hover {
 	background:#14c7db;
 	transition:0.5s all;
@@ -2435,6 +2453,14 @@ input.ggg{
 	-o-transition:0.5s all;
 	-moz-transition:0.5s all;
 	-ms-transition:0.5s all;
+}
+.w3layouts-main input[type="button"]:hover {
+    background:#14c7db;
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -o-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -ms-transition:0.5s all;
 }
 .w3layouts-main p a {
     color: #30b1bf;
@@ -3026,6 +3052,11 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
     padding: 10px 26px;
     font-size: 16px;
 	margin: 45px auto 18px;
+}
+.w3layouts-main input[type="button"] {
+    padding: 10px 26px;
+    font-size: 16px;
+    margin: 45px auto 18px;
 }
 .agile-info h2 {
     font-size: 7em;

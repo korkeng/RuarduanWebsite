@@ -9,8 +9,6 @@
         login["username"] = $("#username").val();
         login["password"] = $("#password").val();
         window.localStorage.setItem("dataUsername",login.username);
-        console.log(typeof login.password);
-        console.log(""+login.username);
     });
 
     $('.validate-form').on('submit',function(){
