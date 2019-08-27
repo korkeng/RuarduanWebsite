@@ -8,7 +8,7 @@
                      <div class="panel panel-default">
                         <div class="panel-heading">Staff Lists</div>
                         <div>
-                          <table class="table" ui-jq="footable" ui-options='{
+                          <table class="table table-bordered text-center" ui-jq="footable" ui-options='{
                             "paging": {
                               "enabled": true
                             },
@@ -19,25 +19,55 @@
                               "enabled": true
                             }}'>
                             <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>Emp Code</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>E-mail</th>
-                                <th>Phone</th>
-                                <th>Username</th>
+                              <tr class="table-head">
+                                <th scope="col" class="text-center">ID</th>
+                                <th scope="col" class="text-center">Emp Code</th>
+                                <th scope="col" class="text-center">First Name</th>
+                                <th scope="col" class="text-center">Last Name</th>
+                                <th scope="col" class="text-center">E-mail</th>
+                                <th scope="col" class="text-center">Phone</th>
+                                <th scope="col" class="text-center" >Username</th>
+                                <th scope="col" colspan="2" class="text-center">Operation</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr data-expanded="true">
-                                <td>1</td>
-                                <th>S0001</th>
-                                <th>Test</th>
-                                <th>Test</th>
-                                <th>mail@gmail.com</th>
-                                <th>0xx-xxxxxxx</th>
-                                <th>Tester</th>
+                              <tr>
+                                <td scope="row">1</td>
+                                <td>S0001</td>
+                                <td>Test</td>
+                                <td>Test</td>
+                                <td>mail@gmail.com</td>
+                                <td>0xx-xxxxxxx</td>
+                                <td>Tester</td>
+                                <td>
+                                  <div class="edit-btn">
+                                    EDIT
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="del-btn">
+                                    DELETE
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td scope="row">2</td>
+                                <td>S0002</td>
+                                <td>Test</td>
+                                <td>Test</td>
+                                <td>mail@gmail.com</td>
+                                <td>0xx-xxxxxxx</td>
+                                <td>Tester</td>
+                                 <td>
+                                  <div class="edit-btn">
+                                    EDIT
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="del-btn">
+                                    DELETE
+                                  </div>
+                                </td>
                               </tr>
                             </tbody>
                           </table>
@@ -47,7 +77,6 @@
                            <a href="/registration" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ADD STAFF</a>
                         </div>
                     </div>
-                                        
                 </section>
             </section>
         </div>

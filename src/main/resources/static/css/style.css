@@ -248,6 +248,17 @@ ul.sidebar-menu li a.active i {
     height:80px;
     position:relative;
 }
+.table-head{
+    background:#f3f4f3;
+}
+.edit-btn{
+     background:#f18517;
+     color: white;
+}
+.del-btn{
+    background:#d80000;
+     color: white;
+}
 a.logo {
     font-size:32px;
     color:#fff;
