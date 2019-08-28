@@ -823,11 +823,9 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 /*--market--*/
 .panel-heading {
     position: relative;
-    height: 57px;
-    line-height: 57px;
     letter-spacing: 0.2px;
     color: #000;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
     padding: 0 15px;
    border-top-right-radius: 2px;
