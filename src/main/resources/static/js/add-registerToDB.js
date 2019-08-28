@@ -16,8 +16,8 @@ function addAccount(){
         roleId = 2;
     }
 
-
-    $.ajax({
+    if (objectRegister.empCode!= "") {
+        $.ajax({
                     type : "POST",
                     contentType : "application/json",
                     url : "http://139.99.117.190:8080/account/"+roleId,
@@ -34,5 +34,9 @@ function addAccount(){
                       console.log(JSON.stringify(objectRegister));
                     }
                 });
+    }else{
+        alert("Fill all form!")
+    }
+    
 
 }

@@ -4,81 +4,90 @@
         <div layout:fragment="content">
             <section id="main-content">
                 <section class="wrapper">
+                  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+                  <script src="js/manage-account.js"></script>
                     <div class="table-agile-info">
-                     <div class="panel panel-default">
-                        <div class="panel-heading">Staff Lists</div>
-                        <div>
-                          <table class="table table-bordered text-center" ui-jq="footable" ui-options='{
-                            "paging": {
-                              "enabled": true
-                            },
-                            "filtering": {
-                              "enabled": true
-                            },
-                            "sorting": {
-                              "enabled": true
-                            }}'>
-                            <thead>
-                              <tr class="table-head">
-                                <th scope="col" class="text-center">ID</th>
-                                <th scope="col" class="text-center">Emp Code</th>
-                                <th scope="col" class="text-center">First Name</th>
-                                <th scope="col" class="text-center">Last Name</th>
-                                <th scope="col" class="text-center">E-mail</th>
-                                <th scope="col" class="text-center">Phone</th>
-                                <th scope="col" class="text-center" >Username</th>
-                                <th scope="col" colspan="2" class="text-center">Operation</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td scope="row">1</td>
-                                <td>S0001</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>mail@gmail.com</td>
-                                <td>0xx-xxxxxxx</td>
-                                <td>Tester</td>
-                                <td>
-                                  <div class="edit-btn">
-                                    EDIT
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="del-btn">
-                                    DELETE
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td scope="row">2</td>
-                                <td>S0002</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>mail@gmail.com</td>
-                                <td>0xx-xxxxxxx</td>
-                                <td>Tester</td>
-                                 <td>
-                                  <div class="edit-btn">
-                                    EDIT
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="del-btn">
-                                    DELETE
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      <div class="panel panel-default">
+                        <div class="card-table shadow mb-4">
+                          <div class="card-header py-3">
+                            <h6 id="tableHeader" class="m-0 font-weight-bold text-primary"></h6>
+                          </div>
+                          <div class="card-body-table">
+                            <div class="table-responsive">
+                              <div class="row">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead id="myThHeader">
+                                  </thead>
+                                  <tfoot id="myThFooter">
+                                  </tfoot>
+                                  <tbody id="myThBody">
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                       <div class="text-right">
+                           <a href="/registration" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ADD ROLE</a>
+                        </div>
+                    </div>
+
+                      <div class="table-agile-info">
+                      <div class="panel panel-default">
+                        <div class="card-table shadow mb-4">
+                          <div class="card-header py-3">
+                            <h6 id="tableHeaderStaff" class="m-0 font-weight-bold text-primary"></h6>
+                          </div>
+                          <div class="card-body-table">
+                            <div class="table-responsive">
+                              <div class="row">
+                                <table class="table table-bordered" id="dataTableStaff" width="100%" cellspacing="0">
+                                  <thead id="myThHeaderStaff">
+                                  </thead>
+                                  <tfoot id="myThFooterStaff">
+                                  </tfoot>
+                                  <tbody id="myThBodyStaff">
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                        <div class="text-right">
                            <a href="/registration" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ADD STAFF</a>
                         </div>
                     </div>
+
+                    <div class="table-agile-info">
+                      <div class="panel panel-default">
+                        <div class="card-table shadow mb-4">
+                          <div class="card-header py-3">
+                            <h6 id="tableHeaderAdmin" class="m-0 font-weight-bold text-primary"></h6>
+                          </div>
+                          <div class="card-body-table">
+                            <div class="table-responsive">
+                              <div class="row">
+                                <table class="table table-bordered" id="dataTableAdmin" width="100%" cellspacing="0">
+                                  <thead id="myThHeaderAdmin">
+                                  </thead>
+                                  <tfoot id="myThFooterAdmin">
+                                  </tfoot>
+                                  <tbody id="myThBodyAdmin">
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
                 </section>
             </section>
         </div>
+
     </body>
 </html>
