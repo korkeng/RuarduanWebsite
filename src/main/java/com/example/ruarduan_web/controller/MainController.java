@@ -33,10 +33,10 @@ public class MainController {
     
         return "registration";
     }
-    @GetMapping("/staffs")
-    public String Staff(){
+    @GetMapping("/accounts")
+    public String Account(){
     
-        return "staffs";
+        return "accounts";
     }
 }
 

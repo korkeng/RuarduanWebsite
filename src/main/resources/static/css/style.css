@@ -573,7 +573,6 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 .top-nav ul.top-menu>li>a {
     border-radius: 100px;
     -webkit-border-radius: 100px;
-    padding: 0px;
     background: none;
     margin-right: 0;
     border: 1px solid #30b1bf;
@@ -827,9 +826,9 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     color: #000;
     font-size: 20px;
     font-weight: 600;
-    padding: 0 15px;
-   border-top-right-radius: 2px;
-   border-top-left-radius: 2px; 
+    padding: 15px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px; 
     text-transform: uppercase;
     text-align: center;
 }
