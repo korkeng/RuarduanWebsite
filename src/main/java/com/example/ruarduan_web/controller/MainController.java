@@ -49,5 +49,10 @@ public class MainController {
         public String Pier(){
             return "piers";
     }
+
+    @GetMapping("/places")
+        public String Place(){
+            return "places";
+    }
 }
 
