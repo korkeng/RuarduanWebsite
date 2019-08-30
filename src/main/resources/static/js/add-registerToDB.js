@@ -16,7 +16,7 @@ function addAccount(){
         roleId = 2;
     }
 
-    if (objectRegister.empCode!= "") {
+    if (objectRegister.empCode!=""&&objectRegister.firstName!=""&&objectRegister.lastName!=""&&objectRegister.email!=""&&objectRegister.phone!=""&&objectRegister.userName!=""&&objectRegister.password!="") {
         $.ajax({
                     type : "POST",
                     contentType : "application/json",
