@@ -38,5 +38,10 @@ public class MainController {
     
         return "accounts";
     }
+    @GetMapping("/boats")
+    public String Boat(){
+    
+        return "boats";
+    }
 }
 
