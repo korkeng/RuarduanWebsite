@@ -345,7 +345,7 @@ function changeViewSchedule() {
                                 cellData[j].innerHTML = ""+data[i].scheduleId.schedule_id.toString();
                                 break;
                             case 1:
-                                cellData[j].innerHTML = ""+data[i].scheduleId.scheduleLanguages.toString();
+                                cellData[j].innerHTML = ""+data[i].scheduleId.scheduleLanguages;
                                 break;
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].routeSchedule.routeName;
@@ -403,7 +403,7 @@ function changeViewSchedule() {
                                 cellData[j].innerHTML = ""+data[i].scheduleId.schedule_id.toString();
                                 break;
                             case 1:
-                                cellData[j].innerHTML = ""+data[i].scheduleId.scheduleLanguages.toString();
+                                cellData[j].innerHTML = ""+data[i].scheduleId.scheduleLanguages;
                                 break;
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].routeSchedule.routeName;

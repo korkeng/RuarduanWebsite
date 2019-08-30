@@ -14,34 +14,40 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class MainController {
+
     @GetMapping("/")
-    public String Main(){
-        return "index";
+        public String Main(){
+            return "index";
     }
+
     @GetMapping("/template")
-    public String Template(){
-    
-        return "indexWithTemplate";
+        public String Template(){
+            return "indexWithTemplate";
     }
+
     @GetMapping("/login")
-    public String Login(){
-    
-        return "login";
+        public String Login(){
+            return "login";
     }
+
     @GetMapping("/registration")
-    public String Regis(){
-    
-        return "registration";
+        public String Regis(){
+            return "registration";
     }
+
     @GetMapping("/accounts")
-    public String Account(){
-    
-        return "accounts";
+        public String Account(){
+            return "accounts";
     }
+
     @GetMapping("/boats")
-    public String Boat(){
-    
-        return "boats";
+        public String Boat(){
+            return "boats";
+    }
+
+    @GetMapping("/piers")
+        public String Pier(){
+            return "piers";
     }
 }
 
