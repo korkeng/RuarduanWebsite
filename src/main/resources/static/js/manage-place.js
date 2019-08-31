@@ -477,6 +477,6 @@ function changeViewPlace() {
 //         },
 //         error: function (e) {
 //             console.log("Error:"+e);
-        }
-    });
-}
+//         }
+//     });
+// }
