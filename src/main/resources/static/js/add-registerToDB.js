@@ -24,18 +24,28 @@ function addAccount(){
                     data : JSON.stringify(objectRegister),
                    dataType : 'json',
                     success : function() {
-                        alert("Add Account Successful !!");
+                        swal({
+                            title: 'Registration Success',
+                            text: 'Redirecting...',
+                            icon: 'success',
+                            timer: 1500,
+                            buttons: false,
+                        })
+                        .then(() => {
+                            window.location="/login";
+                        })
+                        
                         console.log(JSON.stringify(objectRegister));
-                        window.location="/login";
+                        
                     },
                     error : function(e) {
-                      alert("Error!")
+                      swal("Something went Wrong!","", "error");
                       console.log("ERROR: ", e);
                       console.log(JSON.stringify(objectRegister));
                     }
                 });
     }else{
-        alert("Fill all form!")
+        swal("Please Fill All Form!", "", "warning");
     }
     
 
