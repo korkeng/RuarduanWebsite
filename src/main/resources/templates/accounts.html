@@ -8,82 +8,36 @@
                   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
                   <script src="js/manage-account.js"></script>
                     <div class="table-agile-info">
-                      <div class="panel panel-default">
+                      <div class="text-right">
+                        <button type="button" onclick="changeViewRole()" class="btn btn-info">Role</button>
+                        <button type="button" onclick="changeViewStaff()" class="btn btn-info">Staff</button>
+                        <button type="button" onclick="changeViewAdmin()" class="btn btn-info">Admin</button>
+                      </div>
+                      <div class="panel panel-default" > 
                         <div class="card-table shadow mb-4">
                           <div class="card-header py-3">
-                              <div class="row">
-                                <div class="col-sm-9 col-md-6 col-lg-9">
-                                   <div id="tableHeader" class="panel-heading"></div>
-                                </div>
-                                <div class="col-sm-3 col-md-6 col-lg-3 text-right">
-                                  <a href="/registration" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ADD ROLE</a>
-                                </div>
+                            <div class="row">
+                                  <div class="col-sm-9 col-md-6 col-lg-9">
+                                     <div id="tableHeader" class="panel-heading"></div>
+                                  </div>
+                                  <div class="col-sm-3 col-md-6 col-lg-3 text-right">
+                                    <a href="#" id="link" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"></a>
+                                  </div>
                               </div>
                           </div>
                           <div class="card-body-table">
-                           <!--  <div class="table-responsive"> -->
+                            <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                   <thead class="text-center" id="myThHeader" ></thead>
                                   <tfoot class="text-center" id="myThFooter"></tfoot>
                                   <tbody id="myThBody"></tbody>
                                 </table>
-                          <!--   </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
-                       
                     </div>
-                    <hr class="acc">
-                      <div class="table-agile-info">
-                      <div class="panel panel-default">
-                        <div class="card-table shadow mb-4">
-                          <div class="card-header py-3">
-                            <div class="row">
-                                <div class="col-sm-9 col-md-6 col-lg-9">
-                                   <div id="tableHeaderStaff" class="panel-heading"></div>
-                                </div>
-                                <div class="col-sm-3 col-md-6 col-lg-3 text-right">
-                                  <a href="/registration" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ADD STAFF</a>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="card-body-table">
-                            <!-- <div class="table-responsive"> -->
 
-                                <table class="table table-bordered" id="dataTableStaff" width="100%" cellspacing="0">
-                                  <thead class="text-center" id="myThHeaderStaff"></thead>
-                                  <tfoot class="text-center" id="myThFooterStaff"></tfoot>
-                                  <tbody id="myThBodyStaff"></tbody>
-                                </table>
-
-                            <!-- </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="acc">
-                    <div class="table-agile-info">
-                      <div class="panel panel-default">
-                        <div class="card-table shadow mb-4">
-                          <div class="card-header py-3">
-                           <div class="row">
-                                <div class="col-sm-9 col-md-6 col-lg-9">
-                                   <div id="tableHeaderAdmin" class="panel-heading"></div>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="card-body-table">
-                            <!-- <div class="table-responsive"> -->
-                                <table class="table table-bordered" id="dataTableAdmin" width="100%" cellspacing="0">
-                                  <thead class="text-center"id="myThHeaderAdmin"></thead>
-                                  <tfoot class="text-center" id="myThFooterAdmin"></tfoot>
-                                  <tbody id="myThBodyAdmin"></tbody>
-                                </table>
-                            <!-- </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     </div>
                 </section>
             </section>
