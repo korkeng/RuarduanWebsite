@@ -405,10 +405,10 @@ function changeViewPlace() {
 //                                 cellData[j].innerHTML = ""+data[i].name;
 //                                 break;
 //                             case 3:
-//                                 cellData[j].innerHTML = ""+data[i].listplace[i].placeId.place_id.toString();
+//                                 cellData[j].innerHTML = ""+data[i].listplace[j].placeId.place_id.toString();
 //                                 break;
 //                             case 4:
-//                                 cellData[j].innerHTML = ""+data[i].listplace[i].name;
+//                                 cellData[j].innerHTML = ""+data[i].listplace[j].name;
 //                                 break;
 //                             case 5:
 //                                 cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].placeId+")\">Edit</button></span>";
@@ -456,10 +456,10 @@ function changeViewPlace() {
 //                                 cellData[j].innerHTML = ""+data[i].name;
 //                                 break;
 //                             case 3:
-//                                 cellData[j].innerHTML = ""+data[i].listplace[i].placeId.place_id.toString();
+//                                 cellData[j].innerHTML = ""+data[i].listplace[j].placeId.place_id.toString();
 //                                 break;
 //                             case 4:
-//                                 cellData[j].innerHTML = ""+data[i].listplace[i].name;
+//                                 cellData[j].innerHTML = ""+data[i].listplace[j].name;
 //                                 break;
 //                             case 5:
 //                                 cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].placeId+")\">Edit</button></span>";
