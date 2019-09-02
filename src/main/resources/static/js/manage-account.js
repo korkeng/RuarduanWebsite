@@ -389,7 +389,9 @@ function changeViewAdmin() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length;
+                 document.getElementById("link").innerHTML = "ADD ADMIN";
+                 document.getElementById("link").disabled = true; 
                  
             } else {
                 tableData.destroy();
@@ -447,6 +449,8 @@ function changeViewAdmin() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                 document.getElementById("link").innerHTML = "ADD ADMIN";
+                 document.getElementById("link").disabled = true;
             }   
         },
         error: function (e) {
