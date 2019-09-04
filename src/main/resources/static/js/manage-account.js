@@ -44,6 +44,7 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
+                document.getElementById("link").style.display = "block"; 
                 document.getElementById("link").innerHTML = "ADD ROLE";
                  
             } else {
@@ -86,7 +87,8 @@ $(document).ready(function() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length; 
+                dataLength = data.length
+                document.getElementById("link").style.display = "block"; 
                 document.getElementById("link").innerHTML = "ADD ROLE";
             }   
         },
@@ -148,6 +150,7 @@ function changeViewRole() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
+                document.getElementById("link").style.display = "block"; 
                 document.getElementById("link").innerHTML = "ADD ROLE";
                  
             } else {
@@ -191,6 +194,7 @@ function changeViewRole() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("link").style.display = "block"; 
                 document.getElementById("link").innerHTML = "ADD ROLE";
             }   
         },
@@ -262,6 +266,7 @@ function changeViewStaff() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
+                document.getElementById("link").style.display = "block"; 
                 document.getElementById("link").innerHTML = "ADD STAFF";
                  
             } else {
@@ -320,6 +325,7 @@ function changeViewStaff() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("link").style.display = "block"; 
                 document.getElementById("link").innerHTML = "ADD STAFF";
             }   
         },
@@ -390,7 +396,7 @@ function changeViewAdmin() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;
-                 document.getElementById("link").innerHTML = "ADD ADMIN";
+                 document.getElementById("link").style.display = "none"; 
                  document.getElementById("link").disabled = true; 
                  
             } else {
@@ -449,7 +455,7 @@ function changeViewAdmin() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                 document.getElementById("link").innerHTML = "ADD ADMIN";
+                 document.getElementById("link").style.display = "none"; 
                  document.getElementById("link").disabled = true;
             }   
         },
