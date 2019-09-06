@@ -256,10 +256,10 @@ function changeViewRoute() {
                                 cellData[j].innerHTML = ""+data[i].routeName;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
                                 break;
                             case 4:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
                     }        
@@ -304,10 +304,10 @@ function changeViewRoute() {
                                 cellData[j].innerHTML = ""+data[i].routeName;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
                                 break;
                             case 4:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Delete</button></span>";
                                 break;
                         }
                     }        
@@ -571,7 +571,7 @@ function addRoute(){
         '</div>'+
     '</div>';
 
-    document.getElementById("showPopupForm").innerHTML = divBoatType;
+    document.getElementById("showPopupForm").innerHTML = divRoute;
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
@@ -611,7 +611,7 @@ function addRoute(){
                                 'success');
 
                             modal.style.display = "none";
-                            changeViewBoattype();
+                            changeViewRoute();
                         },
                         error : function(e) {
                             alert("Error!")
@@ -627,6 +627,7 @@ function addRoute(){
             }
             // alertNoClose.show('Successful');
         });
+    }
 }
 
 function addSchedule(){
