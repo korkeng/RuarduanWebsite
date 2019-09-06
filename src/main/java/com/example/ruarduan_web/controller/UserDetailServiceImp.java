@@ -39,7 +39,7 @@ public class UserDetailServiceImp implements UserDetailsService {
     private UserModel findUserbyUsername(String username) {
         try{
             AccountModel userDetail = accountAdapter.getUser(username);
-            if(userDetail != null){
+            if(userDetail != null&&userDetail.getEmpCode().startsWith("A")){
                 String token = ""+userDetail.getPassword();
                 String jwtToken = ""+token.substring(0,36)+"."+token.substring(36, token.length()-43)+"."+token.substring(token.length()-43,token.length());               
                 String[] split_string = jwtToken.split("\\.");
@@ -47,7 +47,6 @@ public class UserDetailServiceImp implements UserDetailsService {
                 Base64 base64Url = new Base64(true);
                 String body = new String(base64Url.decode(base64EncodedBody)); 
                 JSONObject obj = new JSONObject(body);
-            
                 return new UserModel(userDetail.getUserName(), obj.getString("password"), "USER");
             }
             return null;
