@@ -37,17 +37,20 @@ $(document).ready(function() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].boattypeId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
                                 break;
                             case 4:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].boattypeId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("link").innerHTML = "ADD BOATTYPE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                                                                    "ADD BOATTYPE"+
+                                                                    "</button>";
+
             } else {
                 tableData.destroy();
                 for (i = 0; i < dataLength+2; i++) {
@@ -82,17 +85,19 @@ $(document).ready(function() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].boattypeId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
                                 break;
                             case 4:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].boattypeId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("link").innerHTML = "ADD BOATTYPE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                                                                    "ADD BOATTYPE"+
+                                                                    "</button>";
             }   
         },
         error: function (e) {
@@ -143,17 +148,19 @@ function changeViewBoattype() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].boattypeId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
                                 break;
                             case 4:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].boattypeId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("link").innerHTML = "ADD BOATTYPE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                                                                    "ADD BOATTYPE"+
+                                                                    "</button>";
                  
             } else {
                 tableData.destroy();
@@ -189,17 +196,19 @@ function changeViewBoattype() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].boattypeId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
                                 break;
                             case 4:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].boattypeId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("link").innerHTML = "ADD BOATTYPE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                                                                    "ADD BOATTYPE"+
+                                                                    "</button>";
             }   
         },
         error: function (e) {
@@ -257,7 +266,9 @@ function changeViewRoute() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("link").innerHTML = "ADD ROUTE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRoute()\">"+
+                                                                    "ADD ROUTE"+
+                                                                    "</button>";
                  
             } else {
                 tableData.destroy();
@@ -303,7 +314,10 @@ function changeViewRoute() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("link").innerHTML = "ADD ROUTE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRoute()\">"+
+                                                                    "ADD ROUTE"+
+                                                                    "</button>";
+
             }   
         },
         error: function (e) {
@@ -373,8 +387,9 @@ function changeViewSchedule() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("link").innerHTML = "ADD SCHEDULE";
-                 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";                 
             } else {
                 tableData.destroy();
                 for (i = 0; i < dataLength+2; i++) {
@@ -431,11 +446,246 @@ function changeViewSchedule() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("link").innerHTML = "ADD SCHEDULE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";
             }   
         },
         error: function (e) {
             console.log("Error:"+e);
         }
     });
+}
+
+function addBoatType(){
+
+    var divBoatType =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formBoatType" class="form-detail">'+
+                '<h2>BoatType Table</h2>'+
+                '<div class="form-row">'+
+                    '<span>BoatType Id</span><span style="color: red;"> *</span>'+
+                    '<input id="valId" type="number" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Languages</span><span style="color: red;"> *</span>'+
+                    '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="addDBBoatType" class="btn btn-sm" value="Go"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divBoatType;
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("addDBBoatType");
+    btnclose.onclick = function() {
+        var objectBoatType = {
+            boattypeId: {
+                boattype_id: document.getElementById("valId").value,
+                boattypeLanguages: document.getElementById("valLan").value
+            },
+            name:   document.getElementById("valName").value
+        }
+        swal({
+            title: 'Are you sure?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, add it!'
+        }).then(function() {
+            if(objectBoatType.boattypeId.boattype_id != "" && objectBoatType.boattypeId.boattypeLanguages != "" &&
+                objectBoatType.name != ""){
+                    $.ajax({
+                        type : "POST",
+                        contentType : "application/json",
+                        url : "http://139.99.117.190:8080/boattype",
+                        data : JSON.stringify(objectBoatType),
+                        dataType : 'json',
+                        success : function() {
+                            swal(
+                                'Successful',
+                                'Your data has been add.',
+                                'success');
+
+                            modal.style.display = "none";
+                            changeViewBoattype();
+                        },
+                        error : function(e) {
+                            alert("Error!")
+                            console.log("ERROR: ", e);
+                        }
+                    });
+            } else {
+                swal(
+                    'Failure',
+                    'Please fill in the textfield.',
+                    'error'
+                );
+            }
+            // alertNoClose.show('Successful');
+        });
+    }
+    
+
+}
+
+function addRoute(){
+   console.log("Hello5"); 
+}
+
+function addSchedule(){
+   console.log("Hello6"); 
+}
+
+function editBoatType(id,lan){
+    var divBoatType =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formBoatType" class="form-detail">'+
+                '<h2>BoatType Table</h2>'+
+                '<div class="form-row">'+
+                    '<span>BoatType Id</span>'+
+                    '<input id="valId" type="number" class="input-text" disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Languages</span>'+
+                    '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="editDBBoatType" class="btn btn-sm" value="Go"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divBoatType;
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("editDBBoatType");
+
+    $.ajax({
+        type: "GET",
+        url: "http://139.99.117.190:8080/boattypes/"+lan+"/"+id.toString(),
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("valId").value = data.boattypeId.boattype_id.toString();
+            document.getElementById("valLan").value = data.boattypeId.boattypeLanguages;
+            document.getElementById("valName").value = data.name;
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
+    btnclose.onclick = function() {
+        swal({
+            title: 'Are you sure?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then(function() {
+        var objectBoatType = {
+            boattypeId: {
+                boattype_id: document.getElementById("valId").value,
+                boattypeLanguages: document.getElementById("valLan").value
+            },
+            name:   document.getElementById("valName").value
+        }
+            $.ajax({
+                type : "PUT",
+                contentType : "application/json",
+                url : "http://139.99.117.190:8080/boattypes/update/"+lan+"/"+id.toString(),
+                data : JSON.stringify(objectBoatType),
+                dataType : 'json',
+                success : function() {
+                    swal({
+                        title: 'Successful!!',
+                        confirmButtonText: 'OK',
+                        text: 'Your data has been update.',
+                        preConfirm: () => {
+                            modal.style.display = "none";
+                            window.location.reload();
+                        }
+                    });
+                },
+                error : function(e) {
+                    swal({
+                        title: 'Failure!!',
+                        confirmButtonText: 'OK',
+                        preConfirm: () => {
+                            modal.style.display = "none";
+                        }
+                    });
+                  console.log("ERROR: ", e);
+                }
+            });
+            // alertNoClose.show('Successful');
+        });
+        // modal.style.display = "none";
+    }
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+
+}
+
+function deleteBoatType(id,lan){
+    swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#32CD32',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function() {
+        $.ajax({
+            type : "DELETE",
+            contentType : "application/json",
+            url : "http://139.99.117.190:8080/boattype/"+lan+"/"+id,
+            dataType : 'json',
+            success : function() {
+                swal(
+                    'Successful',
+                    'Your data has been delete.',
+                    'success');
+                changeViewBoattype();
+            },
+            error : function(e) {
+                swal(
+                    'Failure',
+                    'error'
+                );
+              console.log("ERROR: ", e);
+            }
+        });
+        // alertNoClose.show('Successful');
+    });
+    console.log("Remove");
 }

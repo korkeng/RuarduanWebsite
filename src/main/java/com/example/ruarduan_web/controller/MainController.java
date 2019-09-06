@@ -7,6 +7,8 @@ package com.example.ruarduan_web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  *
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class MainController {
+
+    @Value("${secretRegi}")
+    private String secretRegi;
 
     @GetMapping("/")
         public String Main(){
@@ -31,7 +36,8 @@ public class MainController {
     }
 
     @GetMapping("/registration")
-        public String Regis(){
+        public String Regis(Model model){
+            model.addAttribute("secretRegi",secretRegi);
             return "registration";
     }
 
