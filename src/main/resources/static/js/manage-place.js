@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/placetypes",
+        url: "https://139.99.117.190:8080/placetypes",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -108,7 +108,7 @@ var dataLength;
 function changeViewPlaceType() {
        $.ajax({
             type: "GET",
-        url: "http://139.99.117.190:8080/placetypes",
+        url: "https://139.99.117.190:8080/placetypes",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -211,7 +211,7 @@ function changeViewPlaceType() {
 function changeViewPlace() {
        $.ajax({
             type: "GET",
-        url: "http://139.99.117.190:8080/places",
+        url: "https://139.99.117.190:8080/places",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Language</b>","<b>Name</b>","<b>Pic Path</b>","<b>Description</b>","<b>Operation Time</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Location</b>","<b>External Link</b>","<b>Telephone</b>","<b>Transportation</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -369,7 +369,7 @@ function changeViewPlace() {
 // function changeViewListPlace() {
 //        $.ajax({
 //             type: "GET",
-//         url: "http://139.99.117.190:8080/placetypes",
+//         url: "https://139.99.117.190:8080/placetypes",
 //         dataType: 'json',
 //         success: function (data) {
 //             var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Place Type Name</b>","<b>Place ID</b>","<b>Place Name</b>","<b>Edit</b>","<b>Delete</b>"];

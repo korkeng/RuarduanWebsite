@@ -9,14 +9,14 @@ public class AccountAdapter {
 
     public AccountModel[] getAllUser(){
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://139.99.117.190:8080/roles/1";
+        String url = "https://139.99.117.190:8080/roles/1";
         AccountModel[] account = restTemplate.getForObject(url,AccountModel[].class);
         return account;
     }
 
     public AccountModel getUser(String name){
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://139.99.117.190:8080/account/"+name;
+        String url = "https://139.99.117.190:8080/account/"+name;
         AccountModel account = restTemplate.getForObject(url,AccountModel.class);
         return account;
     }

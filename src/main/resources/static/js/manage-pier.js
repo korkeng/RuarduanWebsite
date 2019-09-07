@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/piers",
+        url: "https://139.99.117.190:8080/piers",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Language</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Pic Path</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Busline</b>","<b>Shuttle Boat</b>","<b>Ferry Boat</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -150,7 +150,7 @@ var dataLength;
 function changeViewPier() {
        $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/piers",
+        url: "https://139.99.117.190:8080/piers",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Language</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Pic Path</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Busline</b>","<b>Shuttle Boat</b>","<b>Ferry Boat</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -296,7 +296,7 @@ function changeViewPier() {
 function changeViewNearby() {
        $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/nearbies",
+        url: "https://139.99.117.190:8080/nearbies",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Nearby ID</b>","<b>Language</b>","<b>Place Name</b>","<b>Distance</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -408,7 +408,7 @@ function changeViewNearby() {
 // function changeViewNearby() {
 //        $.ajax({
 //         type: "GET",
-//         url: "http://139.99.117.190:8080/piers",
+//         url: "https://139.99.117.190:8080/piers",
 //         dataType: 'json',
 //         success: function (data) {
 //             var dataHeader = ["<b>Nearby ID</b>","<b>Language</b>","<b>Pier Name</b>","<b>Place Name</b>","<b>Distance</b>","<b>Edit</b>","<b>Delete</b>"];

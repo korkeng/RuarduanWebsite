@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/roles",
+        url: "https://139.99.117.190:8080/roles",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Role ID</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -107,7 +107,7 @@ $(document).ready(function() {
 function changeViewRole() {
        $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/roles",
+        url: "https://139.99.117.190:8080/roles",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Role ID</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -208,7 +208,7 @@ function changeViewRole() {
 function changeViewStaff() {
        $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/roles/2",
+        url: "https://139.99.117.190:8080/roles/2",
         dataType: 'json',   
         success: function (data) {
             var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -338,7 +338,7 @@ function changeViewStaff() {
 function changeViewAdmin() {
        $.ajax({
         type: "GET",
-        url: "http://139.99.117.190:8080/roles/1",
+        url: "https://139.99.117.190:8080/roles/1",
         dataType: 'json',   
         success: function (data) {
             var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Edit</b>","<b>Delete</b>"];
