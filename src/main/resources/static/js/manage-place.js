@@ -615,7 +615,7 @@ function editPlaceType(id,lan){
 
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/"+lan+"/"+id.toString(),
+        url: "https://139.99.117.190:8080/placetype/"+lan+"/"+id.toString(),
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.placeTypeId.placetype_id.toString();
