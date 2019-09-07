@@ -238,7 +238,7 @@ function changeViewPlace() {
                         cellData[j] = row1.insertCell(j);
                         switch(j) {
                             case 0:
-                                cellData[j].innerHTML = ""+data[i].placeId.place_id.toString();
+                                cellData[j].innerHTML = ""+data[i].placeId.placeid.toString();
                                 break;
                             case 1:
                                 cellData[j].innerHTML = ""+data[i].placeId.placeLanguages;
@@ -310,7 +310,7 @@ function changeViewPlace() {
                         cellData[j] = row1.insertCell(j);
                         switch(j) {
                             case 0:
-                                cellData[j].innerHTML = ""+data[i].placeId.place_id.toString();
+                                cellData[j].innerHTML = ""+data[i].placeId.placeid.toString();
                                 break;
                             case 1:
                                 cellData[j].innerHTML = ""+data[i].placeId.placeLanguages;
