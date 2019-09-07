@@ -801,7 +801,7 @@ function editRoute(id,lan){
                 route_id: document.getElementById("valId").value,
                 routeLanguages: document.getElementById("valLan").value
             },
-            name:   document.getElementById("valName").value
+            routeName:   document.getElementById("valName").value
         }
             $.ajax({
                 type : "PUT",

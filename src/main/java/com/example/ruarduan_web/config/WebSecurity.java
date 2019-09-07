@@ -37,6 +37,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(
+                    "/boats",//add for check code
                     "/registration",
                     "/login",
                     "/images/**",
