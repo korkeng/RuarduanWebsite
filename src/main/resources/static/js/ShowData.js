@@ -7,7 +7,7 @@ $(document).ready(function(){
     
     $.ajax({
        type: "GET",
-       url: "http://139.99.117.190:8080/places",
+       url: "https://139.99.117.190:8080/places",
        dataType: "json",
        success: function (data){
             document.getElementById("test").innerHTML =""+data.length;
