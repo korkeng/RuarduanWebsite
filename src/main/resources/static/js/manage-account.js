@@ -44,8 +44,9 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("link").style.display = "block"; 
-                document.getElementById("link").innerHTML = "ADD ROLE";
+                 document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                                                                    "ADD ROLE"+
+                                                                    "</button>";
                  
             } else {
                 tableData.destroy();
@@ -88,8 +89,9 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length
-                document.getElementById("link").style.display = "block"; 
-                document.getElementById("link").innerHTML = "ADD ROLE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                                                                    "ADD ROLE"+
+                                                                    "</button>";
             }   
         },
         error: function (e) {
@@ -150,8 +152,9 @@ function changeViewRole() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("link").style.display = "block"; 
-                document.getElementById("link").innerHTML = "ADD ROLE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                                                                    "ADD ROLE"+
+                                                                    "</button>";
                  
             } else {
                 tableData.destroy();
@@ -194,8 +197,9 @@ function changeViewRole() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("link").style.display = "block"; 
-                document.getElementById("link").innerHTML = "ADD ROLE";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                                                                    "ADD ROLE"+
+                                                                    "</button>";
             }   
         },
         error: function (e) {
@@ -256,18 +260,19 @@ function changeViewStaff() {
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
                             case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].accountId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editStaff("+data[i].accountId+")\">Edit</button></span>";
                                 break;
                             case 8:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].accountId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteStaff("+data[i].accountId+")\">Delete</button></span>";
                                 break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("link").style.display = "block"; 
-                document.getElementById("link").innerHTML = "ADD STAFF";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addStaff()\">"+
+                                                                    "ADD STAFF"+
+                                                                    "</button>";
                  
             } else {
                 tableData.destroy();
@@ -315,18 +320,19 @@ function changeViewStaff() {
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
                             case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].accountId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editStaff("+data[i].accountId+")\">Edit</button></span>";
                                 break;
                             case 8:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].accountId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteStaff("+data[i].accountId+")\">Delete</button></span>";
                                 break;
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("link").style.display = "block"; 
-                document.getElementById("link").innerHTML = "ADD STAFF";
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addStaff()\">"+
+                                                                    "ADD STAFF"+
+                                                                    "</button>";
             }   
         },
         error: function (e) {
@@ -386,18 +392,16 @@ function changeViewAdmin() {
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
                             case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].accountId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editAdmin("+data[i].accountId+")\">Edit</button></span>";
                                 break;
                             case 8:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].accountId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteAdmin("+data[i].accountId+")\">Delete</button></span>";
                                 break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;
-                 document.getElementById("link").style.display = "none"; 
-                 document.getElementById("link").disabled = true; 
                  
             } else {
                 tableData.destroy();
@@ -445,18 +449,16 @@ function changeViewAdmin() {
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
                             case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRole("+data[i].accountId+")\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editAdmin("+data[i].accountId+")\">Edit</button></span>";
                                 break;
                             case 8:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRole("+data[i].accountId+")\">Delete</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteAdmin("+data[i].accountId+")\">Delete</button></span>";
                                 break;
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                 document.getElementById("link").style.display = "none"; 
-                 document.getElementById("link").disabled = true;
             }   
         },
         error: function (e) {
@@ -466,10 +468,15 @@ function changeViewAdmin() {
 }
 
 
-	function editRole(Id){
 
-		alert("Id"+Id.toString());
-	}
-	function deleteRole(Id){
-		alert("Id2"+Id.toString());
-	}
+
+
+function editRole(Id){
+
+	alert("Id"+Id.toString());
+}
+
+
+function deleteRole(Id){
+	alert("Id2"+Id.toString());
+}
