@@ -468,15 +468,210 @@ function changeViewAdmin() {
 }
 
 
+function addRole(){
 
+    var divRole =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formRole" class="form-detail">'+
+                '<h2>Role Table</h2>'+
+                '<div class="form-row">'+
+                    '<span>Role Id</span><span style="color: red;"> *</span>'+
+                    '<input id="valId" type="number" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="addDBRole" class="btn btn-sm" value="Go"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
 
+    document.getElementById("showPopupForm").innerHTML = divRole;
 
-function editRole(Id){
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("addDBRole");
+    btnclose.onclick = function() {
+        var objectRole = {
+            roleId: document.getElementById("valId").value,
+            roleName:   document.getElementById("valName").value
+        }
+        swal({
+            title: 'Are you sure?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, add it!'
+        }).then(function() {
+            if(objectRole.roleId != "" && objectRole.roleName != ""){
+                    $.ajax({
+                        type : "POST",
+                        contentType : "application/json",
+                        url : "https://139.99.117.190:8080/role",
+                        data : JSON.stringify(objectRole),
+                        dataType : 'json',
+                        success : function() {
+                            swal(
+                                'Successful',
+                                'Your data has been add.',
+                                'success');
 
-	alert("Id"+Id.toString());
+                            modal.style.display = "none";
+                            changeViewRole();
+                        },
+                        error : function(e) {
+                            alert("Error!")
+                            console.log("ERROR: ", e);
+                        }
+                    });
+            } else {
+                swal(
+                    'Failure',
+                    'Please fill in the textfield.',
+                    'error'
+                );
+            }
+            // alertNoClose.show('Successful');
+        });
+    }
+    
+}
+
+function editRole(id){
+    var divRole =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formRole" class="form-detail">'+
+                '<h2>Role Table</h2>'+
+                '<div class="form-row">'+
+                    '<span>Role Id</span>'+
+                    '<input id="valId" type="number" class="input-text" disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="editDBRole" class="btn btn-sm" value="Go"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divRole;
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("editDBRole");
+
+    $.ajax({
+        type: "GET",
+        url: "https://139.99.117.190:8080/role/"+id.toString(),
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("valId").value = data.roleId.toString();
+            document.getElementById("valName").value = data.roleName;
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
+    btnclose.onclick = function() {
+        swal({
+            title: 'Are you sure?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then(function() {
+        var objectRole = {
+            roleId: document.getElementById("valId").value,
+            roleName:   document.getElementById("valName").value
+        }
+            $.ajax({
+                type : "PUT",
+                contentType : "application/json",
+                url : "https://139.99.117.190:8080/role/update/"+id.toString(),
+                data : JSON.stringify(objectRole),
+                dataType : 'json',
+                success : function() {
+                    swal({
+                        title: 'Successful!!',
+                        confirmButtonText: 'OK',
+                        text: 'Your data has been update.',
+                        preConfirm: () => {
+                            modal.style.display = "none";
+                            window.location.reload();
+                        }
+                    });
+                },
+                error : function(e) {
+                    swal({
+                        title: 'Failure!!',
+                        confirmButtonText: 'OK',
+                        preConfirm: () => {
+                            modal.style.display = "none";
+                        }
+                    });
+                  console.log("ERROR: ", e);
+                }
+            });
+            // alertNoClose.show('Successful');
+        });
+        // modal.style.display = "none";
+    }
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
 
-function deleteRole(Id){
-	alert("Id2"+Id.toString());
+function deleteRole(id){
+	swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#32CD32',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function() {
+        $.ajax({
+            type : "DELETE",
+            contentType : "application/json",
+            url : "https://139.99.117.190:8080/roles/"+id,
+            dataType : 'json',
+            success : function() {
+                swal(
+                    'Successful',
+                    'Your data has been delete.',
+                    'success');
+                changeViewRole();
+            },
+            error : function(e) {
+                swal(
+                    'Failure',
+                    'error'
+                );
+              console.log("ERROR: ", e);
+            }
+        });
+        // alertNoClose.show('Successful');
+    });
+    console.log("Remove");
 }
