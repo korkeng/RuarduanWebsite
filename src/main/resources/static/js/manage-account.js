@@ -219,7 +219,7 @@ function changeViewStaff() {
         url: "https://139.99.117.190:8080/roles/2",
         dataType: 'json',   
         success: function (data) {
-            var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Edit</b>","<b>Delete</b>"];
+            var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Edit</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "STAFF Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -263,10 +263,10 @@ function changeViewStaff() {
                             case 6:
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
+                            // case 7:
+                            //     cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editStaff("+data[i].accountId+")\">Edit</button></span>";
+                            //     break;
                             case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editStaff("+data[i].accountId+")\">Edit</button></span>";
-                                break;
-                            case 8:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteStaff("+data[i].accountId+")\">Delete</button></span>";
                                 break;
                         } 
@@ -274,10 +274,12 @@ function changeViewStaff() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("tableAddData").style.display = "block";
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addStaff()\">"+
-                                                                    "ADD STAFF"+
-                                                                    "</button>";
+                document.getElementById("tableAddData").style.display = "none";
+
+                // document.getElementById("tableAddData").style.display = "block";
+                // document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addStaff()\">"+
+                //                                                     "ADD STAFF"+
+                //                                                     "</button>";
                  
             } else {
                 tableData.destroy();
@@ -324,10 +326,10 @@ function changeViewStaff() {
                             case 6:
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
+                            // case 7:
+                            //     cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editStaff("+data[i].accountId+")\">Edit</button></span>";
+                            //     break;
                             case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editStaff("+data[i].accountId+")\">Edit</button></span>";
-                                break;
-                            case 8:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteStaff("+data[i].accountId+")\">Delete</button></span>";
                                 break;
                         }
@@ -335,10 +337,12 @@ function changeViewStaff() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").style.display = "block";
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addStaff()\">"+
-                                                                    "ADD STAFF"+
-                                                                    "</button>";
+                document.getElementById("tableAddData").style.display = "none";
+
+                // document.getElementById("tableAddData").style.display = "block";
+                // document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addStaff()\">"+
+                //                                                     "ADD STAFF"+
+                //                                                     "</button>";
             }   
         },
         error: function (e) {
@@ -353,7 +357,7 @@ function changeViewAdmin() {
         url: "https://139.99.117.190:8080/roles/1",
         dataType: 'json',   
         success: function (data) {
-            var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Edit</b>","<b>Delete</b>"];
+            var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Admin Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -397,12 +401,12 @@ function changeViewAdmin() {
                             case 6:
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
-                            case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editAdmin("+data[i].accountId+")\">Edit</button></span>";
-                                break;
-                            case 8:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteAdmin("+data[i].accountId+")\">Delete</button></span>";
-                                break;
+                            // case 7:
+                            //     cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editAdmin("+data[i].accountId+")\">Edit</button></span>";
+                            //     break;
+                            // case 8:
+                            //     cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteAdmin("+data[i].accountId+")\">Delete</button></span>";
+                            //     break;
                         } 
                     }        
                 }
@@ -455,12 +459,12 @@ function changeViewAdmin() {
                             case 6:
                                 cellData[j].innerHTML = ""+data[i].userName;
                                 break;
-                            case 7:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editAdmin("+data[i].accountId+")\">Edit</button></span>";
-                                break;
-                            case 8:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteAdmin("+data[i].accountId+")\">Delete</button></span>";
-                                break;
+                            // case 7:
+                            //     cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editAdmin("+data[i].accountId+")\">Edit</button></span>";
+                            //     break;
+                            // case 8:
+                            //     cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteAdmin("+data[i].accountId+")\">Delete</button></span>";
+                            //     break;
                         }
                     }        
                 }
@@ -554,6 +558,7 @@ function addRole(){
     }
     
 }
+
 
 function editRole(id){
     var divRole =
@@ -670,6 +675,40 @@ function deleteRole(id){
                     'Your data has been delete.',
                     'success');
                 changeViewRole();
+            },
+            error : function(e) {
+                swal(
+                    'Failure',
+                    'error'
+                );
+              console.log("ERROR: ", e);
+            }
+        });
+        // alertNoClose.show('Successful');
+    });
+    console.log("Remove");
+}
+
+function deleteStaff(id){
+    swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#32CD32',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function() {
+        $.ajax({
+            type : "DELETE",
+            contentType : "application/json",
+            url : "https://139.99.117.190:8080/account/"+id,
+            dataType : 'json',
+            success : function() {
+                swal(
+                    'Successful',
+                    'Your data has been delete.',
+                    'success');
+                changeViewStaff();
             },
             error : function(e) {
                 swal(
