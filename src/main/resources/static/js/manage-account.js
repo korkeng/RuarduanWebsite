@@ -219,7 +219,7 @@ function changeViewStaff() {
         url: "https://139.99.117.190:8080/roles/2",
         dataType: 'json',   
         success: function (data) {
-            var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Edit</b>"];
+            var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "STAFF Table";
             if (document.getElementById("dataTable").rows.length == 0) {
