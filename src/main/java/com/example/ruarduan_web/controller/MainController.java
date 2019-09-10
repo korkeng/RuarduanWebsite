@@ -61,19 +61,19 @@ public class MainController {
             return "places";
     }
 
-    @GetMapping("/boat_schedule")
+    @GetMapping("/boatschedule")
         public String BoatSchedule(){
-            return "boat_schedule";
+            return "boatschedule";
     }
 
-    @GetMapping("/boat_pier")
+    @GetMapping("/boatpier")
         public String BoatPier(){
-            return "boat_pier";
+            return "boatpier";
     }
 
-    @GetMapping("/placetype_place")
+    @GetMapping("/placetypeplace")
         public String PlacetypePlace(){
-            return "placetype_place";
+            return "placetypeplace";
     }
 
     // @GetMapping("/pier_nearby")
