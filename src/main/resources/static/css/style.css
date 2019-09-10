@@ -830,6 +830,18 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     border-top-left-radius: 2px; 
     text-transform: uppercase;
 }
+.panel-head {
+    position: relative;
+    letter-spacing: 0.2px;
+    color: #000;
+    font-size: 32px;
+    text-align: center;
+    font-weight: 600;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px; 
+    text-transform: uppercase;
+    padding-bottom: 12px;
+}
 hr.acc{
   border: 5px dashed;
 }
