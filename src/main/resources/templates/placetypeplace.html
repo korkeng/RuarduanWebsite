@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/main}">
+    <body>
+        <div layout:fragment="content">
+            <section id="main-content">
+                <section class="wrapper">
+                  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+                  <script src="js/manage-placeplacetype.js"></script>
+                    <div class="panel-head">PLACETYPE - PLACE</div>
+                    <div class="table-agile-info">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4"></div>
+                        <div class="col-sm-12 col-md-8 col-lg-8 text-right" style="font-size: 18px;">
+                          Choose Placetype: &nbsp;&nbsp;&nbsp;
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            SHOPPING MALL AND MARKET
+                          </button>
+                          <div class="dropdown-menu ">
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewShopEng()">ENG</button>
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewShopTh()">TH</button>
+                          </div>
+                        </div>
+
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            TEMPLE 
+                          </button>
+                          <div class="dropdown-menu ">
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewTemEng()">ENG</button>
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewTemTh()">TH</button>
+                          </div>
+                        </div>
+
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            MUSEUM AND CULTURAL
+                          </button>
+                          <div class="dropdown-menu ">
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewMuEng()">ENG</button>
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewMuTh()">TH</button>
+                          </div>
+                        </div>
+
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            PARK
+                          </button>
+                          <div class="dropdown-menu ">
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewParkEng()">ENG</button>
+                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewParkTh()">TH</button>
+                          </div>
+                        </div>
+
+                        </div>
+                      </div>
+
+                      <div class="panel panel-default" > 
+                        <div class="card-table shadow mb-4">
+                          <div class="card-header py-3">
+                            <div class="row">
+                                  <div class="col-sm-9 col-md-6 col-lg-9">
+                                     <div id="tableHeader" class="panel-heading"></div>
+                                  </div>
+                                  <div class="col-sm-3 col-md-6 col-lg-3 text-right">
+                                    <div id="tableAddData"></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="card-body-table">
+                           <!--  <div class="table-responsive"> -->
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead class="text-center" id="myThHeader" ></thead>
+                                  <tfoot class="text-center" id="myThFooter"></tfoot>
+                                  <tbody id="myThBody"></tbody>
+                                </table>
+                           <!--  </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="showPopupForm" class="modal">
+                </section>
+            </section>
+        </div>
+
+    </body>
+</html>
