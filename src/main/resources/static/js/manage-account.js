@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/roles",
+        url: "https://ruarduan-backend.com/roles",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Role ID</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -111,7 +111,7 @@ $(document).ready(function() {
 function changeViewRole() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/roles",
+        url: "https://ruarduan-backend.com/roles",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Role ID</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -216,7 +216,7 @@ function changeViewRole() {
 function changeViewStaff() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/roles/2",
+        url: "https://ruarduan-backend.com/roles/2",
         dataType: 'json',   
         success: function (data) {
             var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>","<b>Delete</b>"];
@@ -354,7 +354,7 @@ function changeViewStaff() {
 function changeViewAdmin() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/roles/1",
+        url: "https://ruarduan-backend.com/roles/1",
         dataType: 'json',   
         success: function (data) {
             var dataHeader = ["<b>Id</b>","<b>Emp_Code</b>","<b>First Name</b>","<b>Last Name</b>","<b>E-mail</b>","<b>Phone</b>","<b>Username</b>"];
@@ -529,7 +529,7 @@ function addRole(){
                     $.ajax({
                         type : "POST",
                         contentType : "application/json",
-                        url : "https://139.99.117.190:8080/role",
+                        url : "https://ruarduan-backend.com/role",
                         data : JSON.stringify(objectRole),
                         dataType : 'json',
                         success : function() {
@@ -594,7 +594,7 @@ function editRole(id){
 
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/role/"+id.toString(),
+        url: "https://ruarduan-backend.com/role/"+id.toString(),
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.roleId.toString();
@@ -620,7 +620,7 @@ function editRole(id){
             $.ajax({
                 type : "PUT",
                 contentType : "application/json",
-                url : "https://139.99.117.190:8080/role/update/"+id.toString(),
+                url : "https://ruarduan-backend.com/role/update/"+id.toString(),
                 data : JSON.stringify(objectRole),
                 dataType : 'json',
                 success : function() {
@@ -667,7 +667,7 @@ function deleteRole(id){
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "https://139.99.117.190:8080/roles/"+id,
+            url : "https://ruarduan-backend.com/roles/"+id,
             dataType : 'json',
             success : function() {
                 swal(
@@ -701,7 +701,7 @@ function deleteStaff(id){
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "https://139.99.117.190:8080/account/"+id,
+            url : "https://ruarduan-backend.com/account/"+id,
             dataType : 'json',
             success : function() {
                 swal(

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattypes",
+        url: "https://ruarduan-backend.com/boattypes",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Boattype ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -112,7 +112,7 @@ var dataLength;
 function changeViewBoattype() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattypes",
+        url: "https://ruarduan-backend.com/boattypes",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Boattype ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -220,7 +220,7 @@ function changeViewBoattype() {
 function changeViewRoute() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/routes",
+        url: "https://ruarduan-backend.com/routes",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Route ID</b>","<b>Language</b>","<b>Route Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -329,7 +329,7 @@ function changeViewRoute() {
 function changeViewSchedule() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/schedules",
+        url: "https://ruarduan-backend.com/schedules",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Language</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Price (THB.)</b>","<b>Boat Frequency (mins)</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -514,7 +514,7 @@ function addBoatType(){
                     $.ajax({
                         type : "POST",
                         contentType : "application/json",
-                        url : "https://139.99.117.190:8080/boattype",
+                        url : "https://ruarduan-backend.com/boattype",
                         data : JSON.stringify(objectBoatType),
                         dataType : 'json',
                         success : function() {
@@ -601,7 +601,7 @@ function addRoute(){
                     $.ajax({
                         type : "POST",
                         contentType : "application/json",
-                        url : "https://139.99.117.190:8080/route",
+                        url : "https://ruarduan-backend.com/route",
                         data : JSON.stringify(objectRoute),
                         dataType : 'json',
                         success : function() {
@@ -672,7 +672,7 @@ function editBoatType(id,lan){
 
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattypes/"+lan+"/"+id.toString(),
+        url: "https://ruarduan-backend.com/boattypes/"+lan+"/"+id.toString(),
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.boattypeId.boattype_id.toString();
@@ -702,7 +702,7 @@ function editBoatType(id,lan){
             $.ajax({
                 type : "PUT",
                 contentType : "application/json",
-                url : "https://139.99.117.190:8080/boattypes/update/"+lan+"/"+id.toString(),
+                url : "https://ruarduan-backend.com/boattypes/update/"+lan+"/"+id.toString(),
                 data : JSON.stringify(objectBoatType),
                 dataType : 'json',
                 success : function() {
@@ -776,7 +776,7 @@ function editRoute(id,lan){
 
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/routes/"+lan+"/"+id.toString(),
+        url: "https://ruarduan-backend.com/routes/"+lan+"/"+id.toString(),
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.routeId.route_id.toString();
@@ -806,7 +806,7 @@ function editRoute(id,lan){
             $.ajax({
                 type : "PUT",
                 contentType : "application/json",
-                url : "https://139.99.117.190:8080/route/update/"+lan+"/"+id.toString(),
+                url : "https://ruarduan-backend.com/route/update/"+lan+"/"+id.toString(),
                 data : JSON.stringify(objectRoute),
                 dataType : 'json',
                 success : function() {
@@ -854,7 +854,7 @@ function deleteBoatType(id,lan){
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "https://139.99.117.190:8080/boattype/"+lan+"/"+id,
+            url : "https://ruarduan-backend.com/boattype/"+lan+"/"+id,
             dataType : 'json',
             success : function() {
                 swal(
@@ -888,7 +888,7 @@ function deleteRoute(id,lan){
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "https://139.99.117.190:8080/route/"+lan+"/"+id,
+            url : "https://ruarduan-backend.com/route/"+lan+"/"+id,
             dataType : 'json',
             success : function() {
                 swal(

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/eng/1",
+        url: "https://ruarduan-backend.com/piers/boats/types/eng/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -98,7 +98,7 @@ var dataLength;
 function changeViewBlueEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/eng/1",
+        url: "https://ruarduan-backend.com/piers/boats/types/eng/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -191,7 +191,7 @@ function changeViewBlueEng() {
 function changeViewBlueTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/th/1",
+        url: "https://ruarduan-backend.com/piers/boats/types/th/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -284,7 +284,7 @@ function changeViewBlueTh() {
 function changeViewOrangeEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/eng/2",
+        url: "https://ruarduan-backend.com/piers/boats/types/eng/2",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -377,7 +377,7 @@ function changeViewOrangeEng() {
 function changeViewOrangeTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/th/2",
+        url: "https://ruarduan-backend.com/piers/boats/types/th/2",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -470,7 +470,7 @@ function changeViewOrangeTh() {
 function changeViewYellowEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/eng/3",
+        url: "https://ruarduan-backend.com/piers/boats/types/eng/3",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -563,7 +563,7 @@ function changeViewYellowEng() {
 function changeViewYellowTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/th/3",
+        url: "https://ruarduan-backend.com/piers/boats/types/th/3",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -656,7 +656,7 @@ function changeViewYellowTh() {
 function changeViewGreenEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/eng/4",
+        url: "https://ruarduan-backend.com/piers/boats/types/eng/4",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
@@ -749,7 +749,7 @@ function changeViewGreenEng() {
 function changeViewGreenTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/boats/types/th/4",
+        url: "https://ruarduan-backend.com/piers/boats/types/th/4",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers",
+        url: "https://ruarduan-backend.com/piers",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Language</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Pic Path</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Busline</b>","<b>Shuttle Boat</b>","<b>Ferry Boat</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -154,7 +154,7 @@ var dataLength;
 function changeViewPier() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers",
+        url: "https://ruarduan-backend.com/piers",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Language</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Pic Path</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Busline</b>","<b>Shuttle Boat</b>","<b>Ferry Boat</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -304,7 +304,7 @@ function changeViewPier() {
 // function changeViewNearby() {
 //        $.ajax({
 //         type: "GET",
-//         url: "https://139.99.117.190:8080/nearbies",
+//         url: "https://ruarduan-backend.com/nearbies",
 //         dataType: 'json',
 //         success: function (data) {
 //             var dataHeader = ["<b>Nearby ID</b>","<b>Language</b>","<b>Place Name</b>","<b>Distance</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -416,7 +416,7 @@ function changeViewPier() {
 // function changeViewNearby() {
 //        $.ajax({
 //         type: "GET",
-//         url: "https://139.99.117.190:8080/piers",
+//         url: "https://ruarduan-backend.com/piers",
 //         dataType: 'json',
 //         success: function (data) {
 //             var dataHeader = ["<b>Nearby ID</b>","<b>Language</b>","<b>Pier Name</b>","<b>Place Name</b>","<b>Distance</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -621,7 +621,7 @@ function addPier(){
                     $.ajax({
                         type : "POST",
                         contentType : "application/json",
-                        url : "https://139.99.117.190:8080/pier",
+                        url : "https://ruarduan-backend.com/pier",
                         data : JSON.stringify(objectPier),
                         dataType : 'json',
                         success : function() {
@@ -718,7 +718,7 @@ function editPier(id,lan){
 
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/piers/"+lan+"/"+id.toString(),
+        url: "https://ruarduan-backend.com/piers/"+lan+"/"+id.toString(),
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.pierId.pier_id.toString();
@@ -763,7 +763,7 @@ function editPier(id,lan){
             $.ajax({
                 type : "PUT",
                 contentType : "application/json",
-                url : "https://139.99.117.190:8080/piers/update/"+lan+"/"+id.toString(),
+                url : "https://ruarduan-backend.com/piers/update/"+lan+"/"+id.toString(),
                 data : JSON.stringify(objectPier),
                 dataType : 'json',
                 success : function() {
@@ -811,7 +811,7 @@ function deletePier(id,lan){
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "https://139.99.117.190:8080/piers/"+lan+"/"+id,
+            url : "https://ruarduan-backend.com/piers/"+lan+"/"+id,
             dataType : 'json',
             success : function() {
                 swal(

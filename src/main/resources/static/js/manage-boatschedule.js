@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/eng/1",
+        url: "https://ruarduan-backend.com/boattype/schedules/eng/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -116,7 +116,7 @@ var dataLength;
 function changeViewBlueEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/eng/1",
+        url: "https://ruarduan-backend.com/boattype/schedules/eng/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -227,7 +227,7 @@ function changeViewBlueEng() {
 function changeViewBlueTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/th/1",
+        url: "https://ruarduan-backend.com/boattype/schedules/th/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -338,7 +338,7 @@ function changeViewBlueTh() {
 function changeViewOrangeEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/eng/2",
+        url: "https://ruarduan-backend.com/boattype/schedules/eng/2",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -449,7 +449,7 @@ function changeViewOrangeEng() {
 function changeViewOrangeTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/th/2",
+        url: "https://ruarduan-backend.com/boattype/schedules/th/2",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -560,7 +560,7 @@ function changeViewOrangeTh() {
 function changeViewYellowEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/eng/3",
+        url: "https://ruarduan-backend.com/boattype/schedules/eng/3",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -671,7 +671,7 @@ function changeViewYellowEng() {
 function changeViewYellowTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/th/3",
+        url: "https://ruarduan-backend.com/boattype/schedules/th/3",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -782,7 +782,7 @@ function changeViewYellowTh() {
 function changeViewGreenEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/eng/4",
+        url: "https://ruarduan-backend.com/boattype/schedules/eng/4",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
@@ -893,7 +893,7 @@ function changeViewGreenEng() {
 function changeViewGreenTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/boattype/schedules/th/4",
+        url: "https://ruarduan-backend.com/boattype/schedules/th/4",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];

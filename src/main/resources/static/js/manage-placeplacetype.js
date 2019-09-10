@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/eng/1",
+        url: "https://ruarduan-backend.com/placetypes/eng/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -92,7 +92,7 @@ var dataLength;
 function changeViewShopEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/eng/1",
+        url: "https://ruarduan-backend.com/placetypes/eng/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -179,7 +179,7 @@ function changeViewShopEng() {
 function changeViewShopTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/th/1",
+        url: "https://ruarduan-backend.com/placetypes/th/1",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -266,7 +266,7 @@ function changeViewShopTh() {
 function changeViewTemEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/eng/2",
+        url: "https://ruarduan-backend.com/placetypes/eng/2",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -353,7 +353,7 @@ function changeViewTemEng() {
 function changeViewTemTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/th/2",
+        url: "https://ruarduan-backend.com/placetypes/th/2",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -440,7 +440,7 @@ function changeViewTemTh() {
 function changeViewMuEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/eng/3",
+        url: "https://ruarduan-backend.com/placetypes/eng/3",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -527,7 +527,7 @@ function changeViewMuEng() {
 function changeViewMuTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/th/3",
+        url: "https://ruarduan-backend.com/placetypes/th/3",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -614,7 +614,7 @@ function changeViewMuTh() {
 function changeViewParkEng() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/eng/4",
+        url: "https://ruarduan-backend.com/placetypes/eng/4",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
@@ -701,7 +701,7 @@ function changeViewParkEng() {
 function changeViewParkTh() {
        $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes/th/4",
+        url: "https://ruarduan-backend.com/placetypes/th/4",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];

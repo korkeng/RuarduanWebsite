@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetypes",
+        url: "https://ruarduan-backend.com/placetypes",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -112,7 +112,7 @@ var dataLength;
 function changeViewPlaceType() {
        $.ajax({
             type: "GET",
-        url: "https://139.99.117.190:8080/placetypes",
+        url: "https://ruarduan-backend.com/placetypes",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -219,7 +219,7 @@ function changeViewPlaceType() {
 function changeViewPlace() {
        $.ajax({
             type: "GET",
-        url: "https://139.99.117.190:8080/places",
+        url: "https://ruarduan-backend.com/places",
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Language</b>","<b>Name</b>","<b>Description</b>","<b>Operation Time</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Location</b>","<b>External Link</b>","<b>Telephone</b>","<b>Transportation</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -429,7 +429,7 @@ function addPlaceType(){
                     $.ajax({
                         type : "POST",
                         contentType : "application/json",
-                        url : "https://139.99.117.190:8080/placetype",
+                        url : "https://ruarduan-backend.com/placetype",
                         data : JSON.stringify(objectPlaceType),
                         dataType : 'json',
                         success : function() {
@@ -497,7 +497,7 @@ function editPlaceType(id,lan){
 
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/placetype/"+lan+"/"+id.toString(),
+        url: "https://ruarduan-backend.com/placetype/"+lan+"/"+id.toString(),
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.placeTypeId.placetype_id.toString();
@@ -527,7 +527,7 @@ function editPlaceType(id,lan){
             $.ajax({
                 type : "PUT",
                 contentType : "application/json",
-                url : "https://139.99.117.190:8080/placetype/update/"+lan+"/"+id.toString(),
+                url : "https://ruarduan-backend.com/placetype/update/"+lan+"/"+id.toString(),
                 data : JSON.stringify(objectPlaceType),
                 dataType : 'json',
                 success : function() {
@@ -575,7 +575,7 @@ function deletePlaceType(id,lan){
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "https://139.99.117.190:8080/placetypes/"+lan+"/"+id,
+            url : "https://ruarduan-backend.com/placetypes/"+lan+"/"+id,
             dataType : 'json',
             success : function() {
                 swal(
@@ -708,7 +708,7 @@ function addPlace(){
                     $.ajax({
                         type : "POST",
                         contentType : "application/json",
-                        url : "https://139.99.117.190:8080/place/"+document.getElementById("valLan").value+"/"+document.getElementById("valType").value,
+                        url : "https://ruarduan-backend.com/place/"+document.getElementById("valLan").value+"/"+document.getElementById("valType").value,
                         data : JSON.stringify(objectPlace),
                         dataType : 'json',
                         success : function() {
@@ -820,7 +820,7 @@ function editPlace(id,lan){
 
     $.ajax({
         type: "GET",
-        url: "https://139.99.117.190:8080/places/"+lan+"/"+id.toString(),
+        url: "https://ruarduan-backend.com/places/"+lan+"/"+id.toString(),
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.placeId.placeid.toString();
@@ -870,7 +870,7 @@ function editPlace(id,lan){
             $.ajax({
                 type : "PUT",
                 contentType : "application/json",
-                url : "https://139.99.117.190:8080/place/update/"+lan+"/"+id.toString(),
+                url : "https://ruarduan-backend.com/place/update/"+lan+"/"+id.toString(),
                 data : JSON.stringify(objectPlace),
                 dataType : 'json',
                 success : function() {
@@ -917,7 +917,7 @@ function deletePlace(id,lan){
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "https://139.99.117.190:8080/place/"+lan+"/"+id,
+            url : "https://ruarduan-backend.com/place/"+lan+"/"+id,
             dataType : 'json',
             success : function() {
                 swal(

@@ -61,7 +61,7 @@ function addAccount(){
         $.ajax({
                     type : "POST",
                     contentType : "application/json",
-                    url : "https://139.99.117.190:8080/account/"+roleId,
+                    url : "https://ruarduan-backend.com/account/"+roleId,
                     data : JSON.stringify(objectRegister),
                    dataType : 'json',
                     success : function() {
