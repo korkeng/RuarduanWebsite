@@ -60,5 +60,25 @@ public class MainController {
         public String Place(){
             return "places";
     }
+
+    @GetMapping("/boat_schedule")
+        public String BoatSchedule(){
+            return "boat_schedule";
+    }
+
+    @GetMapping("/boat_pier")
+        public String BoatPier(){
+            return "boat_pier";
+    }
+
+    @GetMapping("/placetype_place")
+        public String PlacetypePlace(){
+            return "placetype_place";
+    }
+
+    // @GetMapping("/pier_nearby")
+    //     public String Place(){
+    //         return "pier_nearby";
+    // }
 }
 
