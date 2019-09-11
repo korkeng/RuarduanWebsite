@@ -25,11 +25,6 @@ public class MainController {
             return "index";
     }
 
-    @GetMapping("/template")
-        public String Template(){
-            return "indexWithTemplate";
-    }
-
     @GetMapping("/login")
         public String Login(){
             return "login";
