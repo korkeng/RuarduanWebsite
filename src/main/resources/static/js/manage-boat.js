@@ -382,25 +382,67 @@ function addBoatType(){
             if(objectBoatType.boattypeId.boattype_id != "" && objectBoatType.boattypeId.boattypeLanguages != "" &&
                 objectBoatType.name != ""){
                     $.ajax({
-                        type : "POST",
-                        contentType : "application/json",
-                        url : "https://ruarduan-backend.com/boattype",
-                        data : JSON.stringify(objectBoatType),
-                        dataType : 'json',
-                        success : function() {
-                            swal(
-                                'Successful',
-                                'Your data has been add.',
-                                'success');
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/boattypes/"+objectBoatType.boattypeId.boattypeLanguages+"/"+objectBoatType.boattypeId.boattype_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/boattype",
+                                    data : JSON.stringify(objectBoatType),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
 
-                            modal.style.display = "none";
-                            changeViewBoattype();
+                                        modal.style.display = "none";
+                                        changeViewBoattype();
+                                    },
+                                    error : function(e) {
+                                        alert("Error!")
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                    }
+                            
                         },
                         error : function(e) {
-                            alert("Error!")
+                            alert("Add New Data!")
                             console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/boattype",
+                                data : JSON.stringify(objectBoatType),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    changeViewBoattype();
+                                },
+                                error : function(e) {
+                                    alert("Error!")
+                                    console.log("ERROR: ", e);
+                                }
+                            });
                         }
                     });
+
+                    
             } else {
                 swal(
                     'Failure',
