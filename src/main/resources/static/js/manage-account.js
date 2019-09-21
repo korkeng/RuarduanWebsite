@@ -104,10 +104,6 @@ $(document).ready(function() {
 });
 
 
-		
-
-
-
 function changeViewRole() {
        $.ajax({
         type: "GET",
@@ -518,34 +514,84 @@ function addRole(){
             roleName:   document.getElementById("valName").value
         }
         swal({
-            title: 'Are you sure?',
+            title: 'Add Role Data?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#32CD32',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, add it!'
+            confirmButtonText: 'Sure, add it!'
         }).then(function() {
             if(objectRole.roleId != "" && objectRole.roleName != ""){
-                    $.ajax({
-                        type : "POST",
-                        contentType : "application/json",
-                        url : "https://ruarduan-backend.com/role",
-                        data : JSON.stringify(objectRole),
-                        dataType : 'json',
-                        success : function() {
-                            swal(
-                                'Successful',
-                                'Your data has been add.',
-                                'success');
+                $.ajax({
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/role/"+objectRole.roleId,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/role",
+                                    data : JSON.stringify(objectRole),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
 
-                            modal.style.display = "none";
-                            changeViewRole();
+                                        modal.style.display = "none";
+                                        changeViewRole();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                    }
+                            
                         },
                         error : function(e) {
-                            alert("Error!")
+                            swal(
+                                        'Complete!!',
+                                        'Already add data to database.',
+                                        'success');
                             console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/role",
+                                data : JSON.stringify(objectRole),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    changeViewRole();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
                         }
                     });
+
             } else {
                 swal(
                     'Failure',

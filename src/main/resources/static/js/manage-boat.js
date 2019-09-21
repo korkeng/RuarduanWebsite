@@ -541,7 +541,10 @@ function addRoute(){
                                         changeViewRoute();
                                     },
                                     error : function(e) {
-                                        alert("Error!")
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
                                         console.log("ERROR: ", e);
                                     }
                                 });
