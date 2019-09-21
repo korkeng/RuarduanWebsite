@@ -403,7 +403,10 @@ function addBoatType(){
                                         changeViewBoattype();
                                     },
                                     error : function(e) {
-                                        alert("Error!")
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
                                         console.log("ERROR: ", e);
                                     }
                                 });
@@ -413,11 +416,14 @@ function addBoatType(){
                                         'Error!!',
                                         'You Add Duplicate Data.',
                                         'error');
-                                    }
+                                }
                             
                         },
                         error : function(e) {
-                            alert("Add New Data!")
+                            swal(
+                                        'Complete!!',
+                                        'Already add data to database.',
+                                        'success');
                             console.log("ERROR: ", e);
                             $.ajax({
                                 type : "POST",
@@ -435,7 +441,10 @@ function addBoatType(){
                                     changeViewBoattype();
                                 },
                                 error : function(e) {
-                                    alert("Error!")
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
                                     console.log("ERROR: ", e);
                                 }
                             });
@@ -546,7 +555,10 @@ function addRoute(){
                             
                         },
                         error : function(e) {
-                            alert("Add New Data!")
+                            swal(
+                                        'Complete!!',
+                                        'Already add data to database.',
+                                        'success');
                             console.log("ERROR: ", e);
                             $.ajax({
                                 type : "POST",
@@ -564,7 +576,10 @@ function addRoute(){
                                     changeViewRoute();
                                 },
                                 error : function(e) {
-                                    alert("Error!")
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
                                     console.log("ERROR: ", e);
                                 }
                             });
