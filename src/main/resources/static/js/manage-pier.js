@@ -381,33 +381,77 @@ function addPier(){
             ferryboat: document.getElementById("valFerry").value
         }
         swal({
-            title: 'Are you sure?',
+            title: 'Add Pier Data?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#32CD32',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, add it!'
+            confirmButtonText: 'Sure, add it!'
         }).then(function() {
             if(objectPier.pierId.pier_id != "" && objectPier.pierId.pierLanguages != "" &&
                 objectPier.name != ""&& objectPier.pos_latitude != "" && objectPier.pos_longtitude != "" ){
-                    $.ajax({
-                        type : "POST",
-                        contentType : "application/json",
-                        url : "https://ruarduan-backend.com/pier",
-                        data : JSON.stringify(objectPier),
-                        dataType : 'json',
-                        success : function() {
-                            swal(
-                                'Successful',
-                                'Your data has been add.',
-                                'success');
+                   $.ajax({
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/piers/"+objectPier.pierId.pierLanguages+"/"+objectPier.pierId.pier_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/pier",
+                                    data : JSON.stringify(objectPier),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
 
-                            modal.style.display = "none";
-                            changeViewPier();
+                                        modal.style.display = "none";
+                                        changeViewPier();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                                'Error!!',
+                                                'Something went wrong.',
+                                                'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                }
+                            
                         },
-                        error : function(e) {
-                            alert("Error!")
-                            console.log("ERROR: ", e);
+                        error : function(e) { 
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/pier",
+                                data : JSON.stringify(objectPier),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    changeViewPier();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
                         }
                     });
             } else {

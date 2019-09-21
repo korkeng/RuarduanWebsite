@@ -420,10 +420,6 @@ function addBoatType(){
                             
                         },
                         error : function(e) {
-                            swal(
-                                        'Complete!!',
-                                        'Already add data to database.',
-                                        'success');
                             console.log("ERROR: ", e);
                             $.ajax({
                                 type : "POST",
@@ -558,10 +554,6 @@ function addRoute(){
                             
                         },
                         error : function(e) {
-                            swal(
-                                        'Complete!!',
-                                        'Already add data to database.',
-                                        'success');
                             console.log("ERROR: ", e);
                             $.ajax({
                                 type : "POST",
