@@ -417,35 +417,80 @@ function addPlaceType(){
             name:   document.getElementById("valName").value
         }
         swal({
-            title: 'Are you sure?',
+            title: 'Add Place Type Data?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#32CD32',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, add it!'
+            confirmButtonText: 'Sure, add it!'
         }).then(function() {
             if(objectPlaceType.placeTypeId.placetype_id != "" && objectPlaceType.placeTypeId.placetypeLanguages != "" &&
                 objectPlaceType.name != ""){
                     $.ajax({
-                        type : "POST",
-                        contentType : "application/json",
-                        url : "https://ruarduan-backend.com/placetype",
-                        data : JSON.stringify(objectPlaceType),
-                        dataType : 'json',
-                        success : function() {
-                            swal(
-                                'Successful',
-                                'Your data has been add.',
-                                'success');
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/placetype/"+objectPlaceType.placeTypeId.placetypeLanguages+"/"+objectPlaceType.placeTypeId.placetype_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/placetype",
+                                    data : JSON.stringify(objectPlaceType),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
 
-                            modal.style.display = "none";
-                            changeViewPlaceType();
+                                        modal.style.display = "none";
+                                        changeViewPlaceType();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                    }
+                            
                         },
                         error : function(e) {
-                            alert("Error!")
                             console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/placetype",
+                                data : JSON.stringify(objectPlaceType),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    changeViewPlaceType();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
                         }
-                    });
+                    });    
             } else {
                 swal(
                     'Failure',
@@ -696,35 +741,80 @@ function addPlace(){
             transportation: document.getElementById("valTrans").value
         }
         swal({
-            title: 'Are you sure?',
+            title: 'Add Place Data?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#32CD32',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, add it!'
+            confirmButtonText: 'Sure, add it!'
         }).then(function() {
             if(objectPlace.placeId.placeid != "" && objectPlace.placeId.placeLanguages != "" &&
                 objectPlace.name != "" && objectPlace.pos_latitude != "" && objectPlace.pos_longtitude != ""){
                     $.ajax({
-                        type : "POST",
-                        contentType : "application/json",
-                        url : "https://ruarduan-backend.com/place/"+document.getElementById("valLan").value+"/"+document.getElementById("valType").value,
-                        data : JSON.stringify(objectPlace),
-                        dataType : 'json',
-                        success : function() {
-                            swal(
-                                'Successful',
-                                'Your data has been add.',
-                                'success');
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/places/"+objectPlace.placeId.placeLanguages+"/"+objectPlace.placeId.placeid,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/place/"+document.getElementById("valLan").value+"/"+document.getElementById("valType").value,
+                                    data : JSON.stringify(objectPlace),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
 
-                            modal.style.display = "none";
-                            changeViewPlace();
+                                        modal.style.display = "none";
+                                        changeViewPlace();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                    }
+                            
                         },
                         error : function(e) {
-                            alert("Error!")
                             console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/place/"+document.getElementById("valLan").value+"/"+document.getElementById("valType").value,
+                                data : JSON.stringify(objectPlace),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    changeViewPlace();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
                         }
-                    });
+                    }); 
             } else {
                 swal(
                     'Failure',
