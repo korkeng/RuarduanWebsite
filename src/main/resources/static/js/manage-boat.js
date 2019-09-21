@@ -372,12 +372,12 @@ function addBoatType(){
             name:   document.getElementById("valName").value
         }
         swal({
-            title: 'Are you sure?',
+            title: 'Add Boat Type Data?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#32CD32',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, add it!'
+            confirmButtonText: 'Sure, add it!'
         }).then(function() {
             if(objectBoatType.boattypeId.boattype_id != "" && objectBoatType.boattypeId.boattypeLanguages != "" &&
                 objectBoatType.name != ""){
@@ -498,38 +498,79 @@ function addRoute(){
                 route_id: document.getElementById("valId").value,
                 routeLanguages: document.getElementById("valLan").value
             },
-            name:   document.getElementById("valName").value
+            routeName:   document.getElementById("valName").value
         }
         swal({
-            title: 'Are you sure?',
+            title: 'Add Route Data?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#32CD32',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, add it!'
+            confirmButtonText: 'Sure, add it!'
         }).then(function() {
             if(objectRoute.routeId.route_id != "" && objectRoute.routeId.routeLanguages != "" &&
                 objectRoute.routeName != ""){
                     $.ajax({
-                        type : "POST",
-                        contentType : "application/json",
-                        url : "https://ruarduan-backend.com/route",
-                        data : JSON.stringify(objectRoute),
-                        dataType : 'json',
-                        success : function() {
-                            swal(
-                                'Successful',
-                                'Your data has been add.',
-                                'success');
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/routes/"+objectRoute.routeId.routeLanguages+"/"+objectRoute.routeId.route_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/route",
+                                    data : JSON.stringify(objectRoute),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
 
-                            modal.style.display = "none";
-                            changeViewRoute();
+                                        modal.style.display = "none";
+                                        changeViewRoute();
+                                    },
+                                    error : function(e) {
+                                        alert("Error!")
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                    }
+                            
                         },
                         error : function(e) {
-                            alert("Error!")
+                            alert("Add New Data!")
                             console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/route",
+                                data : JSON.stringify(objectRoute),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    changeViewRoute();
+                                },
+                                error : function(e) {
+                                    alert("Error!")
+                                    console.log("ERROR: ", e);
+                                }
+                            });
                         }
                     });
+      
             } else {
                 swal(
                     'Failure',
@@ -542,9 +583,6 @@ function addRoute(){
     }
 }
 
-function addSchedule(){
-   console.log("Hello6"); 
-}
 
 function editBoatType(id,lan){
     var divBoatType =
