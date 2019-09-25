@@ -2831,7 +2831,10 @@ div#graph10,div#graph11 {
 .table-responsive > .table-bordered {
     border: 0;
 }
-
+.activeB{
+    background-color: #9a791b !important;
+    border: 1px solid #9a791b !important;
+}
 
 
 

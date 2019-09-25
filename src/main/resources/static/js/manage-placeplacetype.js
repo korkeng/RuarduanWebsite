@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    
+    $("button").click(function(){
+      $("button").removeClass("activeB");
+      $(this).addClass("activeB");
+    });
+
     $.ajax({
         type: "GET",
         url: "https://ruarduan-backend.com/placetypes/eng/1",
