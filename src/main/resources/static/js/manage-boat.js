@@ -53,7 +53,7 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
                                                                     "ADD BOATTYPE"+
                                                                     "</button>";
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
                                                                     "ADD BOATTYPE"+
                                                                     "</button>";
             }   
@@ -164,7 +164,7 @@ function changeViewBoattype() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
                                                                     "ADD BOATTYPE"+
                                                                     "</button>";
                  
@@ -212,7 +212,7 @@ function changeViewBoattype() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatType()\">"+
                                                                     "ADD BOATTYPE"+
                                                                     "</button>";
             }   
@@ -272,7 +272,7 @@ function changeViewRoute() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRoute()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addRoute()\">"+
                                                                     "ADD ROUTE"+
                                                                     "</button>";
                  
@@ -320,7 +320,7 @@ function changeViewRoute() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRoute()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addRoute()\">"+
                                                                     "ADD ROUTE"+
                                                                     "</button>";
 

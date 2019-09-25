@@ -53,7 +53,7 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
                                                                     "ADD PLACETYPE"+
                                                                     "</button>";
             } else {
@@ -100,7 +100,7 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
                                                                     "ADD PLACETYPE"+
                                                                     "</button>";
             }   
@@ -164,7 +164,7 @@ function changeViewPlaceType() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
                                                                     "ADD PLACETYPE"+
                                                                     "</button>";
             } else {
@@ -211,7 +211,7 @@ function changeViewPlaceType() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlaceType()\">"+
                                                                     "ADD PLACETYPE"+
                                                                     "</button>";
             }   
@@ -295,7 +295,7 @@ function changeViewPlace() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPlace()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlace()\">"+
                                                                     "ADD PLACE"+
                                                                     "</button>";
             } else {
@@ -366,7 +366,7 @@ function changeViewPlace() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPlace()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlace()\">"+
                                                                     "ADD PLACE"+
                                                                     "</button>";
             }   

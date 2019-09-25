@@ -75,7 +75,7 @@ function changeViewPier() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPier()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPier()\">"+
                                                                     "ADD PIER"+
                                                                     "</button>";
                  
@@ -144,7 +144,7 @@ function changeViewPier() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addPier()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPier()\">"+
                                                                     "ADD PIER"+
                                                                     "</button>";            
             }   

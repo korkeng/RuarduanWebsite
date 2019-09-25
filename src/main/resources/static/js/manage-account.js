@@ -51,7 +51,7 @@ $(document).ready(function() {
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length;  
                 document.getElementById("tableAddData").style.display = "block";
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addRole()\">"+
                                                                     "ADD ROLE"+
                                                                     "</button>";
                  
@@ -97,7 +97,7 @@ $(document).ready(function() {
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length
                 document.getElementById("tableAddData").style.display = "block";
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addRole()\">"+
                                                                     "ADD ROLE"+
                                                                     "</button>";
             }   
@@ -157,7 +157,7 @@ function changeViewRole() {
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
                 document.getElementById("tableAddData").style.display = "block"; 
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addRole()\">"+
                                                                     "ADD ROLE"+
                                                                     "</button>";
                  
@@ -203,7 +203,7 @@ function changeViewRole() {
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
                 document.getElementById("tableAddData").style.display = "block";
-                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn\" id=\"addDataButton\" onclick=\"addRole()\">"+
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addRole()\">"+
                                                                     "ADD ROLE"+
                                                                     "</button>";
             }   
