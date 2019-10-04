@@ -1,157 +1,3 @@
-<div th:fragment="nav" >
-
-    <!--header start-->
-    <header class="header fixed-top clearfix">
-    <!--logo start-->
-    <div class="brand">
-        <a href="/" class="logo">
-            RUARDUAN
-        </a>
-        <div class="sidebar-toggle-box">
-            <div class="fa fa-bars"></div>
-        </div>
-    </div>
-    <!--logo end-->
-    <div class="nav notify-row" id="top_menu">
-        <script src="js/nav.js"></script>
-        <!--  notification start -->
-        <ul class="nav top-menu">
-            <li id="header_inbox_bar" class="dropdown">
-                
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#" onclick="alertNoti()">
-                    <i class="fa fa-bell-o"></i>
-                    <span id="numNoti" class="badge bg-important"></span>
-                </a>
-                <div class="dropdown-menu extended inbox">
-                    <div id="alertdropdown">
-                        <table class="table" id="alertdropdown">
-                            <tbody id="dropdownbody">
-
-                            </tbody>
-                        </table>
-                    </div>
-<!--                     <div>
-                        <p class="red">You have 2 Mails</p>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <span class="photo"><img alt="avatar" src="images/3.png"></span>
-                                    <span class="subject">
-                                    <span class="from">Jonathan Smith</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                    <span class="message">
-                                        Hello, this is an example msg.
-                                    </span>
-                        </a>
-                    </div>
-                    <li>
-                        <a href="#">
-                            <span class="photo"><img alt="avatar" src="images/1.png"></span>
-                                    <span class="subject">
-                                    <span class="from">Jane Doe</span>
-                                    <span class="time">2 min ago</span>
-                                    </span>
-                                    <span class="message">
-                                        Nice admin template
-                                    </span>
-                        </a>
-                    </li>
-                    -->
-                        <a href="#">See all messages</a>
-                    
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <div class="top-nav clearfix">
-        <!--search & user info start-->
-        <ul class="nav pull-right top-menu">
-            <!-- <li>
-                <input type="text" class="form-control search" placeholder=" Search">
-            </li> -->
-            <!-- user login dropdown start-->
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <script>
-                    $(document).ready(function() {
-                        document.getElementById("show-name").innerHTML = window.localStorage.getItem("dataUsername");
-                        console.log(window.localStorage.getItem("dataUsername"));
-                    });
-
-                    </script>
-                    <span class="username" id="show-name"></span>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu extended logout">
-                    <li><a th:href="@{/logout}"><i class="fa fa-key"></i> Log Out</a></li>
-                </ul>
-            </li>
-            <!-- user login dropdown end -->
-        </ul>
-        <!--search & user info end-->
-    </div>
-    </header>
-    <!--header end-->
-
-
-    <!--sidebar start-->
-<aside>
-    <div id="sidebar" class="nav-collapse">
-        <!-- sidebar menu start-->
-        <div class="leftside-navigation">
-            <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a class="active" href="/">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-database"></i>
-                        <span>Data Management</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="/boats"><i class="fa fa-ship"></i><span>Boats</span></a></li>
-                        <li><a href="/piers"><i class="fa fa-flag"></i><span>Piers</span></a></li>
-                        <li><a href="/places"><i class="fa fa-map-marker"></i><span>&nbsp; Places</span></a></li>
-                        <li><a href="/accounts"><i class="fa fa-users"></i><span>Accounts</span></a></li>
-                        <li><a href="/boat_schedule"><span>BoatType-Route-Schedule</span></a></li>
-                        <li><a href="/boat_pier"><span>BoatType - Pier</span></a></li>
-                        <li><a href="/placetype_place"><span>PlaceType - Place</span></a></li>
-                    </ul>
-                </li>
-
-                 <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-bar-chart-o"></i>
-                        <span>Statistics</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="/stats"><i class="fa fa-eye"></i><span>Visitors</span></a></li>
-                        <li><a href="/stats"><i class="fa fa-ticket"></i><span>Online tickets</span></a></li>
-                        <li><a href="/stats"><i class="fa fa-usd"></i><span>&nbsp; Sales</span></a></li>
-                    </ul>
-                </li>
-                
-                <li>
-                    <a th:href="@{/logout}">
-                        <i class="fa fa-user"></i>
-                        <span>Log Out</span>
-                    </a>
-                </li>
-            </ul>            
-          </div>
-        <!-- sidebar menu end-->
-    </div>
-</aside>
-<!--sidebar end-->
-
-
-<!-- <script type="text/javascript">
 $(document).ready(function() {
     if(localStorage.getItem('setNumAlert') == null){
         document.getElementById("numNoti").innerHTML = "";
@@ -162,6 +8,7 @@ $(document).ready(function() {
 var numNotiCount = 0;
 var hiddenAlertNoti = true;
 function setNumNoti (id,lan,table,type) {
+    console.log("get data");
     if(table == "Place" && type == "Add"){
         $.ajax({
             type : "GET",
@@ -293,14 +140,14 @@ function setMessageNoti () {
                         '<span class="photo"><i class="fas fa-'+data[i].iconType+' text-white"></span>'+
                                 '<span class="subject">'+
                                 '<span class="from">'+
-                                data[i].accountId.userName
+                                data[i].accountId.userName+
                                 '</span>'+
                                 '<span class="time">'+
-                                data[i].operationDate.substring(0,10)+' | '+data[i].operationDate.substring(11,19)
+                                data[i].operationDate.substring(0,10)+' | '+data[i].operationDate.substring(11,19)+
                                 '</span>'+
                                 '</span>'+
                                 '<span class="message">'+
-                                  + data[i].description
+                                 data[i].description+
                                 '</span>'+
                     '</a>'+
                 '</div>';
@@ -333,14 +180,14 @@ function setMessageNoti () {
                             '<span class="photo"><i class="fas fa-'+data[i].iconType+' text-white"></span>'+
                                     '<span class="subject">'+
                                     '<span class="from">'+
-                                    data[i].accountId.userName
+                                    data[i].accountId.userName+
                                     '</span>'+
                                     '<span class="time">'+
-                                    data[i].operationDate.substring(0,10)+' | '+data[i].operationDate.substring(11,19)
+                                    data[i].operationDate.substring(0,10)+' | '+data[i].operationDate.substring(11,19)+
                                     '</span>'+
                                     '</span>'+
                                     '<span class="message">'+
-                                      + data[i].description
+                                    data[i].description+
                                     '</span>'+
                         '</a>'+
                     '</div>';
@@ -377,7 +224,3 @@ function alertNoti () {
         hiddenAlertNoti = true;
     }
 }
-</script> -->
-
-
-</div>

@@ -11,6 +11,19 @@
         window.localStorage.setItem("dataUsername",login.username);
     });
 
+    $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "http://139.99.117.190:8080/account/"+window.localStorage.getItem("dataUsername"),
+            dataType : 'json',
+            success : function(data) {
+                window.localStorage.setItem("adminId",data.accountId);
+            },
+            error : function(e) {
+              console.log("ERROR: ", e);
+            }
+        });
+
     $('.validate-form').on('submit',function(){
         var check = true;
         for(var i=0; i<input.length; i++) {

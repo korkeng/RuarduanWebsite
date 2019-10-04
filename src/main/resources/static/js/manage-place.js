@@ -775,6 +775,7 @@ function addPlace(){
                                             'success');
 
                                         modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Place","Add");
                                         changeViewPlace();
                                     },
                                     error : function(e) {
@@ -809,6 +810,8 @@ function addPlace(){
                                         'success');
 
                                     modal.style.display = "none";
+                                    
+                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Place","Add");
                                     changeViewPlace();
                                 },
                                 error : function(e) {
