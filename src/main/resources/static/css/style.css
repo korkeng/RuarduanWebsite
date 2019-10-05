@@ -481,7 +481,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     margin-bottom:0 !important;
     height:10px;
 }
-.dropdown-menu.inbox li a .photo img {
+.photo img {
     border-radius:2px 2px 2px 2px;
     -webkit-border-radius:2px 2px 2px 2px;
     float:left;
@@ -489,23 +489,36 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     margin-right:10px;
     width:40px;
 }
-.dropdown-menu.inbox li a .subject {
+.photo i {
+    border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    float: left;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: -5px;
+    width: 30px;
+    font-size: 35px;
+    color: #30b1bf;
+}
+.subject {
     display:block;
 }
-.dropdown-menu.inbox li a .subject .from {
+.subject .from {
     font-size:12px;
     font-weight:600;
+    color: black;
 }
-.dropdown-menu.inbox li a .subject .time {
+.subject .time {
     font-size:11px;
     font-style:italic;
     font-weight:bold;
     position:absolute;
     right:20px;
 }
-.dropdown-menu.inbox li a .message {
+.message {
     display:block !important;
     font-size:11px;
+    color: #9a791b;
 }
 .top-nav {
     margin-top:20px;
@@ -902,7 +915,10 @@ span.panel-title{
     -moz-border-radius: 100%;
     border-radius: 100%;
 }
-
+.see-all-txt{
+    margin-top: -10px;
+    padding-bottom: 5px;
+}
 .form-v5-content  {
     background: #fff;
     width: 600px;

@@ -14,7 +14,7 @@
     $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : "http://139.99.117.190:8080/account/"+window.localStorage.getItem("dataUsername"),
+            url : "https://ruarduan-backend.com/account/"+window.localStorage.getItem("dataUsername"),
             dataType : 'json',
             success : function(data) {
                 window.localStorage.setItem("adminId",data.accountId);
