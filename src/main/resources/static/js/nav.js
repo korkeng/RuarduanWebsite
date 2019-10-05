@@ -13,7 +13,7 @@ function setNumNoti (id,lan,table,type) {
         $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            url : "http://139.99.117.190:8080/logs/createdat/asc/eng",
             dataType : 'json',
             success : function(data) {
                 var notiId = data.length + 1;
@@ -30,7 +30,7 @@ function setNumNoti (id,lan,table,type) {
                 $.ajax({
                     type : "POST",
                     contentType : "application/json",
-                    url : "https://ruarduan-backend.com/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    url : "http://139.99.117.190:8080/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
                     data : JSON.stringify(objectPlace),
                     dataType : 'json',
                     success : function() {
@@ -58,7 +58,7 @@ function setNumNoti (id,lan,table,type) {
          $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            url : "http://139.99.117.190:8080/logs/createdat/asc/eng",
             dataType : 'json',
             success : function(data) {
                 var notiId = data.length + 1;
@@ -75,7 +75,7 @@ function setNumNoti (id,lan,table,type) {
                 $.ajax({
                     type : "POST",
                     contentType : "application/json",
-                    url : "https://ruarduan-backend.com/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    url : "http://139.99.117.190:8080/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
                     data : JSON.stringify(objectPlace),
                     dataType : 'json',
                     success : function() {
@@ -130,21 +130,21 @@ function setMessageNoti () {
         $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            url : "http://139.99.117.190:8080/logs/createdat/asc/eng",
             dataType : 'json',
             success : function(data) {
                 for(i = 0; i < data.length; i++){
                     var alertmessage = 
                     '<div>'+
                     '<a href="#">'+
-                        '<span class="photo"><i class="fa fa-'+data[i].iconType+'"></i></span>'+
+                        '<span class="photo"><i class="fa fa-'+data[i].iconType+' text-white"></i></span>'+
                                 '<span class="subject">'+
-                                    '<span class="from">'+
-                                    data[i].accountId.userName+
-                                    '</span>'+
-                                    '<span class="time">'+
-                                    data[i].operationDate.substring(0,10)+' | '+data[i].operationDate.substring(11,19)+
-                                    '</span>'+
+                                '<span class="from">'+
+                                data[i].accountId.userName+
+                                '</span>'+
+                                '<span class="time">'+
+                                data[i].operationDate.substring(0,10)+' | '+data[i].operationDate.substring(11,19)+
+                                '</span>'+
                                 '</span>'+
                                 '<span class="message">'+
                                  data[i].description+
@@ -170,14 +170,14 @@ function setMessageNoti () {
         $.ajax({
                 type : "GET",
                 contentType : "application/json",
-                url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+                url : "http://139.99.117.190:8080/logs/createdat/asc/eng",
                 dataType : 'json',
                 success : function(data) {
                     for(i = 0; i < data.length; i++){
                         var alertmessage = 
                         '<div>'+
                         '<a href="#">'+
-                            '<span class="photo"><i class="fa fa-'+data[i].iconType+'"></i></span>'+
+                            '<span class="photo"><i class="fa fa-'+data[i].iconType+' text-white"></i></span>'+
                                     '<span class="subject">'+
                                     '<span class="from">'+
                                     data[i].accountId.userName+
