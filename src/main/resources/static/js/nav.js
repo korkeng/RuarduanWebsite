@@ -13,7 +13,7 @@ function setNumNoti (id,lan,table,type) {
         $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : "http://139.99.117.190:8080/logs/createdat/asc/eng",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
             dataType : 'json',
             success : function(data) {
                 var notiId = data.length + 1;
@@ -30,7 +30,7 @@ function setNumNoti (id,lan,table,type) {
                 $.ajax({
                     type : "POST",
                     contentType : "application/json",
-                    url : "http://139.99.117.190:8080/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    url : "https://ruarduan-backend.com/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
                     data : JSON.stringify(objectPlace),
                     dataType : 'json',
                     success : function() {
@@ -58,7 +58,7 @@ function setNumNoti (id,lan,table,type) {
          $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : "http://139.99.117.190:8080/logs/createdat/asc/eng",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
             dataType : 'json',
             success : function(data) {
                 var notiId = data.length + 1;
@@ -75,7 +75,7 @@ function setNumNoti (id,lan,table,type) {
                 $.ajax({
                     type : "POST",
                     contentType : "application/json",
-                    url : "http://139.99.117.190:8080/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    url : "https://ruarduan-backend.com/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
                     data : JSON.stringify(objectPlace),
                     dataType : 'json',
                     success : function() {
