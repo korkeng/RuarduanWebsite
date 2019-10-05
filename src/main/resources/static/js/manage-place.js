@@ -979,9 +979,13 @@ function editPlace(id,lan){
                         text: 'Your data has been update.',
                         preConfirm: () => {
                             modal.style.display = "none";
+
                             window.location.reload();
+                            
                         }
+
                     });
+                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Place","Edit");
                 },
                 error : function(e) {
                     swal({

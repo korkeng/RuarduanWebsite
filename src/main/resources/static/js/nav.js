@@ -24,8 +24,8 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: lan,
-                    description: "Place data has been add.",
-                    iconType: "plus-circle"
+                    description: "Place data ID:"+id+" has been add.",
+                    iconType: "plus-square"
                 }
                 $.ajax({
                     type : "POST",
@@ -69,8 +69,8 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: lan,
-                    description: "Place data has been edit.",
-                    iconType: "plus-circle"
+                    description: "Place data ID:"+id+" has been edit.",
+                    iconType: "pencil-square"
                 }
                 $.ajax({
                     type : "POST",
