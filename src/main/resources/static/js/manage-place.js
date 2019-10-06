@@ -451,6 +451,7 @@ function addPlaceType(){
                                             'success');
 
                                         modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"PlaceType","Add");
                                         changeViewPlaceType();
                                     },
                                     error : function(e) {
@@ -485,6 +486,7 @@ function addPlaceType(){
                                         'success');
 
                                     modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"PlaceType","Add");
                                     changeViewPlaceType();
                                 },
                                 error : function(e) {
@@ -591,6 +593,7 @@ function editPlaceType(id,lan){
                             window.location.reload();
                         }
                     });
+                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"PlaceType","Edit");
                 },
                 error : function(e) {
                     swal({
