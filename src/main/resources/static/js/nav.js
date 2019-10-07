@@ -282,7 +282,280 @@ function setNumNoti (id,lan,table,type) {
             }
         });
     }
+    else if(table == "BoatType" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectBoatType = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: lan,
+                    description: "Boat Type data ID:"+id+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/boattype/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectBoatType),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
 
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }else if(table == "BoatType" && type == "Edit"){
+         $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectBoatType = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "EDIT",
+                    table_language: lan,
+                    description: "Boat Type data ID:"+id+" has been edit.",
+                    iconType: "pencil-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/boattype/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectBoatType),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
+    else if(table == "Route" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectRoute = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: lan,
+                    description: "Route data ID:"+id+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/route/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectRoute),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }else if(table == "Route" && type == "Edit"){
+         $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectRoute = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "EDIT",
+                    table_language: lan,
+                    description: "Route data ID:"+id+" has been edit.",
+                    iconType: "pencil-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/route/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectRoute),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
+
+    else if(table == "Role" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectRole = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: "ENG",
+                    description: "Role data ID:"+id+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/role/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectRole),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }else if(table == "Role" && type == "Edit"){
+         $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectRole = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "EDIT",
+                    table_language: "ENG",
+                    description: "Role data ID:"+id+" has been edit.",
+                    iconType: "pencil-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/role/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectRole),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
 
     if(localStorage.getItem('setNumAlert') == null){
         numNotiCount = 0;

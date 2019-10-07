@@ -406,6 +406,7 @@ function addBoatType(){
                                             'success');
 
                                         modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
                                         changeViewBoattype();
                                     },
                                     error : function(e) {
@@ -440,6 +441,7 @@ function addBoatType(){
                                         'success');
 
                                     modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
                                     changeViewBoattype();
                                 },
                                 error : function(e) {
@@ -540,6 +542,7 @@ function addRoute(){
                                             'success');
 
                                         modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Route","Add");
                                         changeViewRoute();
                                     },
                                     error : function(e) {
@@ -574,6 +577,7 @@ function addRoute(){
                                         'success');
 
                                     modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Route","Add");
                                     changeViewRoute();
                                 },
                                 error : function(e) {
@@ -681,6 +685,7 @@ function editBoatType(id,lan){
                             window.location.reload();
                         }
                     });
+                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Edit");
                 },
                 error : function(e) {
                     swal({
@@ -785,6 +790,7 @@ function editRoute(id,lan){
                             window.location.reload();
                         }
                     });
+                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Route","Edit");
                 },
                 error : function(e) {
                     swal({

@@ -547,6 +547,7 @@ function addRole(){
                                             'success');
 
                                         modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,"ENG","Role","Add");
                                         changeViewRole();
                                     },
                                     error : function(e) {
@@ -585,6 +586,7 @@ function addRole(){
                                         'success');
 
                                     modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,"ENG","Role","Add");
                                     changeViewRole();
                                 },
                                 error : function(e) {
@@ -685,6 +687,7 @@ function editRole(id){
                             window.location.reload();
                         }
                     });
+                    setNumNoti(document.getElementById("valId").value,"ENG","Role","Edit");
                 },
                 error : function(e) {
                     swal({
