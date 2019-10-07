@@ -57,9 +57,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <script src="https://code.highcharts.com/highcharts.js"></script>
+                                <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
                                 <script src="https://code.highcharts.com/modules/data.js"></script>
-                                <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                                <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+                                <script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
 
                                 <div id="container"></div>
                                 <script>
@@ -68,10 +72,10 @@
                                         var chartData = [];
 
                                         function getData(){
-                                            $.getJSON('https://api.myjson.com/bins/wrydz', function(data){
+                                            $.getJSON('https://ruarduan-backend.com/tests', function(data){
                                                 Highcharts.each(data, function(el){
-                                                    el.x = new Date(el.session_date).getTime();
-                                                    el.y = Number(el.score);
+                                                    el.x = new Date(el.operationDate).getTime();
+                                                    el.y = Number(el.price);
                                                     chartData.push(el);
                                                 });
                                                 chartData.sort(function(a, b){
@@ -80,12 +84,12 @@
                                                 chart.series[0].setData(chartData);
                                             });
                                         }
-                                        var chart = Highcharts.chart('container', {
+                                        var chart = Highcharts.stockChart('container', {
                                             xAxis: {
                                                 type: 'datetime'
                                             },
                                             chart: {
-                                                type: 'spline'
+                                                type: 'line'
                                             },
                                             series: [{data: []}]
                                         });
