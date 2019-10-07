@@ -99,7 +99,8 @@ function setNumNoti (id,lan,table,type) {
               console.log("ERROR: ", e);
             }
         });
-    }else if(table == "PlaceType" && type == "Add"){
+    }
+    if(table == "PlaceType" && type == "Add"){
         $.ajax({
             type : "GET",
             contentType : "application/json",
@@ -120,7 +121,7 @@ function setNumNoti (id,lan,table,type) {
                 $.ajax({
                     type : "POST",
                     contentType : "application/json",
-                    url : "https://ruarduan-backend.com/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    url : "https://ruarduan-backend.com/log/create/placetype/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
                     data : JSON.stringify(objectPlaceType),
                     dataType : 'json',
                     success : function() {
@@ -165,7 +166,7 @@ function setNumNoti (id,lan,table,type) {
                 $.ajax({
                     type : "POST",
                     contentType : "application/json",
-                    url : "https://ruarduan-backend.com/log/create/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    url : "https://ruarduan-backend.com/log/create/placetype/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
                     data : JSON.stringify(objectPlaceType),
                     dataType : 'json',
                     success : function() {
