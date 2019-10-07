@@ -263,6 +263,7 @@ function addPier(){
                                             'success');
 
                                         modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Pier","Add");
                                         changeViewPier();
                                     },
                                     error : function(e) {
@@ -296,6 +297,7 @@ function addPier(){
                                         'success');
 
                                     modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Pier","Add");
                                     changeViewPier();
                                 },
                                 error : function(e) {
@@ -446,6 +448,7 @@ function editPier(id,lan){
                             window.location.reload();
                         }
                     });
+                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Pier","Edit");
                 },
                 error : function(e) {
                     swal({

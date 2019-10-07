@@ -100,7 +100,7 @@ function setNumNoti (id,lan,table,type) {
             }
         });
     }
-    if(table == "PlaceType" && type == "Add"){
+    else if(table == "PlaceType" && type == "Add"){
         $.ajax({
             type : "GET",
             contentType : "application/json",
@@ -191,6 +191,97 @@ function setNumNoti (id,lan,table,type) {
             }
         });
     }
+    else if(table == "Pier" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectPier = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: lan,
+                    description: "Pier data ID:"+id+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/pier/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectPier),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }else if(table == "Pier" && type == "Edit"){
+         $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectPier = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "EDIT",
+                    table_language: lan,
+                    description: "Pier data ID:"+id+" has been edit.",
+                    iconType: "pencil-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/pier/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectPier),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
 
 
     if(localStorage.getItem('setNumAlert') == null){
@@ -224,7 +315,7 @@ function setMessageNoti () {
             url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
             dataType : 'json',
             success : function(data) {
-                for(i = 0; i < data.length; i++){
+                for(i = 0; i < data.length; i++){//change data.l to num if want to set num noti
                     var alertmessage = 
                     '<div>'+
                     '<a href="#">'+
@@ -264,7 +355,7 @@ function setMessageNoti () {
                 url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
                 dataType : 'json',
                 success : function(data) {
-                    for(i = 0; i < data.length; i++){
+                    for(i = 0; i < data.length; i++){//change data.l to num if want to set num noti
                         var alertmessage = 
                         '<div>'+
                         '<a href="#">'+
