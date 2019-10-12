@@ -71,5 +71,10 @@ public class MainController {
             return "placetypeplace";
     }
 
+    @GetMapping("/pier_nearby")
+        public String PierNearby(){
+            return "piernearby";
+    }
+
 }
 

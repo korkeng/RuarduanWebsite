@@ -506,7 +506,16 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 .fa-plus-square{
     color: #30b1bf;
 }
-
+.btn-xl{
+    padding: 5px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.btn-xxl{
+    padding: 5px 45px;
+    font-size: 16px;
+    border-radius: 5px;
+}
 .subject {
     display:block;
 }
