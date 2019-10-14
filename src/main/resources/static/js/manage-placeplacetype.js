@@ -43,7 +43,10 @@ $(document).ready(function() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";
                 
                  
             } else {
@@ -82,6 +85,9 @@ $(document).ready(function() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -134,7 +140,10 @@ function changeViewShopEng() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -173,6 +182,9 @@ function changeViewShopEng() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -221,7 +233,10 @@ function changeViewShopTh() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -260,6 +275,9 @@ function changeViewShopTh() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -308,7 +326,10 @@ function changeViewTemEng() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -347,6 +368,9 @@ function changeViewTemEng() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";
                
             }   
         },
@@ -395,7 +419,10 @@ function changeViewTemTh() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -434,7 +461,9 @@ function changeViewTemTh() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-               
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";
             }   
         },
         error: function (e) {
@@ -482,7 +511,10 @@ function changeViewMuEng() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -521,6 +553,9 @@ function changeViewMuEng() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -569,7 +604,10 @@ function changeViewMuTh() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -608,6 +646,9 @@ function changeViewMuTh() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -656,7 +697,10 @@ function changeViewParkEng() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -695,6 +739,9 @@ function changeViewParkEng() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -743,7 +790,10 @@ function changeViewParkTh() {
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -782,6 +832,9 @@ function changeViewParkTh() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addPlacePlceType()\">"+
+                                                                    "ADD PIER TO PLACETYPE"+
+                                                                    "</button>"; 
                
             }   
         },

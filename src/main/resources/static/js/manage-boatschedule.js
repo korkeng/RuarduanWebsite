@@ -10,7 +10,7 @@ $(document).ready(function() {
         url: "https://ruarduan-backend.com/boattype/schedules/eng/1",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Blue Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -51,11 +51,20 @@ $(document).ready(function() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -100,12 +109,21 @@ $(document).ready(function() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -125,7 +143,7 @@ function changeViewBlueEng() {
         url: "https://ruarduan-backend.com/boattype/schedules/eng/1",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Blue Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -166,11 +184,20 @@ function changeViewBlueEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -215,12 +242,20 @@ function changeViewBlueEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
-                           
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";
                
             }   
         },
@@ -236,7 +271,7 @@ function changeViewBlueTh() {
         url: "https://ruarduan-backend.com/boattype/schedules/th/1",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Blue Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -277,11 +312,20 @@ function changeViewBlueTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";
                 
                  
             } else {
@@ -326,12 +370,21 @@ function changeViewBlueTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -347,7 +400,7 @@ function changeViewOrangeEng() {
         url: "https://ruarduan-backend.com/boattype/schedules/eng/2",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Orange Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -388,11 +441,20 @@ function changeViewOrangeEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                 
                  
             } else {
@@ -437,12 +499,21 @@ function changeViewOrangeEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -458,7 +529,7 @@ function changeViewOrangeTh() {
         url: "https://ruarduan-backend.com/boattype/schedules/th/2",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Orange Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -499,11 +570,20 @@ function changeViewOrangeTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -548,12 +628,21 @@ function changeViewOrangeTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -569,7 +658,7 @@ function changeViewYellowEng() {
         url: "https://ruarduan-backend.com/boattype/schedules/eng/3",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Yellow Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -610,11 +699,20 @@ function changeViewYellowEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -659,12 +757,21 @@ function changeViewYellowEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -680,7 +787,7 @@ function changeViewYellowTh() {
         url: "https://ruarduan-backend.com/boattype/schedules/th/3",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Yellow Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -721,11 +828,20 @@ function changeViewYellowTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -770,12 +886,21 @@ function changeViewYellowTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -791,7 +916,7 @@ function changeViewGreenEng() {
         url: "https://ruarduan-backend.com/boattype/schedules/eng/4",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Green Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -832,11 +957,20 @@ function changeViewGreenEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>";
                 
                  
             } else {
@@ -881,12 +1015,21 @@ function changeViewGreenEng() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -902,7 +1045,7 @@ function changeViewGreenTh() {
         url: "https://ruarduan-backend.com/boattype/schedules/th/4",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>"];
+            var dataHeader = ["<b>Schedule ID</b>","<b>Route Name</b>","<b>Day</b>","<b>Time</b>","<b>Boat per Time</b>","<b>Price</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Schedule Table: Green Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -943,11 +1086,20 @@ function changeViewGreenTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                 
                  
             } else {
@@ -992,12 +1144,21 @@ function changeViewGreenTh() {
                             case 5:
                                 cellData[j].innerHTML = ""+data[i].price;
                                 break;
+                            case 6:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatSchedule("+data[i].scheduleId.schedule_id+",\'"+data[i].scheduleId.scheduleLanguages+"\')\">Delete</button></span>";
+                                break;
                            
                         }
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatSchedule()\">"+
+                                                                    "ADD SCHEDULE"+
+                                                                    "</button>"; 
                
             }   
         },

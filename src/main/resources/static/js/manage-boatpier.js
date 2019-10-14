@@ -10,7 +10,7 @@ $(document).ready(function() {
         url: "https://ruarduan-backend.com/piers/boats/types/eng/1",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Blue Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -42,11 +42,17 @@ $(document).ready(function() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -82,12 +88,17 @@ $(document).ready(function() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                
             }   
         },
@@ -107,7 +118,7 @@ function changeViewBlueEng() {
         url: "https://ruarduan-backend.com/piers/boats/types/eng/1",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Blue Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -139,11 +150,17 @@ function changeViewBlueEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";   
                 
                  
             } else {
@@ -179,12 +196,17 @@ function changeViewBlueEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -200,7 +222,7 @@ function changeViewBlueTh() {
         url: "https://ruarduan-backend.com/piers/boats/types/th/1",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Blue Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -232,11 +254,17 @@ function changeViewBlueTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -272,12 +300,17 @@ function changeViewBlueTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                
             }   
         },
@@ -293,7 +326,7 @@ function changeViewOrangeEng() {
         url: "https://ruarduan-backend.com/piers/boats/types/eng/2",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Orange Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -325,11 +358,17 @@ function changeViewOrangeEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";   
                 
                  
             } else {
@@ -365,12 +404,17 @@ function changeViewOrangeEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                
             }   
         },
@@ -386,7 +430,7 @@ function changeViewOrangeTh() {
         url: "https://ruarduan-backend.com/piers/boats/types/th/2",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Orange Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -418,11 +462,17 @@ function changeViewOrangeTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";   
                 
                  
             } else {
@@ -458,12 +508,17 @@ function changeViewOrangeTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                
             }   
         },
@@ -479,7 +534,7 @@ function changeViewYellowEng() {
         url: "https://ruarduan-backend.com/piers/boats/types/eng/3",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Yellow Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -511,11 +566,17 @@ function changeViewYellowEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                 
                  
             } else {
@@ -551,13 +612,17 @@ function changeViewYellowEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-               
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>"; 
             }   
         },
         error: function (e) {
@@ -572,7 +637,7 @@ function changeViewYellowTh() {
         url: "https://ruarduan-backend.com/piers/boats/types/th/3",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Yellow Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -604,11 +669,17 @@ function changeViewYellowTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";   
                 
                  
             } else {
@@ -644,12 +715,17 @@ function changeViewYellowTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>"; 
                
             }   
         },
@@ -665,7 +741,7 @@ function changeViewGreenEng() {
         url: "https://ruarduan-backend.com/piers/boats/types/eng/4",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Green Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -697,11 +773,17 @@ function changeViewGreenEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";   
                 
                  
             } else {
@@ -737,12 +819,17 @@ function changeViewGreenEng() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                
             }   
         },
@@ -758,7 +845,7 @@ function changeViewGreenTh() {
         url: "https://ruarduan-backend.com/piers/boats/types/th/4",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "List Pier: Green Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -790,11 +877,17 @@ function changeViewGreenTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
                         } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
-                dataLength = data.length;  
+                dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>"; 
                 
                  
             } else {
@@ -830,12 +923,17 @@ function changeViewGreenTh() {
                             case 2:
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
-                           
-                        }
+                            case 3:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
+                                break;
+                        } 
                     }        
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
+                document.getElementById("tableAddData").innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-lg\" id=\"addDataButton\" onclick=\"addBoatPier()\">"+
+                                                                    "ADD BOATTYPE-PIER"+
+                                                                    "</button>";  
                
             }   
         },
