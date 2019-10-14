@@ -6,7 +6,7 @@
                 <section class="wrapper">
                   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
                   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-                 <!--  <script src="js/manage-placeplacetype.js"></script> -->
+                  <script src="js/manage-piernearby.js"></script>
                     <div class="panel-head">PIER-PLACE-NEARBY</div>
                     <div class="table-agile-info">
                       <div class="row">
@@ -15,30 +15,20 @@
                         </div>
                         <div class="col-sm-12 col-md-2 col-lg-2">
                           <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-info btn-xl">ENG</button>
-                            <button type="button" class="btn btn-info btn-xl">TH</button>
+                            <button type="button" class="btn btn-info btn-xl" onclick="chooseLangENG()">ENG</button>
+                            <button type="button" class="btn btn-info btn-xl" onclick="chooseLangTH()">TH</button>
                           </div>
                         </div>
-                      
                         <div class="col-sm-12 col-md-3 col-lg-3 text-right" style="font-size: 22px;">
                           Choose Pier:
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4">
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle btn-xxl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              --Choose pier from list--
-                              <span class="caret"></span> 
-                            </button>
-                            <div class="dropdown-menu ">
-                              <button class="dropdown-item btn btn-link btn-block" type="button" onclick="#">
-                                //list pier name from backend
-                              </button>
-                            </div>
-                          </div>
+                          <select id="locality-dropdown" class="btn-xxl text-center" name="locality" onclick="choosePierNearby()">
+                            <option selected value="base">==Choose Language First==</option>
+                          </select>
                         </div>
                       </div>
-                    </div>
-
+                    
                       <div class="panel panel-default" > 
                         <div class="card-table shadow mb-4">
                           <div class="card-header py-3">
@@ -66,6 +56,5 @@
                 </section>
             </section>
         </div>
-
     </body>
 </html>
