@@ -12,7 +12,7 @@ $(document).ready(function() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Blue Flag Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Blue Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -109,7 +109,7 @@ function changeViewBlueEng() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Blue Flag Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Blue Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -202,7 +202,7 @@ function changeViewBlueTh() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Blue Flag Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Blue Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -295,7 +295,7 @@ function changeViewOrangeEng() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Orange Flag Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Orange Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -388,7 +388,7 @@ function changeViewOrangeTh() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Orange Flag Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Orange Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -481,7 +481,7 @@ function changeViewYellowEng() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Yellow Flag Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Yellow Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -574,7 +574,7 @@ function changeViewYellowTh() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Yellow Flag Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Yellow Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -667,7 +667,7 @@ function changeViewGreenEng() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Green Flag Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Green Flag [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -760,7 +760,7 @@ function changeViewGreenTh() {
         success: function (data) {
             var dataHeader = ["<b>Pier ID</b>","<b>Pier Code</b>","<b>Pier Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "Green Flag Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Pier: Green Flag [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);

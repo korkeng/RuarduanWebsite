@@ -12,7 +12,7 @@ $(document).ready(function() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "SHOPPING MALL AND MARKET Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Place: SHOPPING MALL AND MARKET [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -103,7 +103,7 @@ function changeViewShopEng() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "SHOPPING MALL AND MARKET Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Place: SHOPPING MALL AND MARKET [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -190,7 +190,7 @@ function changeViewShopTh() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "SHOPPING MALL AND MARKET Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Place: SHOPPING MALL AND MARKET [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -277,7 +277,7 @@ function changeViewTemEng() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "TEMPLE Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Place: TEMPLE [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -364,7 +364,7 @@ function changeViewTemTh() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "TEMPLE Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Place: TEMPLE [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -451,7 +451,7 @@ function changeViewMuEng() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "MUSEUM AND CULTURAL Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Place: MUSEUM AND CULTURAL [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -538,7 +538,7 @@ function changeViewMuTh() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "MUSEUM AND CULTURAL Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Place: MUSEUM AND CULTURAL [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -625,7 +625,7 @@ function changeViewParkEng() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "PARK Table [ENG]";
+            document.getElementById("tableHeader").innerHTML = "List Place: PARK [ENG]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
@@ -712,7 +712,7 @@ function changeViewParkTh() {
         success: function (data) {
             var dataHeader = ["<b>Place ID</b>","<b>Place Name</b>"];
             var cellHeader = [];
-            document.getElementById("tableHeader").innerHTML = "PARK Table [TH]";
+            document.getElementById("tableHeader").innerHTML = "List Place: PARK [TH]";
             if (document.getElementById("dataTable").rows.length == 0) {
                 var header = document.getElementById("myThHeader");
                 var rowHeader = header.insertRow(0);
