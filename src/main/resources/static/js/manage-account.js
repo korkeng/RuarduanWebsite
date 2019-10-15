@@ -10,6 +10,9 @@ $(document).ready(function() {
         url: "https://ruarduan-backend.com/roles",
         dataType: 'json',
         success: function (data) {
+            lastId = data[data.length - 1].roleId;
+            newLastId = data[data.length - 1].roleId+1;
+
             var dataHeader = ["<b>Role ID</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "ROLE Table";
@@ -109,6 +112,8 @@ $(document).ready(function() {
     
 });
 
+var lastId;
+var newLastId;
 
 function changeViewRole() {
        $.ajax({
@@ -492,7 +497,7 @@ function addRole(){
                 '<h2>Role Table</h2>'+
                 '<div class="form-row">'+
                     '<span>Role Id</span><span style="color: red;"> *</span>'+
-                    '<input id="valId" type="number" class="input-text" required>'+
+                    '<input id="valId" type="number" class="input-text" disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Name</span><span style="color: red;"> *</span>'+
@@ -506,7 +511,8 @@ function addRole(){
     '</div>';
 
     document.getElementById("showPopupForm").innerHTML = divRole;
-
+    document.getElementById("valId").value = newLastId;
+    
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
     var spanclose = document.getElementsByClassName("closeform")[0];
