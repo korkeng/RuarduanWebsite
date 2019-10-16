@@ -26,6 +26,7 @@ var placeId;
 var pierId;
 var lastId;
 var newLastId;
+var pierName;
 
 function chooseLangENG() {
 
@@ -68,14 +69,13 @@ function choosePierName() {
     let dropdown = $('#piername-dropdown');
     var listPierName = document.getElementById("piername-dropdown");
     pierId = listPierName.options[listPierName.selectedIndex].value;
-
+    pierName = listPierName.options[listPierName.selectedIndex].text;
     const url = 'https://ruarduan-backend.com/piers/'+chooseLang;
     $.getJSON(url, function (data) {
       $.each(data, function (key, entry) {
         dropdown.append($('<option></option>').attr('value', entry.pierId.pier_id).text(entry.name));
       })
     });
-console.log("pierId:"+pierId)
 }
 
 function choosePlaceName() {
@@ -129,11 +129,11 @@ console.log("last2: "+lastId+"new2: "+newLastId);
 function choosePierNearby() {
 
   var listPier = document.getElementById("locality-dropdown");
-  var pierVal = listPier.options[listPier.selectedIndex].value;
-
+      pierId = listPier.options[listPier.selectedIndex].value;
+      pierName = listPier.options[listPier.selectedIndex].text;
     $.ajax({
         type: "GET",
-        url: "https://ruarduan-backend.com/piers/nearby/"+chooseLang+"/"+pierVal,
+        url: "https://ruarduan-backend.com/piers/nearby/"+chooseLang+"/"+pierId,
         dataType: 'json',
         success: function (data) {
             var dataHeader = ["<b>Nearby ID</b>","<b>Place ID</b>","<b>Place Name</b>","<b>Distance</b>","<b>Edit</b>","<b>Delete</b>"];
@@ -249,7 +249,7 @@ function addPierNearby(){
     '<div id="page-contentid" class="page-content">'+
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
-            '<form id="formPlaceType" class="form-detail">'+
+            '<form id="formNearby" class="form-detail">'+
                 '<h2>Nearby Table</h2>'+
                 '<div class="form-row">'+
                     '<span>Nearby Id</span><span style="color: red;"> *</span>'+
@@ -261,10 +261,10 @@ function addPierNearby(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Pier Name</span><span style="color: red;"> *</span>'+
-                    '<select id="piername-dropdown" class="btn-xxl text-center input-text" name="locality" onclick="choosePierName()">'+
-                            '<option selected value="base">==Choose Pier Name==</option>'+
-                          '</select>'+
-                    // '<input id="valName" type="text" class="input-text" required>'+
+                    // '<select id="piername-dropdown" class="btn-xxl text-center input-text" name="locality" onclick="choosePierName()">'+
+                    //         '<option selected value="base">==Choose Pier Name==</option>'+
+                    //       '</select>'+
+                    '<input id="piername-dropdown" type="text" class="input-text" required disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Place Name</span><span style="color: red;"> *</span>'+
@@ -289,7 +289,7 @@ function addPierNearby(){
     document.getElementById("showPopupForm").innerHTML = divPierNearby;
     document.getElementById("valLan").value = chooseLang;
     document.getElementById("valId").value = newLastId;
-  
+    document.getElementById("piername-dropdown").value = pierName;
 
 
     var modal = document.getElementById("showPopupForm"); 
@@ -300,26 +300,8 @@ function addPierNearby(){
     }
     var btnclose = document.getElementById("addDBPierNearby");
     btnclose.onclick = function() {
-        var objectPierNearby = { //try add doc.getelebyId แทน var
-            // nearbyId: newLastId,
-            // placeId: {
-            //     placeid: placeId,
-            //     placeLanguages: chooseLang
-            //   },
-            // pierId: {
-            //   pier_id: pierId,
-            //   pierLanguages: chooseLang
-            // },
-            // distance:parseFloat(document.getElementById("valDistance").value)
+        var objectPierNearby = { 
             nearbyId: parseInt(document.getElementById("valId").value),
-            placeId: {
-                placeid: document.getElementById("placename-dropdown").value,
-                placeLanguages: document.getElementById("valLan").value
-              },
-            pierId: {
-              pier_id: document.getElementById("piername-dropdown").value,
-              pierLanguages: document.getElementById("valLan").value
-            },
             distance:parseFloat(document.getElementById("valDistance").value)
         }
         swal({
@@ -330,20 +312,16 @@ function addPierNearby(){
             cancelButtonColor: '#d33',
             confirmButtonText: 'Sure, add it!'
         }).then(function() {
-            if(objectPierNearby.placeId.placeid != "" && objectPierNearby.distance != ""){
+            if(objectPierNearby.distance != ""){
                     $.ajax({
                         type: "GET",
                         url: "https://ruarduan-backend.com/piers/nearby/"+chooseLang+"/"+pierId,
                         dataType: 'json',
                         success : function(data) {
-                          console.log(document.getElementById("valId").value+"/"+document.getElementById("placename-dropdown").value+"/"+document.getElementById("valLan").value+"/"+document.getElementById("piername-dropdown").value+"/"+document.getElementById("valDistance").value)
-                          console.log("path: "+chooseLang+"/"+pierId);
-                          console.log("nearby/pier/place: "+newLastId+"/"+pierId+"/"+placeId);
-                          console.log("obj: "+objectPierNearby.placeId.placeid+"/"+objectPierNearby.pierId.pier_id+"/"+objectPierNearby.distance);
                                 $.ajax({
                                     type : "POST",
                                     contentType : "application/json",
-                                    url : "https://ruarduan-backend.com/nearby",
+                                    url : "https://ruarduan-backend.com/nearby/"+chooseLang+"/"+pierId+"/"+placeId,
                                     data : JSON.stringify(objectPierNearby),
                                     dataType : 'json',
                                     success : function() {
@@ -353,8 +331,8 @@ function addPierNearby(){
                                             'success');
 
                                         modal.style.display = "none";
-                                        setNumNoti(newLastId,chooseLang,"PierNearby","Add");
-                                        // changeViewPlaceType();
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"Nearby","Add");
+                                        choosePierNearby();
                                     },
                                     error : function(e) {
                                         swal(
@@ -384,4 +362,158 @@ function addPierNearby(){
         });
     }
     
+}
+
+function editPierNearby(id){
+    var divPierNearby =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formNearby" class="form-detail">'+
+              '<h2>Nearby Table</h2>'+
+                  '<div class="form-row">'+
+                      '<span>Nearby Id</span><span style="color: red;"> *</span>'+
+                      '<input id="valId" type="number" class="input-text" disabled>'+
+                  '</div>'+
+                  '<div class="form-row">'+
+                      '<span>Languages</span><span style="color: red;"> *</span>'+
+                      '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" disabled>'+
+                  '</div>'+
+                  '<div class="form-row">'+
+                      '<span>Pier Name</span><span style="color: red;"> *</span>'+
+                      // '<select id="piername-dropdown" class="btn-xxl text-center input-text" name="locality" onclick="choosePierName()">'+
+                      //         '<option selected value="base">==Choose Pier Name==</option>'+
+                      //       '</select>'+
+                      '<input id="piername-dropdown" type="text" class="input-text" required disabled>'+
+                  '</div>'+
+                  '<div class="form-row">'+
+                      '<span>Place Name</span><span style="color: red;"> *</span>'+
+                      // '<select id="placename-dropdown" class="btn-xxl text-center input-text" name="locality" onclick="choosePlaceName()">'+
+                      //         '<option selected value="base">==Choose Place Name==</option>'+
+                      //       '</select>'+
+                      '<input id="placename-dropdown" type="text" class="input-text" required disabled>'+
+                  '</div>'+
+                  '<div class="form-row">'+
+                      '<span>Distance</span><span style="color: red;"> *</span>'+
+                      '<input id="valDistance" type="number" class="input-text" required>'+
+                  '</div>'+
+                  '<div class="form-row-last">'+
+                      '<input type="button" id="editDBPierNearby" class="btn btn-sm" value="Go"/>'+
+                  '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divPierNearby;
+    document.getElementById("valLan").value = chooseLang;
+    document.getElementById("piername-dropdown").value = pierName;
+
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("editDBPierNearby");
+
+    $.ajax({
+        type: "GET",
+        url: "https://ruarduan-backend.com/nearbies/"+id.toString(),
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("valId").value = data.nearbyId.toString();
+            document.getElementById("placename-dropdown").value = data.place_id.name;
+            document.getElementById("valDistance").value = data.distance;
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
+
+    btnclose.onclick = function() {
+        swal({
+            title: 'Are you sure?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then(function() {
+        var objectPierNearby = {
+            nearbyId: document.getElementById("valId").value,
+            distance:   document.getElementById("valDistance").value
+        }
+            $.ajax({
+                type : "PUT",
+                contentType : "application/json",
+                url : "https://ruarduan-backend.com/nearby/update/"+id.toString(),
+                data : JSON.stringify(objectPierNearby),
+                dataType : 'json',
+                success : function() {
+                    swal({
+                        title: 'Successful!!',
+                        confirmButtonText: 'OK',
+                        text: 'Your data has been update.',
+                        preConfirm: () => {
+                            modal.style.display = "none";
+                            window.location.reload();
+                        }
+                    });
+                    setNumNoti(document.getElementById("valId").value,"ENG","Nearby","Edit");
+                },
+                error : function(e) {
+                    swal({
+                        title: 'Failure!!',
+                        confirmButtonText: 'OK',
+                        preConfirm: () => {
+                            modal.style.display = "none";
+                        }
+                    });
+                  console.log("ERROR: ", e);
+                }
+            });
+            // alertNoClose.show('Successful');
+        });
+        // modal.style.display = "none";
+    }
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+}
+
+
+
+function deletePierNearby(id){
+  swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#32CD32',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function() {
+        $.ajax({
+            type : "DELETE",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/nearby/"+id,
+            dataType : 'json',
+            success : function() {
+                swal(
+                    'Successful',
+                    'Your data has been delete.',
+                    'success');
+                choosePierNearby();
+            },
+            error : function(e) {
+                swal(
+                    'Failure',
+                    'error'
+                );
+              console.log("ERROR: ", e);
+            }
+        });
+        // alertNoClose.show('Successful');
+    });
+    console.log("Remove");
 }

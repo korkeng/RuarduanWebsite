@@ -557,6 +557,98 @@ function setNumNoti (id,lan,table,type) {
         });
     }
 
+    else if(table == "Nearby" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectPierNearby = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: "ENG",
+                    description: "Nearby data ID:"+id+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/nearby/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectPierNearby),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }else if(table == "Nearby" && type == "Edit"){
+         $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectPierNearby = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "EDIT",
+                    table_language: "ENG",
+                    description: "Nearby data ID:"+id+" has been edit.",
+                    iconType: "pencil-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/nearby/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectPierNearby),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
+
     if(localStorage.getItem('setNumAlert') == null){
         numNotiCount = 0;
     }else{
@@ -575,6 +667,7 @@ function setNumNoti (id,lan,table,type) {
 
     // document.getElementById("alertdropdown").innerHTML = alertmessage;
 }
+
 
 function setMessageNoti () {
     console.log("hello");
