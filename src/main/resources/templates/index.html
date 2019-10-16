@@ -97,6 +97,7 @@
                                             plotOptions: {
                                                 line: {
                                                     dataGrouping: {
+														forced: true,
                                                         units: [
 															['millisecond',[1, 2, 5, 10, 20, 25, 50, 100, 200, 500]], 
 															['second',[1, 2, 5, 10, 15, 30]],
@@ -121,25 +122,13 @@
 													type: 'month',
 													count: 3,
 													text: 'Day',
-													dataGrouping: {
-														forced: true,
-														units: [['day', [1]]]
-													}
 												}, {
 													type: 'year',
 													count: 1,
 													text: 'Week',
-													dataGrouping: {
-														forced: true,
-														units: [['week', [1]]]
-													}
 												}, {
 													type: 'all',
 													text: 'Month',
-													dataGrouping: {
-														forced: true,
-														units: [['month', [1]]]
-													}
 												}],
 												buttonTheme: {
 													width: 60
