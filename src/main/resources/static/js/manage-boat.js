@@ -10,6 +10,15 @@ $(document).ready(function() {
         url: "https://ruarduan-backend.com/boattypes",
         dataType: 'json',
         success: function (data) {
+            data.sort(function(obj1, obj2) {
+                // Ascending: first age less than the previous
+                return obj1.boattypeId.boattype_id - obj2.boattypeId.boattype_id;
+            });
+            lastId = (data[(data.length - 1)].boattypeId.boattype_id);
+            newLastId = (data[(data.length - 1)].boattypeId.boattype_id)+1;
+console.log(lastId+"/"+newLastId);
+console.log(data[(data.length - 1)].boattypeId.boattype_id);
+console.log(data[8].boattypeId.boattype_id)
             var dataHeader = ["<b>Boattype ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Boattype Table";
@@ -115,6 +124,8 @@ $(document).ready(function() {
 
 var tableData;
 var dataLength;
+var lastId;
+var newLastId;
 function changeViewBoattype() {
        $.ajax({
         type: "GET",
@@ -361,9 +372,29 @@ function addBoatType(){
     '</div>';
 
     document.getElementById("showPopupForm").innerHTML = divBoatType;
+    document.getElementById("valId").value = newLastId;
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/boattypes",
+
+        getValue: "name",
+
+        list: {
+        onSelectItemEvent: function() {
+            var value = $("#valName").getSelectedItemData().boattypeId.boattype_id; //get the id associated with the selected value
+            $("#valId").val(value).trigger("change"); //copy it to the hidden field
+         },
+         match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valName").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";

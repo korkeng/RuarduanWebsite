@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
     $("button").click(function(){
       $("button").removeClass("activeB");
       $(this).addClass("activeB");
@@ -488,7 +488,6 @@ function changeViewAdmin() {
 
 
 function addRole(){
-
     var divRole =
     '<div id="page-contentid" class="page-content">'+
         '<div class="form-v5-content">'+
@@ -501,7 +500,7 @@ function addRole(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Name</span><span style="color: red;"> *</span>'+
-                    '<input id="valName" type="text" class="input-text" required>'+
+                    '<input id="valName" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
                     '<input type="button" id="addDBRole" class="btn btn-sm" value="Go"/>'+
@@ -510,11 +509,28 @@ function addRole(){
         '</div>'+
     '</div>';
 
+
     document.getElementById("showPopupForm").innerHTML = divRole;
     document.getElementById("valId").value = newLastId;
-    
+
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/roles",
+
+        getValue: "roleName",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valName").easyAutocomplete(options);
+
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
