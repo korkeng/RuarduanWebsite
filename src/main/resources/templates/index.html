@@ -93,9 +93,11 @@
                                                 //     }
                                                 // }
                                             },
+	
                                             plotOptions: {
                                                 line: {
                                                     dataGrouping: {
+														forced: true,
                                                         units: [
 															['millisecond',[1, 2, 5, 10, 20, 25, 50, 100, 200, 500]], 
 															['second',[1, 2, 5, 10, 15, 30]],
@@ -110,43 +112,38 @@
                                                     }
                                                 }
                                             },
+	
                                             chart: {
-                                                type: 'line'
+                                                type: 'areaspline'
                                             },
                                             rangeSelector: {
-                                                buttons: [{
-                                                    type: 'day',
-                                                    count: 1,
-                                                    text: '1 day'
-                                                }, {
-                                                    type: 'week',
-                                                    count: 1,
-                                                    text: '1 week'
-                                                }, {
-													type: 'week',
-                                                    count: 2,
-                                                    text: '2 weeks'
-                                                }, {
-                                                    type: 'month',
-                                                    count: 1,
-                                                    text: '1 month'
-                                                }, {
+												allButtonsEnabled: true,
+												buttons: [{
 													type: 'month',
-                                                    count: 3,
-                                                    text: '3 months'
-                                                }, {
-													type: 'month',
-                                                    count: 6,
-                                                    text: '6 months'
-                                                }, {
-                                                    type: 'year',
-                                                    count: 1,
-                                                    text: '1 year'
-                                                }, {
-                                                    type: 'all',
-                                                    text: 'All'
-                                                }]
-                                            },
+													count: 3,
+													text: 'Day',
+												}, {
+													type: 'year',
+													count: 1,
+													text: 'Week',
+												}, {
+													type: 'all',
+													text: 'Month',
+												}],
+												buttonTheme: {
+													width: 60
+												},
+												selected: 2
+											},
+
+											title: {
+												text: 'Ruarduan Ticket Sales'
+											},
+
+											subtitle: {
+												text: 'Current in Baht'
+											},
+											
                                             series: [{
                                                 name: 'Prices',
                                                 data: [],
