@@ -131,6 +131,7 @@ var tableData;
 var dataLength;
 var lastId;
 var newLastId;
+var langName;
 function changeViewBoattype() {
        $.ajax({
         type: "GET",
@@ -354,6 +355,27 @@ function changeViewRoute() {
     });
 }
 
+function chooseLang() {
+    // let dropdown = $('#valLan');
+    var usedNames = [];
+    // var listLang = document.getElementById("valLan");
+    // langId = listLang.options[listLang.selectedIndex].value;
+    // langName = listLang.options[listLang.selectedIndex].text;
+    const url = 'https://ruarduan-backend.com/boattypes';
+    $.getJSON(url, function (data) {
+      // $.each(data, function (key, entry) {
+      //   dropdown.append($('<option></option>').attr('value', entry.boattypeId.boattype_id).text(entry.boattypeId.boattypeLanguages));
+      // })
+         $.each(data, function(key, entry) {
+            if (usedNames.indexOf(entry.boattypeId.boattypeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.boattypeId.boattypeLanguages + "</option>");
+                // usedNames.push(entry.boattypeId.boattypeLanguages);
+            }
+            usedNames.push(entry.boattypeId.boattypeLanguages);
+        });
+    });
+
+}
 
 function addBoatType(){
 
@@ -369,7 +391,10 @@ function addBoatType(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
-                    '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
+                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="chooseLang()">'+
+                            '<option selected value="base">==Choose Language==</option>'+
+                          '</select>'+
+                    // '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Name</span><span style="color: red;"> *</span>'+
@@ -384,6 +409,7 @@ function addBoatType(){
 
     document.getElementById("showPopupForm").innerHTML = divBoatType;
     document.getElementById("valId").value = newLastId;
+    document.getElementById("valLan").value = langName;
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
@@ -410,7 +436,7 @@ function addBoatType(){
         var objectBoatType = {
             boattypeId: {
                 boattype_id: document.getElementById("valId").value,
-                boattypeLanguages: document.getElementById("valLan").value
+                boattypeLanguages: langName
             },
             name:   document.getElementById("valName").value
         }
@@ -443,7 +469,7 @@ function addBoatType(){
                                             'success');
 
                                         modal.style.display = "none";
-                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
+                                        setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
                                         changeViewBoattype();
                                     },
                                     error : function(e) {
@@ -478,7 +504,7 @@ function addBoatType(){
                                         'success');
 
                                     modal.style.display = "none";
-                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
+                                    setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
                                     changeViewBoattype();
                                 },
                                 error : function(e) {
