@@ -493,7 +493,7 @@ function addRole(){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formRole" class="form-detail">'+
-                '<h2>Role Table</h2>'+
+                '<h2>Add Role</h2>'+
                 '<div class="form-row">'+
                     '<span>Role Id</span><span style="color: red;"> *</span>'+
                     '<input id="valId" type="number" class="input-text" disabled>'+
@@ -503,7 +503,7 @@ function addRole(){
                     '<input id="valName" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBRole" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBRole" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -614,7 +614,7 @@ function addRole(){
                                 error : function(e) {
                                     swal(
                                         'Error!!',
-                                        'Something went wrong.',
+                                        'You Add Duplicate Data.',
                                         'error');
                                     console.log("ERROR: ", e);
                                 }
@@ -642,7 +642,7 @@ function editRole(id){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formRole" class="form-detail">'+
-                '<h2>Role Table</h2>'+
+                '<h2>Edit Role</h2>'+
                 '<div class="form-row">'+
                     '<span>Role Id</span>'+
                     '<input id="valId" type="number" class="input-text" disabled>'+
@@ -652,7 +652,7 @@ function editRole(id){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="editDBRole" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="editDBRole" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -662,6 +662,21 @@ function editRole(id){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+     var options = {
+        url: "https://ruarduan-backend.com/roles",
+
+        getValue: "roleName",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valName").easyAutocomplete(options);
+    
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";

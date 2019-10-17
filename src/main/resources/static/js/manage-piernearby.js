@@ -250,7 +250,7 @@ function addPierNearby(){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formNearby" class="form-detail">'+
-                '<h2>Nearby Table</h2>'+
+                '<h2>Add Nearby</h2>'+
                 '<div class="form-row">'+
                     '<span>Nearby Id</span><span style="color: red;"> *</span>'+
                     '<input id="valId" type="number" class="input-text" disabled>'+
@@ -278,7 +278,7 @@ function addPierNearby(){
                     '<input id="valDistance" type="number" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBPierNearby" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBPierNearby" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -370,7 +370,7 @@ function editPierNearby(id){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formNearby" class="form-detail">'+
-              '<h2>Nearby Table</h2>'+
+              '<h2>Edit Nearby</h2>'+
                   '<div class="form-row">'+
                       '<span>Nearby Id</span><span style="color: red;"> *</span>'+
                       '<input id="valId" type="number" class="input-text" disabled>'+
@@ -398,7 +398,7 @@ function editPierNearby(id){
                       '<input id="valDistance" type="number" class="input-text" required>'+
                   '</div>'+
                   '<div class="form-row-last">'+
-                      '<input type="button" id="editDBPierNearby" class="btn btn-sm" value="Go"/>'+
+                      '<input type="button" id="editDBPierNearby" class="btn btn-sm" value="Done"/>'+
                   '</div>'+
             '</form>'+
         '</div>'+
