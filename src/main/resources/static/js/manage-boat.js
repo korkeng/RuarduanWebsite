@@ -18,8 +18,7 @@ $(document).ready(function() {
             newLastId = (data[(data.length - 1)].boattypeId.boattype_id)+1;
 console.log(lastId+"/"+newLastId);
 console.log(data[(data.length - 1)].boattypeId.boattype_id);
-console.log(data[8].boattypeId.boattype_id)
-            var dataHeader = ["<b>Boattype ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
+            var dataHeader = ["<b>Boattype ID</b>","<b>Language</b>","<b>Name</b>","<b>New Lang.</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Boattype Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -52,9 +51,12 @@ console.log(data[8].boattypeId.boattype_id)
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addBoatTypeNewLang("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -100,9 +102,12 @@ console.log(data[8].boattypeId.boattype_id)
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addBoatTypeNewLang("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         }
@@ -132,7 +137,7 @@ function changeViewBoattype() {
         url: "https://ruarduan-backend.com/boattypes",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Boattype ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
+            var dataHeader = ["<b>Boattype ID</b>","<b>Language</b>","<b>Name</b>","<b>New Lang.</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Boattype Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -165,9 +170,12 @@ function changeViewBoattype() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addBoatTypeNewLang("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -213,9 +221,12 @@ function changeViewBoattype() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addBoatTypeNewLang("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteBoatType("+data[i].boattypeId.boattype_id+",\'"+data[i].boattypeId.boattypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         }
@@ -351,10 +362,10 @@ function addBoatType(){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formBoatType" class="form-detail">'+
-                '<h2>BoatType Table</h2>'+
+                '<h2>Add BoatType</h2>'+
                 '<div class="form-row">'+
                     '<span>BoatType Id</span><span style="color: red;"> *</span>'+
-                    '<input id="valId" type="number" class="input-text" required>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
@@ -377,22 +388,17 @@ function addBoatType(){
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
 
-    var options = {
+   var options = {
         url: "https://ruarduan-backend.com/boattypes",
 
         getValue: "name",
 
         list: {
-        onSelectItemEvent: function() {
-            var value = $("#valName").getSelectedItemData().boattypeId.boattype_id; //get the id associated with the selected value
-            $("#valId").val(value).trigger("change"); //copy it to the hidden field
-         },
-         match: {
+            match: {
                 enabled: true
             }
         }
     };
-
     $("#valName").easyAutocomplete(options);
 
     var spanclose = document.getElementsByClassName("closeform")[0];
@@ -498,7 +504,168 @@ function addBoatType(){
         });
     }
     
+}
 
+function addBoatTypeNewLang(id,lan){
+    var divBoatType =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formBoatType" class="form-detail">'+
+                '<h2>Add BoatType New Language</h2>'+
+                '<div class="form-row">'+
+                    '<span>BoatType Id</span><span style="color: red;"> *</span>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Languages</span><span style="color: red;"> *</span>'+
+                    '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="addDBBoatType" class="btn btn-sm" value="Go"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divBoatType;
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/boattypes",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valName").easyAutocomplete(options);
+
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("addDBBoatType");
+    $.ajax({
+        type: "GET",
+        url: "https://ruarduan-backend.com/boattypes/"+lan+"/"+id.toString(),
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("valId").value = data.boattypeId.boattype_id.toString();
+            
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
+    btnclose.onclick = function() {
+        var objectBoatType = {
+            boattypeId: {
+                boattype_id: document.getElementById("valId").value,
+                boattypeLanguages: document.getElementById("valLan").value
+            },
+            name:   document.getElementById("valName").value
+        }
+        swal({
+            title: 'Add Boat Type Data?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sure, add it!'
+        }).then(function() {
+            if(objectBoatType.boattypeId.boattype_id != "" && objectBoatType.boattypeId.boattypeLanguages != "" &&
+                objectBoatType.name != ""){
+                    $.ajax({
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/boattypes/"+objectBoatType.boattypeId.boattypeLanguages+"/"+objectBoatType.boattypeId.boattype_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/boattype",
+                                    data : JSON.stringify(objectBoatType),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
+
+                                        modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
+                                        changeViewBoattype();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                }
+                            
+                        },
+                        error : function(e) {
+                            console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/boattype",
+                                data : JSON.stringify(objectBoatType),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
+                                    changeViewBoattype();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
+                        }
+                    });
+
+                    
+            } else {
+                swal(
+                    'Failure',
+                    'Please fill in the textfield.',
+                    'error'
+                );
+            }
+            // alertNoClose.show('Successful');
+        });
+    }
+    
 }
 
 function addRoute(){
