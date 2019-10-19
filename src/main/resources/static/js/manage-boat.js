@@ -463,7 +463,7 @@ function addBoatType(){
                                             'success');
 
                                         modal.style.display = "none";
-                                        setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
+                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
                                         // changeViewBoattype();
                                         window.location.reload();
                                     },
@@ -499,7 +499,7 @@ function addBoatType(){
                                         'success');
 
                                     modal.style.display = "none";
-                                    setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
+                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
                                     // changeViewBoattype();
                                     window.location.reload();
                                 },
