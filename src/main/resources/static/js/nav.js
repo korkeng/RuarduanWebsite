@@ -24,7 +24,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: lan,
-                    description: "Place data ID:"+id+" has been add.",
+                    description: "Place data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -69,7 +69,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: lan,
-                    description: "Place data ID:"+id+" has been edit.",
+                    description: "Place data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -115,7 +115,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: lan,
-                    description: "Place type data ID:"+id+" has been add.",
+                    description: "Place Type data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -160,7 +160,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: lan,
-                    description: "Place Type data ID:"+id+" has been edit.",
+                    description: "Place Type data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -206,7 +206,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: lan,
-                    description: "Pier data ID:"+id+" has been add.",
+                    description: "Pier data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -251,7 +251,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: lan,
-                    description: "Pier data ID:"+id+" has been edit.",
+                    description: "Pier data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -297,7 +297,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: lan,
-                    description: "Boat Type data ID:"+id+" has been add.",
+                    description: "Boattype data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -342,7 +342,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: lan,
-                    description: "Boat Type data ID:"+id+" has been edit.",
+                    description: "Boattype data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -388,7 +388,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: lan,
-                    description: "Route data ID:"+id+" has been add.",
+                    description: "Route data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -433,7 +433,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: lan,
-                    description: "Route data ID:"+id+" has been edit.",
+                    description: "Route data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -480,7 +480,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: "ENG",
-                    description: "Role data ID:"+id+" has been add.",
+                    description: "Role data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -525,7 +525,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: "ENG",
-                    description: "Role data ID:"+id+" has been edit.",
+                    description: "Role data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -572,7 +572,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: "ENG",
-                    description: "Nearby data ID:"+id+" has been add.",
+                    description: "Nearby data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -617,7 +617,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: "ENG",
-                    description: "Nearby data ID:"+id+" has been edit.",
+                    description: "Nearby data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -648,6 +648,101 @@ function setNumNoti (id,lan,table,type) {
             }
         });
     }
+
+    else if(table == "Schedule" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectBoatSchedule = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: "ENG",
+                    description: "Schedule data ID: "+id+" ["+lan+"]"+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/schedule/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectBoatSchedule),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }else if(table == "Schedule" && type == "Edit"){
+         $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectBoatSchedule = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "EDIT",
+                    table_language: "ENG",
+                    description: "Schedule data ID: "+id+" ["+lan+"]"+" has been edit.",
+                    iconType: "pencil-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/schedule/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectBoatSchedule),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
+
+
+
 
     if(localStorage.getItem('setNumAlert') == null){
         numNotiCount = 0;

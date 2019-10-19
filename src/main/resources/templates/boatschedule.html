@@ -10,53 +10,22 @@
                     <div class="panel-head">BOATTYPE - ROUTE - SCHEDULE</div>
                     <div class="table-agile-info">
                       <div class="row">
-                        <div class="col-sm-12 col-md-4 col-lg-4"></div>
-                        <div class="col-sm-12 col-md-8 col-lg-8 text-right" style="font-size: 18px;">
-                          Choose Boattype: &nbsp;&nbsp;&nbsp;
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-info dropdown-toggle activeB" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            BLUE FLAG
-                            <span class="caret"></span> 
-                          </button>
-                          <div class="dropdown-menu ">
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewBlueEng()">ENG</button>
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewBlueTh()">TH</button>
+                        <div class="col-sm-12 col-md-3 col-lg-3 text-right" style="font-size: 22px;">
+                          Choose Language: 
+                        </div>
+                        <div class="col-sm-12 col-md-2 col-lg-2">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-info btn-xl" onclick="chooseLangENG()">ENG</button>
+                            <button type="button" class="btn btn-info btn-xl" onclick="chooseLangTH()">TH</button>
                           </div>
                         </div>
-
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ORANGE FLAG
-                            <span class="caret"></span> 
-                          </button>
-                          <div class="dropdown-menu ">
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewOrangeEng()">ENG</button>
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewOrangeTh()">TH</button>
-                          </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 text-right" style="font-size: 22px;">
+                          Choose Boattype:
                         </div>
-
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            YELLOW FLAG
-                            <span class="caret"></span> 
-                          </button>
-                          <div class="dropdown-menu ">
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewYellowEng()">ENG</button>
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewYellowTh()">TH</button>
-                          </div>
-                        </div>
-
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            GREEN FLAG
-                            <span class="caret"></span> 
-                          </button>
-                          <div class="dropdown-menu ">
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewGreenEng()">ENG</button>
-                            <button class="dropdown-item btn btn-link btn-block" type="button" onclick="changeViewGreenTh()">TH</button>
-                          </div>
-                        </div>
-
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                          <select id="locality-dropdown" class="btn-xxl text-center" name="locality" onclick="chooseBoatSchedule()">
+                            <option selected value="base">==Choose Language First==</option>
+                          </select>
                         </div>
                       </div>
 
@@ -84,6 +53,7 @@
                         </div>
                       </div>
                     </div>
+                    <div id="showPopupForm" class="modal">
                 </section>
             </section>
         </div>
