@@ -463,9 +463,10 @@ function addBoatType(){
                                             'success');
 
                                         modal.style.display = "none";
-                                        setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
-                                        // changeViewBoattype();
-                                        window.location.reload();
+                                        setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
+                                        changeViewBoattype();
+                                        console.log("lang"+langName)
+                                        // window.location.reload();
                                     },
                                     error : function(e) {
                                         swal(
@@ -499,9 +500,10 @@ function addBoatType(){
                                         'success');
 
                                     modal.style.display = "none";
-                                    setNumNoti(document.getElementById("valId").value,document.getElementById("valLan").value,"BoatType","Add");
-                                    // changeViewBoattype();
-                                    window.location.reload();
+                                    setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
+                                    changeViewBoattype();
+                                    console.log("lang2"+langName)
+                                    // window.location.reload();
                                 },
                                 error : function(e) {
                                     swal(
