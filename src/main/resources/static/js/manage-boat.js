@@ -356,25 +356,19 @@ function changeViewRoute() {
 }
 
 function chooseLang() {
-    // let dropdown = $('#valLan');
+    let dropdown = $('#valLan');
     var usedNames = [];
-    // var listLang = document.getElementById("valLan");
-    // langId = listLang.options[listLang.selectedIndex].value;
-    // langName = listLang.options[listLang.selectedIndex].text;
+    var listLang = document.getElementById("valLan");
+    langName = listLang.options[listLang.selectedIndex].text;
     const url = 'https://ruarduan-backend.com/boattypes';
     $.getJSON(url, function (data) {
-      // $.each(data, function (key, entry) {
-      //   dropdown.append($('<option></option>').attr('value', entry.boattypeId.boattype_id).text(entry.boattypeId.boattypeLanguages));
-      // })
-         $.each(data, function(key, entry) {
-            if (usedNames.indexOf(entry.boattypeId.boattypeLanguages) == -1) {
-                $("#valLan").append("<option value=" + key + ">" + entry.boattypeId.boattypeLanguages + "</option>");
-                // usedNames.push(entry.boattypeId.boattypeLanguages);
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.boattypeId.boattypeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.boattypeId.boattypeLanguages + "</option>"); 
             }
-            usedNames.push(entry.boattypeId.boattypeLanguages);
-        });
+        usedNames.push(entry.boattypeId.boattypeLanguages);
+      })
     });
-
 }
 
 function addBoatType(){
@@ -470,7 +464,8 @@ function addBoatType(){
 
                                         modal.style.display = "none";
                                         setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
-                                        changeViewBoattype();
+                                        // changeViewBoattype();
+                                        window.location.reload();
                                     },
                                     error : function(e) {
                                         swal(
@@ -505,7 +500,8 @@ function addBoatType(){
 
                                     modal.style.display = "none";
                                     setNumNoti(document.getElementById("valId").value,langName,"BoatType","Add");
-                                    changeViewBoattype();
+                                    // changeViewBoattype();
+                                    window.location.reload();
                                 },
                                 error : function(e) {
                                     swal(
