@@ -76,5 +76,10 @@ public class MainController {
             return "piernearby";
     }
 
+    @GetMapping("/route_pier")
+        public String RoutePier(){
+            return "routepier";
+    }
+
 }
 
