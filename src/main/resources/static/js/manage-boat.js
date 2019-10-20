@@ -131,6 +131,7 @@ var tableData;
 var dataLength;
 var lastId;
 var newLastId;
+var newLastRouteId;
 var langName;
 function changeViewBoattype() {
        $.ajax({
@@ -252,7 +253,14 @@ function changeViewRoute() {
         url: "https://ruarduan-backend.com/routes",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Route ID</b>","<b>Language</b>","<b>Route Name</b>","<b>Edit</b>","<b>Delete</b>"];
+            data.sort(function(obj1, obj2) {
+                // Ascending: first age less than the previous
+                return obj1.routeId.route_id - obj2.routeId.route_id;
+            });
+            lastRouteId = (data[(data.length - 1)].routeId.route_id);
+            newLastRouteId = (data[(data.length - 1)].routeId.route_id)+1;
+console.log("Route ID "+lastId+"/"+newLastId);
+            var dataHeader = ["<b>Route ID</b>","<b>Language</b>","<b>Route Name</b>","<b>New Lang.</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Route Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -285,9 +293,12 @@ function changeViewRoute() {
                                 cellData[j].innerHTML = ""+data[i].routeName;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addRouteNewLang("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -333,9 +344,12 @@ function changeViewRoute() {
                                 cellData[j].innerHTML = ""+data[i].routeName;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addRouteNewLang("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deleteRoute("+data[i].routeId.route_id+",\'"+data[i].routeId.routeLanguages+"\')\">Delete</button></span>";
                                 break;
                         }
@@ -371,6 +385,22 @@ function chooseLang() {
     });
 }
 
+function chooseRouteLang() {
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    langName = listLang.options[listLang.selectedIndex].text;
+    const url = 'https://ruarduan-backend.com/routes';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.routeId.routeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.routeId.routeLanguages + "</option>"); 
+            }
+        usedNames.push(entry.routeId.routeLanguages);
+      })
+    });
+}
+
 function addBoatType(){
 
     var divBoatType =
@@ -395,7 +425,7 @@ function addBoatType(){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBBoatType" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBBoatType" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -550,7 +580,7 @@ function addBoatTypeNewLang(id,lan){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBBoatType" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBBoatType" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -698,10 +728,162 @@ function addRoute(){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formRoute" class="form-detail">'+
-                '<h2>Route Table</h2>'+
+                '<h2>Add Route</h2>'+
                 '<div class="form-row">'+
                     '<span>Route Id</span><span style="color: red;"> *</span>'+
-                    '<input id="valId" type="number" class="input-text" required>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Languages</span><span style="color: red;"> *</span>'+
+                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="chooseRouteLang()">'+
+                            '<option selected value="base">==Choose Language==</option>'+
+                    '</select>'+
+                    // '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Route Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="addDBRoute" class="btn btn-sm" value="Done"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divRoute;
+    document.getElementById("valId").value = newLastRouteId;
+    document.getElementById("valLan").value = langName;
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/routes",
+
+        getValue: "routeName",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#valName").easyAutocomplete(options);
+    
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("addDBRoute");
+    btnclose.onclick = function() {
+        var objectRoute = {
+            routeId: {
+                route_id: document.getElementById("valId").value,
+                routeLanguages: langName
+            },
+            routeName:   document.getElementById("valName").value
+        }
+        swal({
+            title: 'Add Route Data?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sure, add it!'
+        }).then(function() {
+            if(objectRoute.routeId.route_id != "" && objectRoute.routeId.routeLanguages != "" &&
+                objectRoute.routeName != ""){
+                    $.ajax({
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/routes/"+objectRoute.routeId.routeLanguages+"/"+objectRoute.routeId.route_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/route",
+                                    data : JSON.stringify(objectRoute),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
+
+                                        modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,langName,"Route","Add");
+                                        changeViewRoute();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                    }
+                            
+                        },
+                        error : function(e) {
+                            console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/route",
+                                data : JSON.stringify(objectRoute),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,langName,"Route","Add");
+                                    changeViewRoute();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
+                        }
+                    });
+      
+            } else {
+                swal(
+                    'Failure',
+                    'Please fill in the textfield.',
+                    'error'
+                );
+            }
+            // alertNoClose.show('Successful');
+        });
+    }
+}
+
+function addRouteNewLang(id,lan){
+    var divRoute =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formRoute" class="form-detail">'+
+                '<h2>Add Route New Language</h2>'+
+                '<div class="form-row">'+
+                    '<span>Route Id</span><span style="color: red;"> *</span>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
@@ -712,7 +894,7 @@ function addRoute(){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBRoute" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBRoute" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -722,11 +904,37 @@ function addRoute(){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/routes",
+
+        getValue: "routeName",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#valName").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBRoute");
+    $.ajax({
+        type: "GET",
+        url: "https://ruarduan-backend.com/routes/"+lan+"/"+id.toString(),
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("valId").value = data.routeId.route_id.toString();
+            
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
     btnclose.onclick = function() {
         var objectRoute = {
             routeId: {
@@ -846,7 +1054,7 @@ function editBoatType(id,lan){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="editDBBoatType" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="editDBBoatType" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -856,6 +1064,20 @@ function editBoatType(id,lan){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/boattypes",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#valName").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
@@ -951,7 +1173,7 @@ function editRoute(id,lan){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="editDBRoute" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="editDBRoute" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -961,6 +1183,20 @@ function editRoute(id,lan){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/routes",
+
+        getValue: "routeName",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#valName").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
