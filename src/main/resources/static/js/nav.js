@@ -786,6 +786,52 @@ function setNumNoti (id,lan,table,type) {
             }
         });
     }
+    else if(table == "RoutePier" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectRoutePier = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: lan,
+                    description: "Route-Pier data ID: "+id+" ["+lan+"]"+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/routepier/"+lan+"/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectRoutePier),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
 
 
 

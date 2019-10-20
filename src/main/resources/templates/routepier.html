@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/main}">
+    <body>
+        <div layout:fragment="content">
+            <section id="main-content">
+                <section class="wrapper">
+                  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+                  <script src="js/manage-routepier.js"></script>
+                    <div class="panel-head">ROUTE-PIER</div>
+                    <div class="table-agile-info">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-3 col-lg-3 text-right" style="font-size: 22px;">
+                          Choose Language: 
+                        </div>
+                        <div class="col-sm-12 col-md-2 col-lg-2">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-info btn-xl" onclick="chooseLangENG()">ENG</button>
+                            <button type="button" class="btn btn-info btn-xl" onclick="chooseLangTH()">TH</button>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 text-right" style="font-size: 22px;">
+                          Choose Route:
+                        </div>
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                          <select id="locality-dropdown" class="btn-xxl text-center" name="locality" onclick="chooseRoutePier()">
+                            <option selected value="base">==Choose Language First==</option>
+                          </select>
+                        </div>
+                      </div>
+                    
+                      <div class="panel panel-default" > 
+                        <div class="card-table shadow mb-4">
+                          <div class="card-header py-3">
+                            <div class="row">
+                                  <div class="col-sm-9 col-md-6 col-lg-9">
+                                     <div id="tableHeader" class="panel-heading"></div>
+                                  </div>
+                                  <div class="col-sm-3 col-md-6 col-lg-3 text-right">
+                                    <div id="tableAddData"></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="card-body-table">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead class="text-center" id="myThHeader" ></thead>
+                                  <tfoot class="text-center" id="myThFooter"></tfoot>
+                                  <tbody id="myThBody"></tbody>
+                                </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="showPopupForm" class="modal">
+                </section>
+            </section>
+        </div>
+    </body>
+</html>
