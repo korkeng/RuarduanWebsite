@@ -480,7 +480,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: "ENG",
-                    description: "Role data ID: "+id+" ["+lan+"]"+" has been add.",
+                    description: "Role data ID: "+id+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -525,7 +525,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: "ENG",
-                    description: "Role data ID: "+id+" ["+lan+"]"+" has been edit.",
+                    description: "Role data ID: "+id+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -572,7 +572,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "ADD",
                     table_language: "ENG",
-                    description: "Nearby data ID: "+id+" ["+lan+"]"+" has been add.",
+                    description: "Nearby data ID: "+id+" has been add.",
                     iconType: "plus-square"
                 }
                 $.ajax({
@@ -617,7 +617,7 @@ function setNumNoti (id,lan,table,type) {
                     },
                     operationName:  "EDIT",
                     table_language: "ENG",
-                    description: "Nearby data ID: "+id+" ["+lan+"]"+" has been edit.",
+                    description: "Nearby data ID: "+id+" has been edit.",
                     iconType: "pencil-square"
                 }
                 $.ajax({
@@ -663,7 +663,7 @@ function setNumNoti (id,lan,table,type) {
                         logsLanguages: "ENG"
                     },
                     operationName:  "ADD",
-                    table_language: "ENG",
+                    table_language: lan,
                     description: "Schedule data ID: "+id+" ["+lan+"]"+" has been add.",
                     iconType: "plus-square"
                 }
@@ -708,7 +708,7 @@ function setNumNoti (id,lan,table,type) {
                         logsLanguages: "ENG"
                     },
                     operationName:  "EDIT",
-                    table_language: "ENG",
+                    table_language: lan,
                     description: "Schedule data ID: "+id+" ["+lan+"]"+" has been edit.",
                     iconType: "pencil-square"
                 }
@@ -740,6 +740,53 @@ function setNumNoti (id,lan,table,type) {
             }
         });
     }
+    else if(table == "PierBoattype" && type == "Add"){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "https://ruarduan-backend.com/logs/createdat/asc/eng",
+            dataType : 'json',
+            success : function(data) {
+                var notiId = data.length + 1;
+                var objectPierBoattype = {
+                    logsId: {
+                        logs_id:  notiId,
+                        logsLanguages: "ENG"
+                    },
+                    operationName:  "ADD",
+                    table_language: "ENG",
+                    description: "PierBoattype data ID: "+id+" has been add.",
+                    iconType: "plus-square"
+                }
+                $.ajax({
+                    type : "POST",
+                    contentType : "application/json",
+                    url : "https://ruarduan-backend.com/log/create/pierboattype/"+id+"/"+window.localStorage.getItem("adminId"),
+                    data : JSON.stringify(objectPierBoattype),
+                    dataType : 'json',
+                    success : function() {
+ 
+                    },
+                    error : function(e) {
+                        swal(
+                            'Error',
+                            ''+e.responseJSON.message,
+                            'error');
+                      console.log("ERROR: ", e);
+                    }
+                });
+
+            },
+            error : function(e) {
+                swal(
+                    'Error',
+                    ''+e.responseJSON.message,
+                    'error');
+              console.log("ERROR: ", e);
+            }
+        });
+    }
+
 
 
 
