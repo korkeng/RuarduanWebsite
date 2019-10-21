@@ -1040,7 +1040,7 @@ function editBoatType(id,lan){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formBoatType" class="form-detail">'+
-                '<h2>BoatType Table</h2>'+
+                '<h2>Edit Boattype</h2>'+
                 '<div class="form-row">'+
                     '<span>BoatType Id</span>'+
                     '<input id="valId" type="number" class="input-text" disabled>'+
@@ -1159,7 +1159,7 @@ function editRoute(id,lan){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formRoute" class="form-detail">'+
-                '<h2>Route Table</h2>'+
+                '<h2>Edit Route</h2>'+
                 '<div class="form-row">'+
                     '<span>Route Id</span>'+
                     '<input id="valId" type="number" class="input-text" disabled>'+

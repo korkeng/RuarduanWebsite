@@ -656,7 +656,7 @@ function editPier(id,lan){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formPier" class="form-detail">'+
-                '<h2>Pier Table</h2>'+
+                '<h2>Edit Pier</h2>'+
                 '<div class="form-row">'+
                     '<span>Pier Id</span><span style="color: red;"> *</span>'+
                     '<input id="valId" type="number" class="input-text" disabled>'+
