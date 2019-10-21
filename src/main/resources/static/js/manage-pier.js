@@ -271,6 +271,34 @@ function addPier(){
 
     $("#valName").easyAutocomplete(options);
 
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "ferryboat",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valFerry").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "shuttleboat",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valShuttle").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
@@ -442,7 +470,7 @@ function addPierNewLang(id,lan){
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
 
-    var options = {
+        var options = {
         url: "https://ruarduan-backend.com/piers",
 
         getValue: "pier_code",
@@ -469,6 +497,34 @@ function addPierNewLang(id,lan){
     };
 
     $("#valName").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "ferryboat",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valFerry").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "shuttleboat",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valShuttle").easyAutocomplete(options);
 
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
@@ -653,7 +709,7 @@ function editPier(id,lan){
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
 
-    var options = {
+        var options = {
         url: "https://ruarduan-backend.com/piers",
 
         getValue: "pier_code",
@@ -680,6 +736,35 @@ function editPier(id,lan){
     };
 
     $("#valName").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "ferryboat",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valFerry").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "shuttleboat",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valShuttle").easyAutocomplete(options);
+
 
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
