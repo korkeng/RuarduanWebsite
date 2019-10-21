@@ -1,9 +1,43 @@
 $(document).ready(function() {
-    changeViewPier();    
+    $.ajax({
+        type: "GET",
+        url: "https://ruarduan-backend.com/piers",
+        dataType: 'json',
+        success: function (data) {
+            data.sort(function(obj1, obj2) {
+                // Ascending: first age less than the previous
+                return obj1.pierId.pier_id - obj2.pierId.pier_id;
+            });
+            lastId = (data[(data.length - 1)].pierId.pier_id);
+            newLastId = (data[(data.length - 1)].pierId.pier_id)+1;
+console.log(lastId+"/"+newLastId);
+    }
+  
+    });
+        changeViewPier();  
 });
 
 var tableData;
 var dataLength;
+var lastId;
+var newLastId;
+var langName;
+
+function chooseLang() {
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    langName = listLang.options[listLang.selectedIndex].text;
+    const url = 'https://ruarduan-backend.com/piers';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.pierId.pierLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.pierId.pierLanguages + "</option>"); 
+            }
+        usedNames.push(entry.pierId.pierLanguages);
+      })
+    });
+}
 
 function changeViewPier() {
        $.ajax({
@@ -11,7 +45,7 @@ function changeViewPier() {
         url: "https://ruarduan-backend.com/piers",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Pier ID</b>","<b>Language</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Pic Path</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Busline</b>","<b>Shuttle Boat</b>","<b>Ferry Boat</b>","<b>Edit</b>","<b>Delete</b>"];
+            var dataHeader = ["<b>Pier ID</b>","<b>Language</b>","<b>Pier Code</b>","<b>Pier Name</b>","<b>Busline</b>","<b>Shuttle Boat</b>","<b>Ferry Boat</b>","<b>New Lang.</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Pier Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -47,27 +81,21 @@ function changeViewPier() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 4:
-                                cellData[j].innerHTML = ""+data[i].pic_path;
-                                break;
-                            case 5:
-                                cellData[j].innerHTML = ""+data[i].pos_latitude.toString();
-                                break;
-                            case 6:
-                                cellData[j].innerHTML = ""+data[i].pos_longtitude.toString();
-                                break;
-                            case 7:
                                 cellData[j].innerHTML = ""+data[i].busline;
                                 break;
-                            case 8:
+                            case 5:
                                 cellData[j].innerHTML = ""+data[i].shuttleboat;
                                 break;
-                            case 9:
+                            case 6:
                                 cellData[j].innerHTML = ""+data[i].ferryboat;
                                 break;
-                            case 10:
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPierNewLang("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Add</button></span>";
+                                break;
+                            case 8:
                                 cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Edit</button></span>";
                                 break;
-                            case 11:
+                            case 9:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -116,27 +144,21 @@ function changeViewPier() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 4:
-                                cellData[j].innerHTML = ""+data[i].pic_path;
-                                break;
-                            case 5:
-                                cellData[j].innerHTML = ""+data[i].pos_latitude.toString();
-                                break;
-                            case 6:
-                                cellData[j].innerHTML = ""+data[i].pos_longtitude.toString();
-                                break;
-                            case 7:
                                 cellData[j].innerHTML = ""+data[i].busline;
                                 break;
-                            case 8:
+                            case 5:
                                 cellData[j].innerHTML = ""+data[i].shuttleboat;
                                 break;
-                            case 9:
+                            case 6:
                                 cellData[j].innerHTML = ""+data[i].ferryboat;
                                 break;
-                            case 10:
+                            case 7:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPierNewLang("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Add</button></span>";
+                                break;
+                            case 8:
                                 cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Edit</button></span>";
                                 break;
-                            case 11:
+                            case 9:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePier("+data[i].pierId.pier_id+",\'"+data[i].pierId.pierLanguages+"\')\">Delete</button></span>";
                                 break;
                         }
@@ -162,14 +184,17 @@ function addPier(){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formPier" class="form-detail">'+
-                '<h2>Pier Table</h2>'+
+                '<h2>Add Pier</h2>'+
                 '<div class="form-row">'+
                     '<span>Pier Id</span><span style="color: red;"> *</span>'+
-                    '<input id="valId" type="number" class="input-text" required>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
-                    '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
+                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="chooseLang()">'+
+                            '<option selected value="base">==Choose Language==</option>'+
+                          '</select>'+
+                    // '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Pier Code</span>'+
@@ -204,7 +229,209 @@ function addPier(){
                     '<input id="valShuttle" type="text" class="input-text">'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBPier" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBPier" class="btn btn-sm" value="Done"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divPier;
+    document.getElementById("valId").value = newLastId;
+    document.getElementById("valLan").value = langName;
+
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "pier_code",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valCode").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valName").easyAutocomplete(options);
+
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("addDBPier");
+    btnclose.onclick = function() {
+        var objectPier = {
+            pierId: {
+                pier_id: document.getElementById("valId").value,
+                pierLanguages: langName
+            },
+            pier_code: document.getElementById("valCode").value,
+            name: document.getElementById("valName").value,
+            pic_path: document.getElementById("valPic").value,
+            pos_latitude: parseFloat(document.getElementById("valLat").value),
+            pos_longtitude: parseFloat(document.getElementById("valLong").value),
+            busline: document.getElementById("valBus").value,
+            shuttleboat: document.getElementById("valShuttle").value,
+            ferryboat: document.getElementById("valFerry").value
+        }
+        swal({
+            title: 'Add Pier Data?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sure, add it!'
+        }).then(function() {
+            if(objectPier.pierId.pier_id != "" && objectPier.pierId.pierLanguages != "" &&
+                objectPier.name != ""&& objectPier.pos_latitude != "" && objectPier.pos_longtitude != "" ){
+                   $.ajax({
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/piers/"+objectPier.pierId.pierLanguages+"/"+objectPier.pierId.pier_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/pier",
+                                    data : JSON.stringify(objectPier),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
+
+                                        modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,langName,"Pier","Add");
+                                        // changeViewPier();
+                                        window.location.reload();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                                'Error!!',
+                                                'Something went wrong.',
+                                                'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                }
+                            
+                        },
+                        error : function(e) { 
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/pier",
+                                data : JSON.stringify(objectPier),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,langName,"Pier","Add");
+                                    changeViewPier();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
+                        }
+                    });
+            } else {
+                swal(
+                    'Failure',
+                    'Please fill in the textfield.',
+                    'error'
+                );
+            }
+            // alertNoClose.show('Successful');
+        });
+    }
+    
+
+}
+
+function addPierNewLang(id,lan){
+
+    var divPier =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formPier" class="form-detail">'+
+                '<h2>Add Pier New Language</h2>'+
+                '<div class="form-row">'+
+                    '<span>Pier Id</span><span style="color: red;"> *</span>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Languages</span><span style="color: red;"> *</span>'+
+                    '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Pier Code</span>'+
+                    '<input id="valCode" type="text" class="input-text" >'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Pic Path</span>'+
+                    '<input id="valPic" type="text" class="input-text">'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Latitude</span><span style="color: red;"> *</span>'+
+                    '<input id="valLat" type="text" class="input-text" required disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Longitude</span><span style="color: red;"> *</span>'+
+                    '<input id="valLong" type="text" class="input-text" required disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Busline</span>'+
+                    '<input id="valBus" type="text" class="input-text">'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Ferry Boat</span>'+
+                    '<input id="valFerry" type="text" class="input-text">'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Shuttle Boat</span>'+
+                    '<input id="valShuttle" type="text" class="input-text">'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="addDBPier" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -214,11 +441,54 @@ function addPier(){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "pier_code",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valCode").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valName").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBPier");
+    $.ajax({
+        type: "GET",
+        url: "https://ruarduan-backend.com/piers/"+lan+"/"+id.toString(),
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("valId").value = data.pierId.pier_id.toString();
+            document.getElementById("valLat").value = data.pos_latitude.toString();
+            document.getElementById("valLong").value = data.pos_longtitude.toString();
+            
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
     btnclose.onclick = function() {
         var objectPier = {
             pierId: {
@@ -353,11 +623,11 @@ function editPier(id,lan){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Latitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLat" type="text" class="input-text" required>'+
+                    '<input id="valLat" type="text" class="input-text" required disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Longitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLong" type="text" class="input-text" required>'+
+                    '<input id="valLong" type="text" class="input-text" required disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Busline</span>'+
@@ -372,7 +642,7 @@ function editPier(id,lan){
                     '<input id="valShuttle" type="text" class="input-text">'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="editDBPier" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="editDBPier" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -382,6 +652,35 @@ function editPier(id,lan){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "pier_code",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valCode").easyAutocomplete(options);
+
+    var options = {
+        url: "https://ruarduan-backend.com/piers",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#valName").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
