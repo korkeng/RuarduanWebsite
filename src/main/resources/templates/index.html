@@ -61,11 +61,11 @@
                                 <script src="https://code.highcharts.com/modules/data.js"></script>
                                 <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
                                 <script src="https://code.highcharts.com/stock/highstock.js"></script>
-                                <script src="https://code.highcharts.com/stock/modules/data.js"></script>
-                                <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+								<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+								<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
                                 <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
-
-                                <div id="container"></div>
+								
+                                <div id="container" style="height: 400px; min-width: 600px; max-width: 800px; margin: 0 auto"></div>
                                 <script>
                                     $(document).ready(function() {
                                                                               
@@ -85,55 +85,41 @@
                                             });
                                         }
                                         var chart = Highcharts.stockChart('container', {
-                                            xAxis: {
-                                                type: 'datetime',
-                                                // labels: {
-                                                //     formatter: function() {
-                                                //       return Highcharts.dateFormat('%d-%m-%y', this.value);
-                                                //     }
-                                                // }
-                                            },
-	/*
-                                            plotOptions: {
-                                                line: {
-                                                    dataGrouping: {
-														forced: true,
-                                                        units: [
-															['millisecond',[1, 2, 5, 10, 20, 25, 50, 100, 200, 500]], 
-															['second',[1, 2, 5, 10, 15, 30]],
-															['minute',[1, 2, 5, 10, 15, 30]],
-															['hour',[1, 2, 3, 4, 6, 8, 12]],
-															['day',[1]],
-															['week',[1]],
-															['month',[1, 3, 6]],
-															['year',null]
-														],
-                                                        groupPixelWidth: 100
-                                                    }
-                                                }
-                                            },
-	*/
+
                                             chart: {
                                                 type: 'areaspline'
                                             },
+											
                                             rangeSelector: {
 												allButtonsEnabled: true,
 												buttons: [{
 													type: 'month',
 													count: 3,
 													text: 'Day',
+													dataGrouping: {
+														forced: true,
+														units: [['day', [1]]]
+													}
 												}, {
 													type: 'year',
 													count: 1,
 													text: 'Week',
+													dataGrouping: {
+														forced: true,
+														units: [['week', [1]]]
+													}
 												}, {
 													type: 'all',
 													text: 'Month',
+													dataGrouping: {
+														forced: true,
+														units: [['month', [1]]]
+													}
 												}],
 												buttonTheme: {
 													width: 60
 												},
-												selected: 2
+												selected: 0
 											},
 
 											title: {
@@ -144,20 +130,25 @@
 												text: 'Current in Baht'
 											},
 											
+											_navigator: {
+												enabled: false
+											},
+											
                                             series: [{
-                                                name: 'Prices',
-                                                data: [],
-                                                lineWidth: 2,
-                                                marker: {
-                                                    enabled: true,
-                                                    radius: 7
-                                                },
-
-                                            }]
+												name: 'AAPL',
+												data: data,
+												marker: {
+													enabled: null, // auto
+													radius: 3,
+													lineWidth: 1,
+													lineColor: '#FFFFFF'
+												},
+												tooltip: {
+													valueDecimals: 2
+												}
+											}]
                                         });
-
-                                        getData();
-
+                                        //getData();
                                     });
                                 </script>
                             </div>
