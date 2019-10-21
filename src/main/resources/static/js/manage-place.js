@@ -10,7 +10,14 @@ $(document).ready(function() {
         url: "https://ruarduan-backend.com/placetypes",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
+            data.sort(function(obj1, obj2) {
+                // Ascending: first age less than the previous
+                return obj1.placeTypeId.placetype_id - obj2.placeTypeId.placetype_id;
+            });
+            lastId = (data[(data.length - 1)].placeTypeId.placetype_id);
+            newLastId = (data[(data.length - 1)].placeTypeId.placetype_id)+1;
+console.log(lastId+"/"+newLastId);
+            var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>New Lang.</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Place Type Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -43,9 +50,12 @@ $(document).ready(function() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPlaceTypeNewLang("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -90,9 +100,12 @@ $(document).ready(function() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPlaceTypeNewLang("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -114,6 +127,10 @@ $(document).ready(function() {
 
 var tableData;
 var dataLength;
+var lastId;
+var newLastId;
+var newLastPlaceId;
+var langName;
 
 function changeViewPlaceType() {
        $.ajax({
@@ -121,7 +138,7 @@ function changeViewPlaceType() {
         url: "https://ruarduan-backend.com/placetypes",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>Edit</b>","<b>Delete</b>"];
+            var dataHeader = ["<b>Place Type ID</b>","<b>Language</b>","<b>Name</b>","<b>New Lang.</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Place Type Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -154,9 +171,12 @@ function changeViewPlaceType() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPlaceTypeNewLang("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -201,9 +221,12 @@ function changeViewPlaceType() {
                                 cellData[j].innerHTML = ""+data[i].name;
                                 break;
                             case 3:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPlaceTypeNewLang("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Add</button></span>";
                                 break;
                             case 4:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 5:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePlaceType("+data[i].placeTypeId.placetype_id+",\'"+data[i].placeTypeId.placetypeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -228,7 +251,14 @@ function changeViewPlace() {
         url: "https://ruarduan-backend.com/places",
         dataType: 'json',
         success: function (data) {
-            var dataHeader = ["<b>Place ID</b>","<b>Language</b>","<b>Name</b>","<b>Description</b>","<b>Operation Time</b>","<b>Latitude</b>","<b>Longitude</b>","<b>Location</b>","<b>External Link</b>","<b>Telephone</b>","<b>Transportation</b>","<b>Edit</b>","<b>Delete</b>"];
+            data.sort(function(obj1, obj2) {
+                // Ascending: first age less than the previous
+                return obj1.placeId.placeid - obj2.placeId.placeid;
+            });
+            lastPlaceId = (data[(data.length - 1)].placeId.placeid);
+            newLastPlaceId = (data[(data.length - 1)].placeId.placeid)+1;
+console.log("Route ID "+lastId+"/"+newLastId);
+            var dataHeader = ["<b>Place ID</b>","<b>Language</b>","<b>Name</b>","<b>Description</b>","<b>Operation Time</b>","<b>Location</b>","<b>Telephone</b>","<b>Transportation</b>","<b>New Lang.</b>","<b>Edit</b>","<b>Delete</b>"];
             var cellHeader = [];
             document.getElementById("tableHeader").innerHTML = "Place Table";
             if (document.getElementById("dataTable").rows.length == 0) {
@@ -267,28 +297,22 @@ function changeViewPlace() {
                                 cellData[j].innerHTML = ""+data[i].time_length;
                                 break; 
                             case 5:
-                                cellData[j].innerHTML = ""+data[i].pos_latitude.toString();
-                                break;
-                            case 6:
-                                cellData[j].innerHTML = ""+data[i].pos_longtitude.toString();
-                                break;
-                            case 7:
                                 cellData[j].innerHTML = ""+data[i].location;
                                 break;
-                            case 8:
-                                cellData[j].innerHTML = ""+data[i].external_link;
-                                break;
-                            case 9:
+                            case 6:
                                 cellData[j].innerHTML = ""+data[i].tel;
                                 break;
-                            case 10:
+                            case 7:
                                 cellData[j].innerHTML = ""+data[i].transportation;
                                 break;
-                            case 11:
-                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlace("+data[i].placeId.placeid+")\">Edit</button></span>";
+                            case 8:
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPlaceNewLang("+data[i].placeId.placeid+",\'"+data[i].placeId.placeLanguages+"\')\">Add</button></span>";
                                 break;
-                            case 12:
-                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePlace("+data[i].placeId.placeid+")\">Delete</button></span>";
+                            case 9:
+                                cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlace("+data[i].placeId.placeid+",\'"+data[i].placeId.placeLanguages+"\')\">Edit</button></span>";
+                                break;
+                            case 10:
+                                cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePlace("+data[i].placeId.placeid+",\'"+data[i].placeId.placeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
                     }        
@@ -338,27 +362,21 @@ function changeViewPlace() {
                                 cellData[j].innerHTML = ""+data[i].time_length;
                                 break; 
                             case 5:
-                                cellData[j].innerHTML = ""+data[i].pos_latitude.toString();
-                                break;
-                            case 6:
-                                cellData[j].innerHTML = ""+data[i].pos_longtitude.toString();
-                                break;
-                            case 7:
                                 cellData[j].innerHTML = ""+data[i].location;
                                 break;
-                            case 8:
-                                cellData[j].innerHTML = ""+data[i].external_link;
-                                break;
-                            case 9:
+                            case 6:
                                 cellData[j].innerHTML = ""+data[i].tel;
                                 break;
-                            case 10:
+                            case 7:
                                 cellData[j].innerHTML = ""+data[i].transportation;
                                 break;
-                            case 11:
+                            case 8:
+                                cellData[j].innerHTML = "<span class=\"table-add\"><button type=\"button\" class=\"btn btn-info btn-rounded btn-sm my-0\" onclick=\"addPlaceNewLang("+data[i].placeId.placeid+",\'"+data[i].placeId.placeLanguages+"\')\">Add</button></span>";
+                                break;
+                            case 9:
                                 cellData[j].innerHTML = "<span class=\"table-edit\"><button type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\" onclick=\"editPlace("+data[i].placeId.placeid+",\'"+data[i].placeId.placeLanguages+"\')\">Edit</button></span>";
                                 break;
-                            case 12:
+                            case 10:
                                 cellData[j].innerHTML = "<span class=\"table-remove\"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\" onclick=\"deletePlace("+data[i].placeId.placeid+",\'"+data[i].placeId.placeLanguages+"\')\">Delete</button></span>";
                                 break;
                         } 
@@ -377,6 +395,37 @@ function changeViewPlace() {
     });
 }
 
+function chooseLang() {
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    langName = listLang.options[listLang.selectedIndex].text;
+    const url = 'https://ruarduan-backend.com/placetypes';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.placeTypeId.placetypeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.placeTypeId.placetypeLanguages + "</option>"); 
+            }
+        usedNames.push(entry.placeTypeId.placetypeLanguages);
+      })
+    });
+}
+
+function choosePlaceLang() {
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    langName = listLang.options[listLang.selectedIndex].text;
+    const url = 'https://ruarduan-backend.com/places';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.placeId.placeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.placeId.placeLanguages + "</option>"); 
+            }
+        usedNames.push(entry.placeId.placeLanguages);
+      })
+    });
+}
 
 function addPlaceType(){
 
@@ -388,7 +437,159 @@ function addPlaceType(){
                 '<h2>PlaceType Table</h2>'+
                 '<div class="form-row">'+
                     '<span>PlaceType Id</span><span style="color: red;"> *</span>'+
-                    '<input id="valId" type="number" class="input-text" required>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Languages</span><span style="color: red;"> *</span>'+
+                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="chooseLang()">'+
+                            '<option selected value="base">==Choose Language==</option>'+
+                    '</select>'+
+                '</div>'+
+                '<div class="form-row">'+
+                    '<span>Name</span><span style="color: red;"> *</span>'+
+                    '<input id="valName" type="text" class="input-text" required>'+
+                '</div>'+
+                '<div class="form-row-last">'+
+                    '<input type="button" id="addDBPlaceType" class="btn btn-sm" value="Done"/>'+
+                '</div>'+
+            '</form>'+
+        '</div>'+
+    '</div>';
+
+    document.getElementById("showPopupForm").innerHTML = divPlaceType;
+    document.getElementById("valId").value = newLastId;
+    document.getElementById("valLan").value = langName;
+
+    var modal = document.getElementById("showPopupForm"); 
+    modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/placetypes",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#valName").easyAutocomplete(options);
+
+    var spanclose = document.getElementsByClassName("closeform")[0];
+    spanclose.onclick = function() {
+        modal.style.display = "none";
+    }
+    var btnclose = document.getElementById("addDBPlaceType");
+    btnclose.onclick = function() {
+        var objectPlaceType = {
+            placeTypeId: {
+                placetype_id: document.getElementById("valId").value,
+                placetypeLanguages: langName
+            },
+            name:   document.getElementById("valName").value
+        }
+        swal({
+            title: 'Add Place Type Data?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#32CD32',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sure, add it!'
+        }).then(function() {
+            if(objectPlaceType.placeTypeId.placetype_id != "" && objectPlaceType.placeTypeId.placetypeLanguages != "" &&
+                objectPlaceType.name != ""){
+                    $.ajax({
+                        type: "GET",
+                        url: "https://ruarduan-backend.com/placetype/"+objectPlaceType.placeTypeId.placetypeLanguages+"/"+objectPlaceType.placeTypeId.placetype_id,
+                        dataType: 'json',
+                        success : function(data) {
+                            if(data == null){
+                                $.ajax({
+                                    type : "POST",
+                                    contentType : "application/json",
+                                    url : "https://ruarduan-backend.com/placetype",
+                                    data : JSON.stringify(objectPlaceType),
+                                    dataType : 'json',
+                                    success : function() {
+                                        swal(
+                                            'Successful',
+                                            'Your data has been add.',
+                                            'success');
+
+                                        modal.style.display = "none";
+                                        setNumNoti(document.getElementById("valId").value,langName,"PlaceType","Add");
+                                        changeViewPlaceType();
+                                    },
+                                    error : function(e) {
+                                        swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                        console.log("ERROR: ", e);
+                                    }
+                                });
+                            }
+                            else{
+                                swal(
+                                        'Error!!',
+                                        'You Add Duplicate Data.',
+                                        'error');
+                                    }
+                            
+                        },
+                        error : function(e) {
+                            console.log("ERROR: ", e);
+                            $.ajax({
+                                type : "POST",
+                                contentType : "application/json",
+                                url : "https://ruarduan-backend.com/placetype",
+                                data : JSON.stringify(objectPlaceType),
+                                dataType : 'json',
+                                success : function() {
+                                    swal(
+                                        'Successful',
+                                        'Your data has been add.',
+                                        'success');
+
+                                    modal.style.display = "none";
+                                    setNumNoti(document.getElementById("valId").value,langName,"PlaceType","Add");
+                                    changeViewPlaceType();
+                                },
+                                error : function(e) {
+                                    swal(
+                                        'Error!!',
+                                        'Something went wrong.',
+                                        'error');
+                                    console.log("ERROR: ", e);
+                                }
+                            });
+                        }
+                    });    
+            } else {
+                swal(
+                    'Failure',
+                    'Please fill in the textfield.',
+                    'error'
+                );
+            }
+            // alertNoClose.show('Successful');
+        });
+    }
+    
+}
+
+function addPlaceTypeNewLang(id,lan){
+
+    var divPlaceType =
+    '<div id="page-contentid" class="page-content">'+
+        '<div class="form-v5-content">'+
+            '<span class="closeform">&times;</span>'+
+            '<form id="formPlaceType" class="form-detail">'+
+                '<h2>PlaceType Table</h2>'+
+                '<div class="form-row">'+
+                    '<span>PlaceType Id</span><span style="color: red;"> *</span>'+
+                    '<input id="valId" type="number" class="input-text" required disabled>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
@@ -399,7 +600,7 @@ function addPlaceType(){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBPlaceType" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBPlaceType" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -409,11 +610,37 @@ function addPlaceType(){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/placetypes",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#valName").easyAutocomplete(options);
+
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBPlaceType");
+     $.ajax({
+        type: "GET",
+        url: "https://ruarduan-backend.com/placetype/"+lan+"/"+id.toString(),
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("valId").value = data.placeTypeId.placetype_id.toString();
+            
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
     btnclose.onclick = function() {
         var objectPlaceType = {
             placeTypeId: {
@@ -532,7 +759,7 @@ function editPlaceType(id,lan){
                     '<input id="valName" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="editDBPlaceType" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="editDBPlaceType" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -542,6 +769,20 @@ function editPlaceType(id,lan){
 
     var modal = document.getElementById("showPopupForm"); 
     modal.style.display = "block";
+
+    var options = {
+        url: "https://ruarduan-backend.com/placetypes",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#valName").easyAutocomplete(options);
+    
     var spanclose = document.getElementsByClassName("closeform")[0];
     spanclose.onclick = function() {
         modal.style.display = "none";
@@ -716,7 +957,7 @@ function addPlace(){
                     '<input id="valType" type="number" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="addDBPlace" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="addDBPlace" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
@@ -904,7 +1145,7 @@ function editPlace(id,lan){
                 //     '<input id="valType" type="number" class="input-text" required>'+
                 // '</div>'+
                 '<div class="form-row-last">'+
-                    '<input type="button" id="editDBPlace" class="btn btn-sm" value="Go"/>'+
+                    '<input type="button" id="editDBPlace" class="btn btn-sm" value="Done"/>'+
                 '</div>'+
             '</form>'+
         '</div>'+
