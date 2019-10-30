@@ -191,7 +191,7 @@ function addPier(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
-                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="chooseLang()">'+
+                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality">'+
                             '<option selected value="base">==Choose Language==</option>'+
                           '</select>'+
                     // '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
@@ -208,13 +208,17 @@ function addPier(){
                     '<span>Pic Path</span>'+
                     '<input id="valPic" type="text" class="input-text">'+
                 '</div>'+
+                // '<div class="form-row">'+
+                //     '<span>Latitude</span><span style="color: red;"> *</span>'+
+                //     '<input id="valLat" type="text" class="input-text" required>'+
+                // '</div>'+
+                // '<div class="form-row">'+
+                //     '<span>Longitude</span><span style="color: red;"> *</span>'+
+                //     '<input id="valLong" type="text" class="input-text" required>'+
+                // '</div>'+
                 '<div class="form-row">'+
-                    '<span>Latitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLat" type="text" class="input-text" required>'+
-                '</div>'+
-                '<div class="form-row">'+
-                    '<span>Longitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLong" type="text" class="input-text" required>'+
+                    '<span>Latitude & Longitude</span><span style="color: red;"> *</span>'+
+                    '<div id="googleMap" style="width:100%;height:400px;margin-bottom: 26px;"></div>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Busline</span>'+
@@ -304,7 +308,40 @@ function addPier(){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBPier");
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    const url = 'https://ruarduan-backend.com/piers';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.pierId.pierLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.pierId.pierLanguages + "</option>"); 
+            }
+        usedNames.push(entry.pierId.pierLanguages);
+      })
+    });
+
+    var mapProp= {
+        center:new google.maps.LatLng(13.729295, 100.501006),
+        zoom:12.95,
+    };
+    var maps = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var marker = new google.maps.Marker();
+
+    google.maps.event.addListener(maps, 'click', function(e){
+
+        if(marker.getPosition() != null){
+            marker.setMap(null);
+        }
+        marker = new google.maps.Marker({
+            position: e.latLng,
+            map: maps
+        });
+        // console.log(marker.getPosition().lat().toFixed(4));
+        //  console.log(marker.getPosition().lng().toFixed(4));
+    });
     btnclose.onclick = function() {
+        langName = listLang.options[listLang.selectedIndex].text;
         var objectPier = {
             pierId: {
                 pier_id: document.getElementById("valId").value,
@@ -313,8 +350,10 @@ function addPier(){
             pier_code: document.getElementById("valCode").value,
             name: document.getElementById("valName").value,
             pic_path: document.getElementById("valPic").value,
-            pos_latitude: parseFloat(document.getElementById("valLat").value),
-            pos_longtitude: parseFloat(document.getElementById("valLong").value),
+            // pos_latitude: parseFloat(document.getElementById("valLat").value),
+            // pos_longtitude: parseFloat(document.getElementById("valLong").value),
+            pos_latitude: parseFloat(marker.getPosition().lat().toFixed(4)),
+            pos_longtitude: parseFloat(marker.getPosition().lng().toFixed(4)),
             busline: document.getElementById("valBus").value,
             shuttleboat: document.getElementById("valShuttle").value,
             ferryboat: document.getElementById("valFerry").value
@@ -438,13 +477,17 @@ function addPierNewLang(id,lan){
                     '<span>Pic Path</span>'+
                     '<input id="valPic" type="text" class="input-text">'+
                 '</div>'+
+                // '<div class="form-row">'+
+                //     '<span>Latitude</span><span style="color: red;"> *</span>'+
+                //     '<input id="valLat" type="text" class="input-text" required disabled>'+
+                // '</div>'+
+                // '<div class="form-row">'+
+                //     '<span>Longitude</span><span style="color: red;"> *</span>'+
+                //     '<input id="valLong" type="text" class="input-text" required disabled>'+
+                // '</div>'+
                 '<div class="form-row">'+
-                    '<span>Latitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLat" type="text" class="input-text" required disabled>'+
-                '</div>'+
-                '<div class="form-row">'+
-                    '<span>Longitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLong" type="text" class="input-text" required disabled>'+
+                    '<span>Latitude & Longitude</span><span style="color: red;"> *</span>'+
+                    '<div id="googleMap" style="width:100%;height:400px;margin-bottom: 26px;"></div>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Busline</span>'+
@@ -537,14 +580,33 @@ function addPierNewLang(id,lan){
         dataType: 'json',
         success: function (data) {
             document.getElementById("valId").value = data.pierId.pier_id.toString();
-            document.getElementById("valLat").value = data.pos_latitude.toString();
-            document.getElementById("valLong").value = data.pos_longtitude.toString();
+            // document.getElementById("valLat").value = data.pos_latitude.toString();
+            // document.getElementById("valLong").value = data.pos_longtitude.toString();
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng( data.pos_latitude, data.pos_longtitude),
+                map: maps,
+                title: ''+data.name,
+                draggable: false
+            });
+            markerLat = data.pos_latitude;
+            markerLong = data.pos_longtitude;
             
         },
         error: function (e) {
             console.log("Error:"+e);
         }
     });
+
+    var mapProp= {
+        center:new google.maps.LatLng(13.729295, 100.501006),
+        zoom:12.95,
+    };
+    var maps = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+    var marker;
+    var markerLat;
+    var markerLong;
+
     btnclose.onclick = function() {
         var objectPier = {
             pierId: {
@@ -554,8 +616,10 @@ function addPierNewLang(id,lan){
             pier_code: document.getElementById("valCode").value,
             name: document.getElementById("valName").value,
             pic_path: document.getElementById("valPic").value,
-            pos_latitude: parseFloat(document.getElementById("valLat").value),
-            pos_longtitude: parseFloat(document.getElementById("valLong").value),
+            // pos_latitude: parseFloat(document.getElementById("valLat").value),
+            // pos_longtitude: parseFloat(document.getElementById("valLong").value),
+            pos_latitude: parseFloat(markerLat),
+            pos_longtitude: parseFloat(markerLong),
             busline: document.getElementById("valBus").value,
             shuttleboat: document.getElementById("valShuttle").value,
             ferryboat: document.getElementById("valFerry").value
@@ -677,13 +741,17 @@ function editPier(id,lan){
                     '<span>Pic Path</span>'+
                     '<input id="valPic" type="text" class="input-text">'+
                 '</div>'+
+                // '<div class="form-row">'+
+                //     '<span>Latitude</span><span style="color: red;"> *</span>'+
+                //     '<input id="valLat" type="text" class="input-text" required disabled>'+
+                // '</div>'+
+                // '<div class="form-row">'+
+                //     '<span>Longitude</span><span style="color: red;"> *</span>'+
+                //     '<input id="valLong" type="text" class="input-text" required disabled>'+
+                // '</div>'+
                 '<div class="form-row">'+
-                    '<span>Latitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLat" type="text" class="input-text" required disabled>'+
-                '</div>'+
-                '<div class="form-row">'+
-                    '<span>Longitude</span><span style="color: red;"> *</span>'+
-                    '<input id="valLong" type="text" class="input-text" required disabled>'+
+                    '<span>Latitude & Longitude</span><span style="color: red;"> *</span>'+
+                    '<div id="googleMap" style="width:100%;height:400px;margin-bottom: 26px;"></div>'+
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Busline</span>'+
@@ -771,7 +839,15 @@ function editPier(id,lan){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("editDBPier");
+    var mapProp= {
+        center:new google.maps.LatLng(13.729295, 100.501006),
+        zoom:12.95,
+    };
+    var maps = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
+    var marker;
+    var markerLat;
+    var markerLong;
     $.ajax({
         type: "GET",
         url: "https://ruarduan-backend.com/piers/"+lan+"/"+id.toString(),
@@ -782,11 +858,19 @@ function editPier(id,lan){
             document.getElementById("valCode").value = data.pier_code;
             document.getElementById("valName").value = data.name;
             document.getElementById("valPic").value = data.pic_path;
-            document.getElementById("valLat").value = data.pos_latitude;
-            document.getElementById("valLong").value = data.pos_longtitude;
+            // document.getElementById("valLat").value = data.pos_latitude;
+            // document.getElementById("valLong").value = data.pos_longtitude;
             document.getElementById("valBus").value = data.busline;
             document.getElementById("valShuttle").value = data.shuttleboat;
             document.getElementById("valFerry").value = data.ferryboat;
+             marker = new google.maps.Marker({
+                position: new google.maps.LatLng( data.pos_latitude, data.pos_longtitude),
+                map: maps,
+                title: ''+data.name,
+                draggable: false
+            });
+            markerLat = data.pos_latitude;
+            markerLong = data.pos_longtitude;
             
         },
         error: function (e) {
@@ -810,8 +894,10 @@ function editPier(id,lan){
             pier_code: document.getElementById("valCode").value,
             name: document.getElementById("valName").value,
             pic_path: document.getElementById("valPic").value,
-            pos_latitude: parseFloat(document.getElementById("valLat").value),
-            pos_longtitude: parseFloat(document.getElementById("valLong").value),
+            // pos_latitude: parseFloat(document.getElementById("valLat").value),
+            // pos_longtitude: parseFloat(document.getElementById("valLong").value),
+            pos_latitude: parseFloat(markerLat),
+            pos_longtitude: parseFloat(markerLong),
             busline: document.getElementById("valBus").value,
             shuttleboat: document.getElementById("valShuttle").value,
             ferryboat: document.getElementById("valFerry").value
