@@ -23,22 +23,6 @@ var lastId;
 var newLastId;
 var langName;
 
-function chooseLang() {
-    let dropdown = $('#valLan');
-    var usedNames = [];
-    var listLang = document.getElementById("valLan");
-    langName = listLang.options[listLang.selectedIndex].text;
-    const url = 'https://ruarduan-backend.com/piers';
-    $.getJSON(url, function (data) {
-      $.each(data, function (key, entry) {
-        if (usedNames.indexOf(entry.pierId.pierLanguages) == -1) {
-                $("#valLan").append("<option value=" + key + ">" + entry.pierId.pierLanguages + "</option>"); 
-            }
-        usedNames.push(entry.pierId.pierLanguages);
-      })
-    });
-}
-
 function changeViewPier() {
        $.ajax({
         type: "GET",
