@@ -65,19 +65,6 @@ function chooseLangTH() {
     console.log("langT:"+chooseLang)
 }
 
-function choosePierName() {
-
-    let dropdown = $('#piername-dropdown');
-    var listPierName = document.getElementById("piername-dropdown");
-    pierId = listPierName.options[listPierName.selectedIndex].value;
-    pierName = listPierName.options[listPierName.selectedIndex].text;
-    const url = 'https://ruarduan-backend.com/piers/'+chooseLang;
-    $.getJSON(url, function (data) {
-      $.each(data, function (key, entry) {
-        dropdown.append($('<option></option>').attr('value', entry.pierId.pier_id).text(entry.name));
-      })
-    });
-}
 
 function chooseBoattypeName() {
 
@@ -227,7 +214,7 @@ function addPierBoattype(){
                   '</div>'+
                   '<div class="form-row">'+
                       '<span>Pier Name</span><span style="color: red;"> *</span>'+
-                      '<select id="piername-dropdown" class="btn-xxl text-center input-text" name="locality" onclick="choosePierName()">'+
+                      '<select id="piername-dropdown" class="btn-xxl text-center input-text" name="locality" >'+
                               '<option selected value="base">==Choose Pier Name==</option>'+
                             '</select>'+
                       // '<input id="piername-dropdown" type="text" class="input-text" required >'+
@@ -254,7 +241,17 @@ function addPierBoattype(){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBBoatPier");
+     let dropdown = $('#piername-dropdown');
+    var listPierName = document.getElementById("piername-dropdown");
+    const url = 'https://ruarduan-backend.com/piers/'+chooseLang;
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        dropdown.append($('<option></option>').attr('value', entry.pierId.pier_id).text(entry.name));
+      })
+    });
     btnclose.onclick = function() {
+        pierId = listPierName.options[listPierName.selectedIndex].value;
+        pierName = listPierName.options[listPierName.selectedIndex].text;
         var objectPierBoattype = {
             id: document.getElementById("valId").value,
         }

@@ -78,20 +78,6 @@ function choosePierName() {
     });
 }
 
-function choosePlaceName() {
-
-    let dropdown = $('#placename-dropdown');
-    var listPlaceName = document.getElementById("placename-dropdown");
-    placeId = listPlaceName.options[listPlaceName.selectedIndex].value;
-
-    const url = 'https://ruarduan-backend.com/places/'+chooseLang;
-    $.getJSON(url, function (data) {
-      $.each(data, function (key, entry) {
-        dropdown.append($('<option></option>').attr('value', entry.placeId.placeid).text(entry.name));
-      })
-    });
-console.log("placeId:"+placeId)
-}
 
 function LastId() {
   const url = "https://ruarduan-backend.com/nearbies";
@@ -105,24 +91,6 @@ function LastId() {
     });
     
 console.log("last2: "+lastId+"new2: "+newLastId);
-
-//    $.ajax({
-//         type: "GET",
-//         url: "https://ruarduan-backend.com/nearbies",
-//         dataType: 'json',
-//     success: function (data) {
-//              lastId = data[data.length - 1].nearbyId;
-//              newLastId = data[data.length - 1].nearbyId+1;
-//             alert("last: "+lastId+"new: "+newLastId);
-//         },
-//         error: function (e) {
-//             console.log("Error:"+e);
-//         }
-//     });
-// console.log("last2: "+lastId+"new2: "+newLastId);
-    // var url = "https://ruarduan-backend.com/nearbies",
-    // lastId = url[url.length - 1];
-    // alert(lastId.nearbyId);
     
 }
 
@@ -268,7 +236,7 @@ function addPierNearby(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Place Name</span><span style="color: red;"> *</span>'+
-                    '<select id="placename-dropdown" class="btn-xxl text-center input-text" name="locality" onclick="choosePlaceName()">'+
+                    '<select id="placename-dropdown" class="btn-xxl text-center input-text" name="locality">'+
                             '<option selected value="base">==Choose Place Name==</option>'+
                           '</select>'+
                     // '<input id="valName" type="text" class="input-text" required>'+
@@ -299,7 +267,16 @@ function addPierNearby(){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBPierNearby");
+    let dropdown = $('#placename-dropdown');
+    var listPlaceName = document.getElementById("placename-dropdown");
+    const url = 'https://ruarduan-backend.com/places/'+chooseLang;
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        dropdown.append($('<option></option>').attr('value', entry.placeId.placeid).text(entry.name));
+      })
+    });
     btnclose.onclick = function() {
+        placeId = listPlaceName.options[listPlaceName.selectedIndex].value;
         var objectPierNearby = { 
             nearbyId: parseInt(document.getElementById("valId").value),
             distance:parseFloat(document.getElementById("valDistance").value)

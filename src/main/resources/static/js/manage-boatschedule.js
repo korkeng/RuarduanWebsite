@@ -70,19 +70,6 @@ function chooseLangTH() {
     console.log("langT:"+chooseLang)
 }
 
-function chooseRouteName() {
-
-    let dropdown = $('#routename-dropdown');
-    var listRouteName = document.getElementById("routename-dropdown");
-    routeId = listRouteName.options[listRouteName.selectedIndex].value;
-    routeName = listRouteName.options[listRouteName.selectedIndex].text;
-    const url = 'https://ruarduan-backend.com/routes/'+chooseLang;
-    $.getJSON(url, function (data) {
-      $.each(data, function (key, entry) {
-        dropdown.append($('<option></option>').attr('value', entry.routeId.route_id).text(entry.routeName));
-      })
-    });
-}
 
 function chooseBoattypeName() {
 
@@ -254,7 +241,7 @@ function addBoatSchedule(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Route Name</span><span style="color: red;"> *</span>'+
-                    '<select id="routename-dropdown" class="btn-xxl text-center input-text" name="locality" onclick="chooseRouteName()">'+
+                    '<select id="routename-dropdown" class="btn-xxl text-center input-text" name="locality" >'+
                             '<option selected value="base">==Choose Route Name==</option>'+
                           '</select>'+
                     // '<input id="valName" type="text" class="input-text" required>'+
@@ -322,7 +309,17 @@ function addBoatSchedule(){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBBoatSchedule");
+    let dropdown = $('#routename-dropdown');
+    var listRouteName = document.getElementById("routename-dropdown");
+    const url = 'https://ruarduan-backend.com/routes/'+chooseLang;
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        dropdown.append($('<option></option>').attr('value', entry.routeId.route_id).text(entry.routeName));
+      })
+    });
     btnclose.onclick = function() {
+        routeId = listRouteName.options[listRouteName.selectedIndex].value;
+        routeName = listRouteName.options[listRouteName.selectedIndex].text;
         var objectBoatSchedule = { 
             scheduleId: {
                 schedule_id: document.getElementById("valId").value,
