@@ -369,37 +369,6 @@ console.log("Route ID "+lastId+"/"+newLastId);
     });
 }
 
-function chooseLang() {
-    let dropdown = $('#valLan');
-    var usedNames = [];
-    var listLang = document.getElementById("valLan");
-    langName = listLang.options[listLang.selectedIndex].text;
-    const url = 'https://ruarduan-backend.com/boattypes';
-    $.getJSON(url, function (data) {
-      $.each(data, function (key, entry) {
-        if (usedNames.indexOf(entry.boattypeId.boattypeLanguages) == -1) {
-                $("#valLan").append("<option value=" + key + ">" + entry.boattypeId.boattypeLanguages + "</option>"); 
-            }
-        usedNames.push(entry.boattypeId.boattypeLanguages);
-      })
-    });
-}
-
-function chooseRouteLang() {
-    let dropdown = $('#valLan');
-    var usedNames = [];
-    var listLang = document.getElementById("valLan");
-    langName = listLang.options[listLang.selectedIndex].text;
-    const url = 'https://ruarduan-backend.com/routes';
-    $.getJSON(url, function (data) {
-      $.each(data, function (key, entry) {
-        if (usedNames.indexOf(entry.routeId.routeLanguages) == -1) {
-                $("#valLan").append("<option value=" + key + ">" + entry.routeId.routeLanguages + "</option>"); 
-            }
-        usedNames.push(entry.routeId.routeLanguages);
-      })
-    });
-}
 
 function addBoatType(){
 
@@ -415,7 +384,7 @@ function addBoatType(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
-                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="chooseLang()">'+
+                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality">'+
                             '<option selected value="base">==Choose Language==</option>'+
                           '</select>'+
                     // '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
@@ -456,7 +425,20 @@ function addBoatType(){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBBoatType");
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    const url = 'https://ruarduan-backend.com/boattypes';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.boattypeId.boattypeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.boattypeId.boattypeLanguages + "</option>"); 
+            }
+        usedNames.push(entry.boattypeId.boattypeLanguages);
+      })
+    });
     btnclose.onclick = function() {
+        langName = listLang.options[listLang.selectedIndex].text;
         var objectBoatType = {
             boattypeId: {
                 boattype_id: document.getElementById("valId").value,
@@ -735,7 +717,7 @@ function addRoute(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
-                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="chooseRouteLang()">'+
+                    '<select id="valLan" class="btn-xxl text-center input-text" name="locality">'+
                             '<option selected value="base">==Choose Language==</option>'+
                     '</select>'+
                     // '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
@@ -776,7 +758,20 @@ function addRoute(){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBRoute");
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    const url = 'https://ruarduan-backend.com/routes';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.routeId.routeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.routeId.routeLanguages + "</option>"); 
+            }
+        usedNames.push(entry.routeId.routeLanguages);
+      })
+    });
     btnclose.onclick = function() {
+        langName = listLang.options[listLang.selectedIndex].text;
         var objectRoute = {
             routeId: {
                 route_id: document.getElementById("valId").value,
