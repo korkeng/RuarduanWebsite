@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/main}">
-    <body>
+    <head>
+		<script src="https://code.highcharts.com/stock/highstock.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+	</head>
+	<body>
         <div layout:fragment="content">
             <section id="main-content">
                 <section class="wrapper">
@@ -49,7 +55,6 @@
                                 <div class="agileinfo-grap">
                                     <div class="agileits-box">
                                         <header class="agileits-box-header clearfix">
-                                            <h3>Visitor Statistics</h3>
                                             <div class="toolbar"></div>
                                         </header>
                                         <div class="agileits-box-body clearfix">
@@ -57,14 +62,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
-                                <script src="https://code.highcharts.com/modules/data.js"></script>
-                                <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
-                                <script src="https://code.highcharts.com/stock/highstock.js"></script>
-								<script src="https://code.highcharts.com/stock/modules/data.js"></script>
-								<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-                                <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
-								
                                 <div id="container" style="height: 400px; min-width: 600px; max-width: 800px; margin: 0 auto"></div>
                                 <script>
                                     $(document).ready(function() {
@@ -84,36 +81,69 @@
                                                 chart.series[0].setData(chartData);
                                             });
                                         }
+										
                                         var chart = Highcharts.stockChart('container', {
 
                                             chart: {
                                                 type: 'areaspline'
                                             },
 											
+											plotOptions:{
+												areaspline: {
+													dataGrouping: {
+														units: [
+															['day', [1]],
+															['week', [1]],
+														],
+														groupPixelWidth: 100
+													}
+												}
+											},
+										
+											series: [{
+												type: 'areaspline',
+                                                name: 'Prices',
+                                                data: getData(),
+                                                lineWidth: 5,
+                                                marker: {
+                                                    enabled: true,
+                                                    radius: 7
+                                                },
+												dataGrouping: {
+													units: [
+														['week', [1]]
+													],
+													groupPixelWidth: 100
+												},
+												fillColor: {
+													linearGradient: {
+														x1: 0,
+														y1: 0,
+														x2: 0,
+														y2: 1
+													},
+													stops: [
+														[0, Highcharts.getOptions().colors[0]],
+														[1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+													]
+												}
+                                            }],
+											
                                             rangeSelector: {
 												allButtonsEnabled: true,
 												buttons: [{
-													type: 'month',
-													count: 3,
+													type: 'day',
+													count: 1,
 													text: 'Day',
 													dataGrouping: {
-														forced: true,
-														units: [['day', [1]]]
+														units: 	['day', [1]]
 													}
 												}, {
-													type: 'year',
+													type: 'week',
 													count: 1,
 													text: 'Week',
 													dataGrouping: {
-														forced: true,
-														units: [['week', [1]]]
-													}
-												}, {
-													type: 'all',
-													text: 'Month',
-													dataGrouping: {
-														forced: true,
-														units: [['month', [1]]]
+														units: ['week', [1]]
 													}
 												}],
 												buttonTheme: {
@@ -130,159 +160,12 @@
 												text: 'Current in Baht'
 											},
 											
-											_navigator: {
-												enabled: false
-											},
-											
-                                            series: [{
-												name: 'AAPL',
-												data: data,
-												marker: {
-													enabled: null, // auto
-													radius: 3,
-													lineWidth: 1,
-													lineColor: '#FFFFFF'
-												},
-												tooltip: {
-													valueDecimals: 2
-												}
-											}]
                                         });
-                                        //getData();
+                                        
                                     });
                                 </script>
                             </div>
                         </div>
-                    </div>
-                    <div class="agil-info-calendar">
-                        <div class="col-md-6 w3agile-notifications">
-                            <div class="notifications">
-                                <header class="panel-heading">Data Management</header>
-                                    <div class="notify-w3ls">
-                                        <div class="alert alert-info clearfix">
-                                            <a href="/boats" class="btn btn-info btn-lg btn-block active" role="button" aria-pressed="true">
-                                                <span class="alert-icon"><i class="fa fa-ship"></i></span>
-                                                Boats
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-warning">
-                                            <a href="/piers" class="btn btn-warning btn-lg btn-block active" role="button" aria-pressed="true">
-                                                <span class="alert-icon"><i class="fa fa-flag"></i></span>
-                                                Piers
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-success ">
-                                            <a href="/places" class="btn btn-success btn-lg btn-block active" role="button" aria-pressed="true">
-                                                <span class="alert-icon"><i class="fa fa-map-marker"></i></span>
-                                                Places
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-danger ">
-                                            <a href="/accounts" class="btn btn-danger btn-lg btn-block active" role="button" aria-pressed="true">
-                                                <span class="alert-icon"><i class="fa fa-users"></i></span>
-                                                Accounts
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-info ">
-                                            <a href="/placetype_place" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">
-                                                PlaceType - Place
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-info ">
-                                            <a href="/boat_schedule" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">
-                                                BoatType-Route-Schedule
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-info ">
-                                            <a href="/boat_pier" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">
-                                                BoatType - Pier
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-info ">
-                                            <a href="/route_pier" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">
-                                                Route - Pier
-                                            </a>
-                                        </div>
-                                        <div class="alert alert-info ">
-                                            <a href="/pier_nearby" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">
-                                                Pier-Place-Nearby
-                                            </a>
-                                        </div>
-                                     </div>  
-                            </div>
-                        </div>
-                        <div class="col-md-6 w3agile-notifications">
-                            <div class="notifications">
-                                <header class="panel-heading">Notification </header>
-                                    <div class="notify-w3ls">
-                                        <div class="alert alert-info clearfix">
-                                            <span class="alert-icon"><i class="fa fa-envelope-o"></i></span>
-                                            <div class="notification-info">
-                                                <ul class="clearfix notification-meta">
-                                                    <li class="pull-left notification-sender"><span><a href="#">Jonathan Smith</a></span> send you a mail </li>
-                                                    <li class="pull-right notification-time">1 min ago</li>
-                                                </ul>
-                                                <p>Urgent meeting for next proposal</p>
-                                            </div>
-                                        </div>
-                                        <div class="alert alert-danger">
-                                            <span class="alert-icon"><i class="fa fa-facebook"></i></span>
-                                            <div class="notification-info">
-                                                <ul class="clearfix notification-meta">
-                                                    <li class="pull-left notification-sender"><span><a href="#">Jonathan Smith</a></span> mentioned you in a post </li>
-                                                    <li class="pull-right notification-time">7 Hours Ago</li>
-                                                </ul>
-                                                <p>Very cool photo jack</p>
-                                            </div>
-                                        </div>
-                                        <div class="alert alert-success ">
-                                            <span class="alert-icon"><i class="fa fa-comments-o"></i></span>
-                                            <div class="notification-info">
-                                                <ul class="clearfix notification-meta">
-                                                    <li class="pull-left notification-sender">You have 5 message unread</li>
-                                                    <li class="pull-right notification-time">1 min ago</li>
-                                                </ul>
-                                                <p>
-                                                    <a href="#">Anjelina Mewlo, Jack Flip</a> and <a href="#">3 others</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="alert alert-warning ">
-                                            <span class="alert-icon"><i class="fa fa-bell-o"></i></span>
-                                            <div class="notification-info">
-                                                <ul class="clearfix notification-meta">
-                                                    <li class="pull-left notification-sender">Domain Renew Deadline 7 days ahead</li>
-                                                    <li class="pull-right notification-time">5 Days Ago</li>
-                                                </ul>
-                                                <p>
-                                                    Next 5 July Thursday is the last day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="alert alert-info clearfix">
-                                            <span class="alert-icon"><i class="fa fa-envelope-o"></i></span>
-                                            <div class="notification-info">
-                                                <ul class="clearfix notification-meta">
-                                                    <li class="pull-left notification-sender"><span><a href="#">Jonathan Smith</a></span> send you a mail </li>
-                                                    <li class="pull-right notification-time">1 min ago</li>
-                                                </ul>
-                                                <p>
-                                                    Urgent meeting for next proposal
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>  
-                    <!-- <div>
-                        Test 
-                        <div id="test"></div>
-                        <script src="js/ShowData.js"></script>
-                    </div> -->
-                    <div>
-                        Test 
                     </div>
                 </section>
             </section>
