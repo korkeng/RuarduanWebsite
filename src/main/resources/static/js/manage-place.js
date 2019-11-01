@@ -971,7 +971,7 @@ function addPlace(){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages</span><span style="color: red;"> *</span>'+
-                        '<select id="valLan" class="btn-xxl text-center input-text" name="locality" onclick="choosePlaceLang()">'+
+                        '<select id="valLan" class="btn-xxl text-center input-text" name="locality" >'+
                             '<option selected value="base">==Choose Language==</option>'+
                     '</select>'+
                     // '<input id="valLan" type="text" class="input-text" placeholder="Ex. TH, ENG" required>'+
@@ -1025,10 +1025,13 @@ function addPlace(){
                     '<input id="valTrans" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row">'+
-                    '<span>PlaceType Id</span><span style="color: red;"> *</span>'+
-                        '<select id="valType" class="btn-xxl text-center input-text" name="locality" onclick="choosePlaceTypeName()">'+
+                    '<span>Choose PlaceType</span><span style="color: red;"> *</span>'+
+                    '<div id="selectPlaceType">'+
+                        '<select id="valType" class="btn-xxl text-center input-text" name="locality" >'+
                             '<option selected value="base">==Choose Placetype Name==</option>'+
-                    '</select>'+
+
+                        '</select>'+
+                    '</div>'+
                     // '<input id="valType" type="number" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
@@ -1065,6 +1068,35 @@ function addPlace(){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBPlace");
+    let dropdown = $('#valLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valLan");
+    const url = 'https://ruarduan-backend.com/places';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.placeId.placeLanguages) == -1) {
+                $("#valLan").append("<option value=" + key + ">" + entry.placeId.placeLanguages + "</option>"); 
+            }
+        usedNames.push(entry.placeId.placeLanguages);
+      })
+    });
+
+    document.getElementById("valLan").onchange = function(){
+        $('#valType').remove();
+        document.getElementById("selectPlaceType").innerHTML =                         
+            '<select id="valType" class="btn-xxl text-center input-text" name="locality" >'+
+                '<option selected value="base">==Choose Placetype Name==</option>'+
+            '</select>';
+        let dropdown2 = $('#valType');
+        var listPlaceTypeName = document.getElementById("valType");
+        const url2 = 'https://ruarduan-backend.com/placetypes/'+listLang.options[listLang.selectedIndex].text;
+        $.getJSON(url2, function (data) {
+          $.each(data, function (key, entry) {
+            dropdown2.append($('<option></option>').attr('value', entry.placeTypeId.placetype_id).text(entry.name));
+          })
+        });
+    }
+
     var mapProp= {
         center:new google.maps.LatLng(13.729295, 100.501006),
         zoom:12.95,
@@ -1085,6 +1117,8 @@ function addPlace(){
         //  console.log(marker.getPosition().lng().toFixed(4));
     });
     btnclose.onclick = function() {
+        langName = listLang.options[listLang.selectedIndex].text;
+        // placetypeId = listPlaceTypeName.options[listPlaceTypeName.selectedIndex].value;
         var objectPlace = {
             placeId: {
                 placeid: document.getElementById("valId").value,
@@ -1209,7 +1243,7 @@ function addPlaceNewLang(id,lan){
                 '</div>'+
                 '<div class="form-row">'+
                     '<span>Languages(Depends on Placetype)</span><span style="color: red;"> *</span>'+
-                    '<select id="valPTLan" class="btn-xxl text-center input-text" name="locality" onclick="choosePTLang()">'+
+                    '<select id="valPTLan" class="btn-xxl text-center input-text" name="locality">'+
                             '<option selected value="base">==Choose Language==</option>'+
                     '</select>'+
                 '</div>'+
@@ -1262,10 +1296,13 @@ function addPlaceNewLang(id,lan){
                     '<input id="valTrans" type="text" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row">'+
-                    '<span>PlaceType Id</span><span style="color: red;"> *</span>'+
-                    '<select id="valType" class="btn-xxl text-center input-text" name="locality" onclick="choosePlaceTypeNameNL()">'+
+                    '<span>Choose PlaceType</span><span style="color: red;"> *</span>'+
+                    '<div id="selectPlaceType">'+
+                        '<select id="valType" class="btn-xxl text-center input-text" name="locality" >'+
                             '<option selected value="base">==Choose Placetype Name==</option>'+
-                    '</select>'+
+
+                        '</select>'+
+                    '</div>'+
                     // '<input id="valType" type="number" class="input-text" required>'+
                 '</div>'+
                 '<div class="form-row-last">'+
@@ -1303,7 +1340,36 @@ function addPlaceNewLang(id,lan){
         modal.style.display = "none";
     }
     var btnclose = document.getElementById("addDBPlace");
+    let dropdown = $('#valPTLan');
+    var usedNames = [];
+    var listLang = document.getElementById("valPTLan");
+    
+    const url = 'https://ruarduan-backend.com/placetypes';
+    $.getJSON(url, function (data) {
+      $.each(data, function (key, entry) {
+        if (usedNames.indexOf(entry.placeTypeId.placetypeLanguages) == -1) {
+                $("#valPTLan").append("<option value=" + key + ">" + entry.placeTypeId.placetypeLanguages + "</option>"); 
+            }
+        usedNames.push(entry.placeTypeId.placetypeLanguages);
+      })
+    });
+    
 
+    document.getElementById("valPTLan").onchange = function(){
+        $('#valType').remove();
+        document.getElementById("selectPlaceType").innerHTML =                         
+            '<select id="valType" class="btn-xxl text-center input-text" name="locality" >'+
+                '<option selected value="base">==Choose Placetype Name==</option>'+
+            '</select>';
+        let dropdown2 = $('#valType');
+        var listPlaceTypeName = document.getElementById("valType");
+        const url2 = 'https://ruarduan-backend.com/placetypes/'+listLang.options[listLang.selectedIndex].text;
+        $.getJSON(url2, function (data) {
+          $.each(data, function (key, entry) {
+            dropdown2.append($('<option></option>').attr('value', entry.placeTypeId.placetype_id).text(entry.name));
+          })
+        });
+    }
     $.ajax({
         type: "GET",
         url: "https://ruarduan-backend.com/places/"+lan+"/"+id.toString(),
@@ -1338,6 +1404,7 @@ function addPlaceNewLang(id,lan){
     var markerLong;
 
     btnclose.onclick = function() {
+        langPTName = listLang.options[listLang.selectedIndex].text;
         var objectPlace = {
             placeId: {
                 placeid: document.getElementById("valId").value,
@@ -1461,7 +1528,7 @@ function editPlace(id,lan){
         '<div class="form-v5-content">'+
             '<span class="closeform">&times;</span>'+
             '<form id="formPlace" class="form-detail">'+
-                '<h2>Place Table</h2>'+
+                '<h2>Edit Place</h2>'+
                 '<div class="form-row">'+
                     '<span>Place Id</span><span style="color: red;"> *</span>'+
                     '<input id="valId" type="number" class="input-text" disabled>'+
