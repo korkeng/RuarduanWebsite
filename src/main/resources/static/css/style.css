@@ -37,8 +37,7 @@ body a:hover{
   margin-right: auto;
 }
 .icon{
-    padding-bottom: 3%;
-    width: 25%;
+    width: 30%;
 }
 .bg{
 	background: url(../images/bg2.jpg) no-repeat;
@@ -481,6 +480,64 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     margin-bottom:0 !important;
     height:10px;
 }
+
+.validate-input {
+    position: relative;
+  }
+  
+  .alert-validate::before {
+    content: attr(data-validate);
+    position: absolute;
+    max-width: 70%;
+    background-color: white;
+    border: 1px solid #c80000;
+    border-radius: 3px;
+    padding: 4px 25px 4px 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 8px;
+    pointer-events: none;
+  
+    font-family: Raleway-SemiBold;
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+  
+    visibility: hidden;
+    opacity: 0;
+  
+    -webkit-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+  }
+  
+  .alert-validate::after {
+    content: "\f12a";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    color: #c80000;
+    font-size: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 13px;
+}
+  
+  .alert-validate:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
+
 .photo img {
     border-radius:2px 2px 2px 2px;
     -webkit-border-radius:2px 2px 2px 2px;
@@ -2694,9 +2751,40 @@ input.ggg{
     margin: 14px 0px;
     background: none;
 }
+.login-btn-style{
+    padding: 12px 38px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #30b1bf;
+    color: white;
+    border: none;
+    outline: none;
+    display: table;
+    cursor: pointer;
+    margin: 45px auto 31px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+}
+.regist-btn-style{
+    padding: 12px 38px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* background: #30b1bf; */
+    color: #30b1bf;
+    border: none;
+    outline: none;
+    display: table;
+    cursor: pointer;
+    /* text-align: center; */
+    margin: 2px auto 2px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+}
 .w3layouts-main span {
     font-size: 16px;
-    float: left;
+    /*float: left;*/
     width: 32%;
     margin-top: 8px;
 }
