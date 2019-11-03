@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/main}">
-    <head>
-		<script src="https://code.highcharts.com/stock/highstock.js"></script>
-		<script src="https://code.highcharts.com/stock/modules/data.js"></script>
-		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-		<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
-	</head>
 	<body>
         <div layout:fragment="content">
             <section id="main-content">
                 <section class="wrapper">
+                    <script src="js/manage-graph.js"></script>
                     <div class="market-updates">  
+                        <div class="col-md-4 market-update-gd">
+                            <div class="market-update-block clr-block-2">
+                                <div class="col-md-4 market-update-right">
+                                    <i class="fa fa-ticket" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-md-8 market-update-left">
+                                    <h4>Online Tickets</h4>
+                                    <h3 id="count-ticket"></h3>
+                                </div>
+                              <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 market-update-gd">
+                            <div class="market-update-block clr-block-1">
+                                <div class="col-md-4 market-update-right">
+                                    <i class="fa fa-usd"></i>
+                                </div>
+                                <div class="col-md-8 market-update-left">
+                                    <h4>Sales</h4>
+                                    <h3 id="total-price"></h3>
+                                </div>
+                              <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 market-update-gd">
+                            <div class="market-update-block clr-block-4">
+                                <div class="col-md-4 market-update-right">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-md-8 market-update-left">
+                                    <h4>Passengers</h4>
+                                    <h3 id="total-people"> </h3>
+                                </div>
+                              <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        
+                       <div class="clearfix"> </div>
+                    </div>
+                    <!-- <div class="market-updates">  
                         <div class="col-md-4 market-update-gd">
                             <div class="market-update-block clr-block-2">
                                 <div class="col-md-4 market-update-right">
@@ -47,8 +82,9 @@
                               <div class="clearfix"> </div>
                             </div>
                         </div>
+                        
                        <div class="clearfix"> </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="panel-body">
                             <div class="col-md-12 w3ls-graph">
@@ -63,107 +99,39 @@
                                     </div>
                                 </div>
                                 <div id="container" style="height: 400px; min-width: 600px; max-width: 800px; margin: 0 auto"></div>
-                                <script>
-                                    $(document).ready(function() {
-                                                                              
-                                        var chartData = [];
+                              <!--   <script>
+                                             $.ajax({
+                                            type: "GET",
+                                            url: "https://ruarduan-backend.com/tickets",
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                var aggregatedObject = Enumerable.From(data)
+                                            .GroupBy("$.status", null,
+                                                     function (key, g) {
+                                                         return {
+                                                           status: key,
+                                                           price: g.Sum("$.price"),
+                                                           people: g.Sum("$.people")
+                                                         }
 
-                                        function getData(){
-                                            $.getJSON('https://ruarduan-backend.com/tests', function(data){
-                                                Highcharts.each(data, function(el){
-                                                    el.x = new Date(el.operationDate).getTime();
-                                                    el.y = Number(el.price);
-                                                    chartData.push(el);
-                                                });
-                                                chartData.sort(function(a, b){
-                                                    return a.x - b.x
-                                                });
-                                                chart.series[0].setData(chartData);
-                                            });
-                                        }
-										
-                                        var chart = Highcharts.stockChart('container', {
+                                            })
+                                            .ToArray();
+                                            var i;
+                                            for (i in aggregatedObject) {
+                                                console.log("testLoop: "+aggregatedObject[i].status + " " + aggregatedObject[i].people + " " + aggregatedObject[i].price);
+                                            }
+                                            console.log(aggregatedObject); 
+                                            console.log("array[0].price: "+aggregatedObject[0].price);   
+                                            console.log("array[1].price: "+aggregatedObject[1].price);  
+                                            console.log("array[0].people: "+aggregatedObject[0].people);  
+                                            console.log("array[1].people: "+aggregatedObject[1].people);   
 
-                                            chart: {
-                                                type: 'areaspline'
                                             },
-											
-											plotOptions:{
-												areaspline: {
-													dataGrouping: {
-														units: [
-															['day', [1]],
-															['week', [1]],
-														],
-														groupPixelWidth: 100
-													}
-												}
-											},
-										
-											series: [{
-												type: 'areaspline',
-                                                name: 'Prices',
-                                                data: getData(),
-                                                lineWidth: 5,
-                                                marker: {
-                                                    enabled: true,
-                                                    radius: 7
-                                                },
-												dataGrouping: {
-													units: [
-														['week', [1]]
-													],
-													groupPixelWidth: 100
-												},
-												fillColor: {
-													linearGradient: {
-														x1: 0,
-														y1: 0,
-														x2: 0,
-														y2: 1
-													},
-													stops: [
-														[0, Highcharts.getOptions().colors[0]],
-														[1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-													]
-												}
-                                            }],
-											
-                                            rangeSelector: {
-												allButtonsEnabled: true,
-												buttons: [{
-													type: 'day',
-													count: 1,
-													text: 'Day',
-													dataGrouping: {
-														units: 	['day', [1]]
-													}
-												}, {
-													type: 'week',
-													count: 1,
-													text: 'Week',
-													dataGrouping: {
-														units: ['week', [1]]
-													}
-												}],
-												buttonTheme: {
-													width: 60
-												},
-												selected: 0
-											},
-
-											title: {
-												text: 'Ruarduan Ticket Sales'
-											},
-
-											subtitle: {
-												text: 'Current in Baht'
-											},
-											
+                                            error: function (e) {
+                                                console.log("Error:"+e);
+                                            }
                                         });
-                                        
-                                    });
-                                </script>
+                                </script> -->
                             </div>
                         </div>
                     </div>

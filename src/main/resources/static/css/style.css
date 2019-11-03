@@ -824,7 +824,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
 }
-.market-update-right i.fa.fa-eye {
+.market-update-right i.fa.fa-users {
     font-size: 3em;
     color:#fff;
     text-align: left;
@@ -834,7 +834,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
    color:#fff;
    text-align: left;
 }
-.market-update-right i.fa.fa-shopping-cart{
+.market-update-right i.fa.fa-ticket{
    font-size:3em;
    color:#fff;
    text-align: left;
