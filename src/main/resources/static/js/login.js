@@ -122,6 +122,15 @@ $(function(){
     },1000);
 
 });
+var input = $('.validate-input .input100');
+    
+    // $('.validate-form').submit( function () {
+        
+    //     var login = {};
+    //     login["username"] = $("#username").val();
+    //     login["password"] = $("#password").val();
+    //     window.localStorage.setItem("dataUsername",login.username);
+    // });
 
 (function ($) {
     "use strict";
