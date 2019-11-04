@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<head>
 		<title>Ruarduan Admin | Login </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +21,6 @@
 		<link rel="stylesheet" href="css/font.css" type="text/css"/>
 		<link href="css/font-awesome.css" rel="stylesheet"> 
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 	</head>
 
@@ -32,13 +31,21 @@
 			<img class="center icon" alt="" src="icon/favicon-96x96.png">
 			<h2>Sign In Now</h2>
 				<form action="#" method="post" class="validate-form">
+					<div id="invaildtime" th:if="${param.error}" class="alert col-md-10 col-md-offset-1 ">
+                        Invalid Username and Password.
+                    </div>
+                    <div id="logouttime" th:if="${param.logout}" class="alert col-md-10 col-md-offset-1 ">
+                        You have been logged out.
+                    </div>
 					<span class="ggg">Username</span>
-					<div class="validate-input" data-validate="Username is required">
-						<input type="text" class="ggg input-100" id="username" name="username" placeholder="USERNAME">
+					<div class="wrap-input100 validate-input" data-validate="Username is required">
+						<input type="text" class="ggg input100" id="username" name="username" placeholder="USERNAME">
+						<span class="focus-input100"></span>
 					</div>
 					<span>Password</span>
-					<div class="valiadate-input" data-validate="Password is required">
-						<input type="password" class="ggg input-100" id="password" name="password" placeholder="PASSWORD">
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input type="password" class="ggg input100" id="password" name="password" placeholder="PASSWORD">
+						<span class="focus-input100"></span>
 					</div>
 						<div class="clearfix"></div>
 						<input type="submit" value="Sign In" name="login">
@@ -46,6 +53,9 @@
 				<p>Don't Have an Account ?<a href="/registration">Create an account</a></p>
 		</div>
 		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/jquery.dcjqaccordion.2.7.js"></script>
 		<script src="js/jquery.slimscroll.js"></script>

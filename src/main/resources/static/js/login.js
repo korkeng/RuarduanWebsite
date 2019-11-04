@@ -5,7 +5,6 @@ $(document).ready(function() {
     var input = $('.validate-input .input100');
     
     $('.validate-form').submit( function () {
-        
         var login = {};
         login["username"] = $("#username").val();
         login["password"] = $("#password").val();
@@ -26,6 +25,8 @@ $(document).ready(function() {
         });
 
     $('.validate-form').on('submit',function(){
+        console.log("Hello");
+        console.log(""+input.length);
         var check = true;
         for(var i=0; i<input.length; i++) {
             if(validate(input[i]) == false){
@@ -67,6 +68,25 @@ $(document).ready(function() {
 
         $(thisAlert).removeClass('alert-validate');
     }
+
+    $(function(){
+
+    $('#logouttime').show();
+
+    setTimeout(function(){
+        $('#logouttime').fadeOut('slow');
+    },1000);
+
+});
+$(function(){
+
+    $('#invaildtime').show();
+
+    setTimeout(function(){
+        $('#invaildtime').fadeOut('slow');
+    },1000);
+
+});
     
     
 
