@@ -28,42 +28,85 @@
 		<div class="reg-w3">
 		<div class="w3layouts-main">
 			<img class="center icon" alt="" src="icon/favicon-96x96.png">
+			<br>
 			<h2>Register Now</h2>
-				<form action="#" method="post" class="ggg validate-form">
+				<form th:action="@{/login}" method="post" class="ggg validate-form">
 					<span class="ggg">Employee Code</span>
-					<div class="validate-input" >
-						<input type="text" class="ggg input-100" id="Emp_code" placeholder="EMPLOYEE CODE" required>
+					<div class="wrap-input100 validate-input" data-validate="Employee Code is required">
+						<input type="text" class="ggg input100" id="Emp_code" name="Emp_code" placeholder="EMPLOYEE CODE">
+						<span class="focus-input100"></span>
 					</div>
 					<span class="ggg">Firstname</span>
+					<div class="wrap-input100 validate-input" data-validate="Firstname is required">
+						<input type="text" class="ggg input100" id="FirstName" name="FirstName" placeholder="FIRSTNAME">
+						<span class="focus-input100"></span>
+					</div>
+					<span class="ggg">Lastname</span>
+					<div class="wrap-input100 validate-input" data-validate="Lastname is required">
+						<input type="text" class="ggg input100" id="LastName" name="LastName" placeholder="LASTNAME">
+						<span class="focus-input100"></span>
+					</div>
+					<span class="ggg">E-Mail</span>
+					<div class="wrap-input100 validate-input" data-validate="E-Mail is required">
+						<input type="text" class="ggg input100" id="Email" name="Email" placeholder="xxx@mail.com">
+						<span class="focus-input100"></span>
+					</div>
+					<span class="ggg">Phone</span>
+					<div class="wrap-input100 validate-input" data-validate="Phone is required">
+						<input type="text" class="ggg input100" id="Phone" name="Phone" placeholder="0xx-xxx-xxxx">
+						<span class="focus-input100"></span>
+					</div>
+					<span class="ggg">Username</span>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input type="text" class="ggg input100" id="Username" name="Username" placeholder="USERNAME">
+						<span class="focus-input100"></span>
+					</div>
+					<span class="ggg">Password</span>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input type="password" class="ggg input100" id="Password" name="Password" placeholder="PASSWORD">
+						<span class="focus-input100"></span>
+					</div>
+					<!-- <span class="ggg">Confirm Password</span>
+					<div class="wrap-input100 validate-input" data-validate="Confirm Password is required">
+						<input type="password" class="ggg input100" id="ConfirmPassword" name="ConfirmPassword" placeholder="CONFIRM PASSWORD">
+						<span class="focus-input100"></span>
+					</div> -->
+					<!-- <span class="ggg">Employee Code</span>
 					<div class="validate-input" >
-						<input type="text" class="ggg input-100" id="FirstName" placeholder="FIRSTNAME" required>
+						<input type="text" class="ggg input100" id="Emp_code" placeholder="EMPLOYEE CODE" required>
+					</div> -->
+					<!-- <span class="ggg">Firstname</span>
+					<div class="validate-input" >
+						<input type="text" class="ggg input100" id="FirstName" placeholder="FIRSTNAME" required>
 					</div>
 					<span class="ggg">Lastname</span>
 					<div class="validate-input" >
-						<input type="text" class="ggg input-100" id="LastName" placeholder="LASTNAME" required>
-					</div>
-					<span class="ggg">E-mail</span>
+						<input type="text" class="ggg input100" id="LastName" placeholder="LASTNAME" required>
+					</div> -->
+					<!-- <span class="ggg">E-mail</span>
 					<div class="validate-input" >
-						<input type="text" class="ggg input-100" id="Email" placeholder="E-MAIL" required>
+						<input type="text" class="ggg input100" id="Email" placeholder="E-MAIL" required>
 					</div>
 					<span class="ggg">Phone</span>
 					<div class="validate-input" >
-						<input type="text" class="ggg input-100" id="Phone" placeholder="PHONE" required>
+						<input type="text" class="ggg input100" id="Phone" placeholder="PHONE" required>
 					</div>
 					<span class="ggg">Username</span>
 					<div class="validate-input" >
-						<input type="text" class="ggg input-100" id="Username" placeholder="USERNAME" required>
+						<input type="text" class="ggg input100" id="Username" placeholder="USERNAME" required>
 					</div>
 					<span class="ggg">Password</span>
 					<div class="validate-input" >
-						<input type="password" class="ggg input-100" id="Password" placeholder="PASSWORD" required>
-					</div>
-					<span class="ggg">Confirm Password</span>
+						<input type="password" class="ggg input100" id="Password" placeholder="PASSWORD" required>
+					</div> -->
+					<!-- <span class="ggg">Confirm Password</span>
 					<div class="validate-input" >
-						<input type="password" class="ggg input-100" id="ConfirmPassword" placeholder="CONFIRM PASSWORD" required>
-					</div>
+						<input type="password" class="ggg input100" id="ConfirmPassword" placeholder="CONFIRM PASSWORD" required>
+					</div> -->
 					<div class="clearfix"></div>
-					<input type="button" value="submit" name="register" onclick="addAccount()">
+					<!-- <input type="button" value="submit" name="register" onclick="addAccount()"> -->
+					<!-- <input type="button" value="submit" name="register" > -->
+					<input type="submit" value="Register" name="register" onclick="addAccount()">
 				</form>
 				<p>Already Registered.<a href="/login">Login</a></p>
 		</div>
