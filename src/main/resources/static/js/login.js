@@ -122,7 +122,7 @@ $(function(){
     },1000);
 
 });
-var input = $('.validate-input .input100');
+// var input = $('.validate-input .input100');
     
     // $('.validate-form').submit( function () {
         
