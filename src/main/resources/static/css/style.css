@@ -538,6 +538,16 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     opacity: 1;
   }
 
+  .alert-txt-box{
+    width: 100%;
+    border: 2px solid #c80000;
+    font-size: 15px;
+    text-align: center;
+    color: #c80000;
+    margin: 14px 0px;
+    background: #3333;
+  }
+
 .photo img {
     border-radius:2px 2px 2px 2px;
     -webkit-border-radius:2px 2px 2px 2px;
