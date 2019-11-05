@@ -20,7 +20,7 @@ public class MainController {
     @Value("${secretRegi}")
     private String secretRegi;
 
-    @GetMapping("/")
+    @GetMapping("/index")
         public String Main(){
             return "index";
     }
