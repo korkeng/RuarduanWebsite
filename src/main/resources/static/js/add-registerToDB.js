@@ -113,8 +113,6 @@ var header = {
   }
   
 function addAccount(){
-    // var password = $("#Password").val();
-    // var confirmPassword = $("#ConfirmPassword").val();
     var userData = {
         password: document.getElementById("Password").value,
     };
