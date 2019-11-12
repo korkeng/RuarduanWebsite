@@ -76,5 +76,10 @@ public class MainController {
             return "routepier";
     }
 
+    @GetMapping("/reports")
+        public String Report(){
+            return "reports";
+    }
+
 }
 

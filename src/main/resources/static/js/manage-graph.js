@@ -1,4 +1,5 @@
 $(document).ready(function() {
+   
     $.ajax({
        type: "GET",
        url: "https://ruarduan-backend.com/tickets",
@@ -42,13 +43,7 @@ $(document).ready(function() {
                  price = ticketObject[i].price;
 
             }
-            console.log(ticketObject); 
-            console.log(people); 
-            console.log(price); 
-            console.log("array[0].price: "+ticketObject[0].price);   
-            console.log("array[1].price: "+ticketObject[1].price);  
-            console.log("array[0].people: "+ticketObject[0].people);  
-            console.log("array[1].people: "+ticketObject[1].people);   
+            console.log(ticketObject);  
 
             Highcharts.setOptions({
                 colors: ['#19bde6', '#f26338', '#fad920', '#3cf51b', 'black']
@@ -59,7 +54,7 @@ $(document).ready(function() {
                     zoomType: 'xy'
                 },
                 title: {
-                    text: 'Tickets Statistics Group by Boattype'
+                    text: 'Overall Tickets Statistics Group by Boattype'
                 },
                 // subtitle: {
                 //     text: 'Source: WorldClimate.com'
@@ -149,12 +144,6 @@ $(document).ready(function() {
 
             }
             console.log(aggregatedObject); 
-            console.log(people); 
-            console.log(price); 
-            console.log("array[0].price: "+aggregatedObject[0].price);   
-            console.log("array[1].price: "+aggregatedObject[1].price);  
-            console.log("array[0].people: "+aggregatedObject[0].people);  
-            console.log("array[1].people: "+aggregatedObject[1].people);   
 
             Highcharts.setOptions({
                 colors: ['#55cbe6','#4d2909','black']
@@ -165,7 +154,7 @@ $(document).ready(function() {
                     zoomType: 'xy'
                 },
                 title: {
-                    text: 'Tickets Status Statistics'
+                    text: 'Overall Tickets Status Statistics'
                 },
                 // subtitle: {
                 //     text: 'Status: 1 = Not Used Ticket, 2 = Used Ticket '
@@ -234,7 +223,101 @@ $(document).ready(function() {
             console.log("Error: "+e);
         }
     });
+
+ $.ajax({
+        type: "GET",
+        url: "https://ruarduan-backend.com/tickets/report/overall",
+        dataType: 'json',
+        success: function (data) {
+            
+            var dataHeader = ["<b>Boattype ID</b>","<b>Total Price</b>","<b>Total passengers</b>"];
+            var cellHeader = [];
+            document.getElementById("tableHeader").innerHTML = "Overall Report";
+            if (document.getElementById("dataTable").rows.length == 0) {
+                var header = document.getElementById("myThHeader");
+                var rowHeader = header.insertRow(0);
+                for (i = 0; i < dataHeader.length; i++) {
+                    cellHeader[i] = rowHeader.insertCell(i);
+                    cellHeader[i].innerHTML = ""+dataHeader[i];
+                }
+                var footer = document.getElementById("myThFooter");
+                var rowFooter = footer.insertRow(0);
+                for (i = 0; i < dataHeader.length; i++) {
+                    cellHeader[i] = rowFooter.insertCell(i);
+                    cellHeader[i].innerHTML = ""+dataHeader[i];
+                }
+                var table = document.getElementById("myThBody");
+                var cellData = [];
+                for (i = data.length-1; i > -1; i--) {
+                    var row1 = table.insertRow(0);
+                    for(j = 0; j < dataHeader.length; j++){     
+                        cellData[j] = row1.insertCell(j);
+                        switch(j) {
+                            case 0:
+                                cellData[j].innerHTML = ""+data[i][0].toString();
+                                break;
+                            case 1:
+                                cellData[j].innerHTML = ""+data[i][1].toString();
+                                break;
+                            case 2:
+                                cellData[j].innerHTML = ""+data[i][2].toString();
+                                break;
+                           
+                        } 
+                    }        
+                }
+                tableData = $('#dataTable').DataTable();
+                dataLength = data.length; 
+                
+            } else {
+                tableData.destroy();
+                for (i = 0; i < dataLength+2; i++) {
+                    document.getElementById("dataTable").deleteRow(0);
+                }
+                var header = document.getElementById("myThHeader");
+                var rowHeader = header.insertRow(0);
+                for (i = 0; i < dataHeader.length; i++) {
+                    cellHeader[i] = rowHeader.insertCell(i);
+                    cellHeader[i].innerHTML = ""+dataHeader[i];
+                }
+                var footer = document.getElementById("myThFooter");
+                var rowFooter = footer.insertRow(0);
+                for (i = 0; i < dataHeader.length; i++) {
+                    cellHeader[i] = rowFooter.insertCell(i);
+                    cellHeader[i].innerHTML = ""+dataHeader[i];
+                }
+                var table = document.getElementById("myThBody");
+                var cellData = [];
+                for (i = data.length-1; i > -1; i--) {
+                    var row1 = table.insertRow(0);
+                    for(j = 0; j < dataHeader.length; j++){     
+                        cellData[j] = row1.insertCell(j);
+                        switch(j) {
+                            case 0:
+                                cellData[j].innerHTML = ""+data[i][0].toString();
+                                break;
+                            case 1:
+                                cellData[j].innerHTML = ""+data[i][1].toString();
+                                break;
+                            case 2:
+                                cellData[j].innerHTML = ""+data[i][2].toString();
+                                break;
+                        }
+                    }        
+                }
+                tableData = $('#dataTable').DataTable();
+                dataLength = data.length; 
+                
+            }   
+        },
+        error: function (e) {
+            console.log("Error:"+e);
+        }
+    });
     
 });
+
+
+
 
 
