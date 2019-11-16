@@ -69,14 +69,14 @@ $(document).ready(function() {
                         }
                     },
                     title: {
-                        text: 'Total People',
+                        text: 'Total Price',
                         style: {
                             // color: Highcharts.getOptions().colors[1]
                         }
                     }
                 }, { // Secondary yAxis
                     title: {
-                        text: 'Total Price ',
+                        text: 'Total Passengers ',
                         style: {
                             // color: Highcharts.getOptions().colors[0]
                         }
@@ -98,7 +98,7 @@ $(document).ready(function() {
                     }
                 },
                 series: [{
-                    name: 'People',
+                    name: 'Passengers',
                     type: 'column',
                     yAxis: 1,
                     data: [ticketObject[0].people,ticketObject[1].people,ticketObject[2].people,ticketObject[3].people],
@@ -165,14 +165,14 @@ $(document).ready(function() {
                         }
                     },
                     title: {
-                        text: 'Total People',
+                        text: 'Total Price',
                         style: {
                             color: Highcharts.getOptions().colors[1]
                         }
                     }
                 }, { // Secondary yAxis
                     title: {
-                        text: 'Total Price ',
+                        text: 'Total Passengers ',
                         style: {
                             color: Highcharts.getOptions().colors[0]
                         }
@@ -189,7 +189,7 @@ $(document).ready(function() {
                     shared: true
                 },
                 series: [{
-                    name: 'People',
+                    name: 'Passengers',
                     type: 'column',
                     yAxis: 1,
                     data: [aggregatedObject[0].people,aggregatedObject[1].people],
