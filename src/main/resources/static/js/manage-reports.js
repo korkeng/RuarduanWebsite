@@ -97,7 +97,7 @@ $(document).ready(function() {
 
             Highcharts.chart('container', {
                 chart: {
-                    type: 'column',
+                    type: 'spline',
                     zoomType: 'xy'
                 },
                 title: {
@@ -133,7 +133,7 @@ $(document).ready(function() {
                 },
                 series: [{
                     name: 'Price',
-                    type: 'column',
+                    type: 'spline',
                     data: [data[0][1],data[1][1],data[2][1],data[3][1]],
                     tooltip: {
                         valueSuffix: ' THB.'
@@ -181,7 +181,7 @@ $(document).ready(function() {
                 },
                 series: [{
                     name: 'Passengers',
-                    type: 'spline',
+                    type: 'column',
                     data: [data[0][2],data[1][2],data[2][2],data[3][2]],
                     tooltip: {
                         valueSuffix: ' person'
@@ -239,21 +239,22 @@ $(document).ready(function() {
                     }
                 },
                 series: [{
-                    name: 'Price',
+                    name: 'Passengers',
                     type: 'column',
                     yAxis: 1,
-                    data: [data[0][1],data[1][1],data[2][1],data[3][1]],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }, {
-                    name: 'Passengers',
-                    type: 'spline',
                     data: [data[0][2],data[1][2],data[2][2],data[3][2]],
                     tooltip: {
                         valueSuffix: ' person'
                     }
+
+                }, {
+                    name: 'Price',
+                    type: 'spline',
+                    data: [data[0][1],data[1][1],data[2][1],data[3][1]],
+                    tooltip: {
+                        valueSuffix: ' THB.'
+                    }
+                    
                 }]
             });
 
@@ -459,7 +460,7 @@ function changeViewOverall() {
 
             Highcharts.chart('container', {
                 chart: {
-                    type: 'column',
+                    type: 'spline',
                     zoomType: 'xy'
                 },
                 title: {
@@ -495,7 +496,7 @@ function changeViewOverall() {
                 },
                 series: [{
                     name: 'Price',
-                    type: 'column',
+                    type: 'spline',
                     data: [data[0][1],data[1][1],data[2][1],data[3][1]],
                     tooltip: {
                         valueSuffix: ' THB.'
@@ -543,7 +544,7 @@ function changeViewOverall() {
                 },
                 series: [{
                     name: 'Passengers',
-                    type: 'spline',
+                    type: 'column',
                     data: [data[0][2],data[1][2],data[2][2],data[3][2]],
                     tooltip: {
                         valueSuffix: ' person'
@@ -601,24 +602,24 @@ function changeViewOverall() {
                     }
                 },
                 series: [{
-                    name: 'Price',
+                    name: 'Passengers',
                     type: 'column',
                     yAxis: 1,
-                    data: [data[0][1],data[1][1],data[2][1],data[3][1]],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }, {
-                    name: 'Passengers',
-                    type: 'spline',
                     data: [data[0][2],data[1][2],data[2][2],data[3][2]],
                     tooltip: {
                         valueSuffix: ' person'
                     }
+
+                }, {
+                    name: 'Price',
+                    type: 'spline',
+                    data: [data[0][1],data[1][1],data[2][1],data[3][1]],
+                    tooltip: {
+                        valueSuffix: ' THB.'
+                    }
+                    
                 }]
             });
-
         },
         error: function (e) {
             console.log("Error:"+e);
@@ -674,9 +675,9 @@ function changeViewToday() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("con").style.display = "block";
-                document.getElementById("con1").style.display = "block";
-                document.getElementById("con2").style.display = "block";
+                document.getElementById("con").style.display = "none";
+                document.getElementById("con1").style.display = "none";
+                document.getElementById("con2").style.display = "none";
                 
             } else {
                 tableData.destroy();
@@ -719,176 +720,11 @@ function changeViewToday() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("con").style.display = "block";
-                document.getElementById("con1").style.display = "block";
-                document.getElementById("con2").style.display = "block";
+                document.getElementById("con").style.display = "none";
+                document.getElementById("con1").style.display = "none";
+                document.getElementById("con2").style.display = "none";
                 
             }   
-            Highcharts.setOptions({
-                colors: ['#19bde6', '#f26338', '#fad920', '#3cf51b', 'black']
-            });
-
-            Highcharts.chart('container', {
-                chart: {
-                    type: 'column',
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: 'Overall Price Statistics Group by Boattype'
-                },
-                // subtitle: {
-                //     text: 'Source: WorldClimate.com'
-                // },
-                xAxis: [{
-                    categories: ['Blue Flag','Orange Flag','Yellow Flag','Green Flag'],
-                    crosshair: true
-                }],
-                yAxis: [{ // Primary yAxis
-                    labels: {
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    },
-                    title: {
-                        text: 'Total Price',
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    }
-                }],
-                tooltip: {
-                    shared: true
-                },
-                 plotOptions: {
-                    series: {
-                        colorByPoint: true
-                    }
-                },
-                series: [{
-                    name: 'Price',
-                    type: 'column',
-                    data: [data[0][2],data[1][2],data[2][2],data[3][2]],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }]
-            });
-
-        
-
-            Highcharts.chart('container1', {
-                chart: {
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: 'Overall Passengers Statistics Group by Boattype'
-                },
-                // subtitle: {
-                //     text: 'Source: WorldClimate.com'
-                // },
-                xAxis: [{
-                    categories: ['Blue Flag','Orange Flag','Yellow Flag','Green Flag'],
-                    crosshair: true
-                }],
-                yAxis: [{ // Primary yAxis
-                    labels: {
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    },
-                    title: {
-                        text: 'Total Passengers',
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    }
-                }],
-                tooltip: {
-                    shared: true
-                },
-                 plotOptions: {
-                    series: {
-                        colorByPoint: true
-                    }
-                },
-                series: [{
-                    name: 'Passengers',
-                    type: 'spline',
-                    data: [data[0][3],data[1][3],data[2][3],data[3][3]],
-                    tooltip: {
-                        valueSuffix: ' person'
-                    }
-                }]
-            });
-
-            Highcharts.chart('container2', {
-                chart: {
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: 'Overall Tickets Statistics Group by Boattype'
-                },
-                // subtitle: {
-                //     text: 'Source: WorldClimate.com'
-                // },
-                xAxis: [{
-                    categories: ['Blue Flag','Orange Flag','Yellow Flag','Green Flag'],
-                    crosshair: true
-                }],
-                yAxis: [{ // Primary yAxis
-                    labels: {
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    },
-                    title: {
-                        text: 'Total Price',
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    }
-                }, { // Secondary yAxis
-                    title: {
-                        text: 'Total Passengers ',
-                        style: {
-                            // color: Highcharts.getOptions().colors[0]
-                        }
-                    },
-                    labels: {
-                        
-                        style: {
-                            // color: Highcharts.getOptions().colors[0]
-                        }
-                    },
-                    opposite: true
-                }],
-                tooltip: {
-                    shared: true
-                },
-                 plotOptions: {
-                    series: {
-                        colorByPoint: true
-                    }
-                },
-                series: [{
-                    name: 'Price',
-                    type: 'column',
-                    yAxis: 1,
-                    data: [data[0][2],data[1][2],data[2][2],data[3][2]],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }, {
-                    name: 'Passengers',
-                    type: 'spline',
-                    data: [data[0][3],data[1][3],data[2][3],data[3][3]],
-                    tooltip: {
-                        valueSuffix: ' person'
-                    }
-                }]
-            });
 
         },
         error: function (e) {
@@ -945,9 +781,9 @@ function changeViewYesterday() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("con").style.display = "block";
-                document.getElementById("con1").style.display = "block";
-                document.getElementById("con2").style.display = "block";
+                document.getElementById("con").style.display = "none";
+                document.getElementById("con1").style.display = "none";
+                document.getElementById("con2").style.display = "none";
                 
             } else {
                 tableData.destroy();
@@ -990,177 +826,12 @@ function changeViewYesterday() {
                 }
                 tableData = $('#dataTable').DataTable();
                 dataLength = data.length; 
-                document.getElementById("con").style.display = "block";
-                document.getElementById("con1").style.display = "block";
-                document.getElementById("con2").style.display = "block";
+                document.getElementById("con").style.display = "none";
+                document.getElementById("con1").style.display = "none";
+                document.getElementById("con2").style.display = "none";
                 
             }
-               Highcharts.setOptions({
-                colors: ['#19bde6', '#f26338', '#fad920', '#3cf51b', 'black']
-            });
-
-            Highcharts.chart('container', {
-                chart: {
-                    type: 'column',
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: 'Overall Price Statistics Group by Boattype'
-                },
-                // subtitle: {
-                //     text: 'Source: WorldClimate.com'
-                // },
-                xAxis: [{
-                    categories: ['Blue Flag','Orange Flag','Yellow Flag','Green Flag'],
-                    crosshair: true
-                }],
-                yAxis: [{ // Primary yAxis
-                    labels: {
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    },
-                    title: {
-                        text: 'Total Price',
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    }
-                }],
-                tooltip: {
-                    shared: true
-                },
-                 plotOptions: {
-                    series: {
-                        colorByPoint: true
-                    }
-                },
-                series: [{
-                    name: 'Price',
-                    type: 'column',
-                    data: [data[0][2],data[1][2],data[2][2],data[3][2]],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }]
-            });
-
-        
-
-            Highcharts.chart('container1', {
-                chart: {
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: 'Overall Passengers Statistics Group by Boattype'
-                },
-                // subtitle: {
-                //     text: 'Source: WorldClimate.com'
-                // },
-                xAxis: [{
-                    categories: ['Blue Flag','Orange Flag','Yellow Flag','Green Flag'],
-                    crosshair: true
-                }],
-                yAxis: [{ // Primary yAxis
-                    labels: {
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    },
-                    title: {
-                        text: 'Total Passengers',
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    }
-                }],
-                tooltip: {
-                    shared: true
-                },
-                 plotOptions: {
-                    series: {
-                        colorByPoint: true
-                    }
-                },
-                series: [{
-                    name: 'Passengers',
-                    type: 'spline',
-                    data: [data[0][3],data[1][3],data[2][3],data[3][3]],
-                    tooltip: {
-                        valueSuffix: ' person'
-                    }
-                }]
-            });
-
-            Highcharts.chart('container2', {
-                chart: {
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: 'Overall Tickets Statistics Group by Boattype'
-                },
-                // subtitle: {
-                //     text: 'Source: WorldClimate.com'
-                // },
-                xAxis: [{
-                    categories: ['Blue Flag','Orange Flag','Yellow Flag','Green Flag'],
-                    crosshair: true
-                }],
-                yAxis: [{ // Primary yAxis
-                    labels: {
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    },
-                    title: {
-                        text: 'Total Price',
-                        style: {
-                            // color: Highcharts.getOptions().colors[1]
-                        }
-                    }
-                }, { // Secondary yAxis
-                    title: {
-                        text: 'Total Passengers ',
-                        style: {
-                            // color: Highcharts.getOptions().colors[0]
-                        }
-                    },
-                    labels: {
-                        
-                        style: {
-                            // color: Highcharts.getOptions().colors[0]
-                        }
-                    },
-                    opposite: true
-                }],
-                tooltip: {
-                    shared: true
-                },
-                 plotOptions: {
-                    series: {
-                        colorByPoint: true
-                    }
-                },
-                series: [{
-                    name: 'Price',
-                    type: 'column',
-                    yAxis: 1,
-                    data: [data[0][2],data[1][2],data[2][2],data[3][2]],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }, {
-                    name: 'Passengers',
-                    type: 'spline',
-                    data: [data[0][3],data[1][3],data[2][3],data[3][3]],
-                    tooltip: {
-                        valueSuffix: ' person'
-                    }
-                }]
-            });
-   
+                  
         },
         error: function (e) {
             console.log("Error:"+e);

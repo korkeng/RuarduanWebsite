@@ -38,12 +38,11 @@ $(document).ready(function() {
             price = [];
 
             for (i in ticketObject) {
-                 console.log("testLoop: "+ticketObject[i].boattype_id.boattypeId.boattype_id + " " + ticketObject[i].people + " " + ticketObject[i].price);
+            
                  people = ticketObject[i].people;
                  price = ticketObject[i].price;
 
-            }
-            console.log(ticketObject);  
+            } 
 
             Highcharts.setOptions({
                 colors: ['#19bde6', '#f26338', '#fad920', '#3cf51b', 'black']
@@ -99,27 +98,24 @@ $(document).ready(function() {
                     }
                 },
                 series: [{
-                    name: 'Price',
+                    name: 'People',
                     type: 'column',
                     yAxis: 1,
-                    data: [ticketObject[0].price,ticketObject[1].price,ticketObject[2].price,ticketObject[3].price],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }, {
-                    name: 'People',
-                    type: 'spline',
                     data: [ticketObject[0].people,ticketObject[1].people,ticketObject[2].people,ticketObject[3].people],
                     tooltip: {
                         valueSuffix: ' person'
                     }
+
+                }, {
+                    name: 'Price',
+                    type: 'spline',
+                    data: [ticketObject[0].price,ticketObject[1].price,ticketObject[2].price,ticketObject[3].price],
+                    tooltip: {
+                        valueSuffix: ' THB.'
+                    }
+                    
                 }]
             });
-
-
-
-
 
 
             var aggregatedObject = Enumerable.From(data)
@@ -138,12 +134,10 @@ $(document).ready(function() {
             price = [];
 
             for (i in aggregatedObject) {
-                 console.log("testLoop: "+aggregatedObject[i].status + " " + aggregatedObject[i].people + " " + aggregatedObject[i].price);
                  people = aggregatedObject[i].people;
                  price = aggregatedObject[i].price;
 
             }
-            console.log(aggregatedObject); 
 
             Highcharts.setOptions({
                 colors: ['#55cbe6','#4d2909','black']
@@ -194,26 +188,21 @@ $(document).ready(function() {
                 tooltip: {
                     shared: true
                 },
-                // plotOptions: {
-                //     series: {
-                //         colorByPoint: true
-                //     }
-                // },
                 series: [{
-                    name: 'Price',
+                    name: 'People',
                     type: 'column',
                     yAxis: 1,
-                    data: [aggregatedObject[0].price,aggregatedObject[1].price],
-                    tooltip: {
-                        valueSuffix: ' THB.'
-                    }
-
-                }, {
-                    name: 'People',
-                    type: 'spline',
                     data: [aggregatedObject[0].people,aggregatedObject[1].people],
                     tooltip: {
                         valueSuffix: ' person'
+                    }
+
+                }, {
+                    name: 'Price',
+                    type: 'spline',
+                    data: [aggregatedObject[0].price,aggregatedObject[1].price],
+                    tooltip: {
+                        valueSuffix: ' THB.'
                     }
                 }]
             });

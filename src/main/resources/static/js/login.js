@@ -25,8 +25,6 @@ $(document).ready(function() {
         });
 
     $('.validate-form').on('submit',function(){
-        console.log("Hello");
-        console.log(""+input.length);
         var check = true;
         for(var i=0; i<input.length; i++) {
             if(validate(input[i]) == false){
